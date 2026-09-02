@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reece's Outdoor Solutions — Design Review</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:#0e0e0c;color:#f0ede8;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:40px 24px;
+}
+.header{text-align:center;margin-bottom:56px;}
+.header .label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#5ecf5e;margin-bottom:16px;}
+.header h1{font-size:clamp(26px,4vw,42px);font-weight:700;line-height:1.15;color:#fff;letter-spacing:-.5px;margin-bottom:12px;}
+.header p{font-size:15px;color:rgba(255,255,255,.45);max-width:480px;margin:0 auto;line-height:1.7;}
+
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;width:100%;max-width:960px;}
+
+.card{
+  flex:1;min-width:280px;max-width:440px;
+  border-radius:16px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.1);
+  display:flex;flex-direction:column;
+  transition:border-color .25s,transform .25s;
+  text-decoration:none;color:inherit;
+}
+.card:hover{border-color:rgba(255,255,255,.25);transform:translateY(-4px);}
+
+.card-preview{
+  height:200px;overflow:hidden;position:relative;
+}
+.card-preview iframe{
+  width:1400px;height:900px;border:none;pointer-events:none;
+  transform-origin:top left;
+  transform:scale(0.314);
+}
+.card-preview .overlay{position:absolute;inset:0;}
+
+.card-body{padding:28px;background:#1a1a18;flex:1;display:flex;flex-direction:column;}
+.card-tag{
+  font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  padding:3px 9px;border-radius:10px;display:inline-block;margin-bottom:14px;align-self:flex-start;
+}
+.d1-tag{background:rgba(16,52,122,.5);color:#7ea8e8;border:1px solid rgba(16,52,122,.7);}
+.d2-tag{background:rgba(6,145,6,.18);color:#5ecf5e;border:1px solid rgba(6,145,6,.35);}
+
+.card-body h2{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;letter-spacing:-.3px;}
+.card-body p{font-size:13.5px;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:20px;flex:1;}
+.card-pills{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px;}
+.pill{font-size:11px;font-weight:500;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,.07);color:rgba(255,255,255,.45);}
+.card-cta{
+  display:flex;align-items:center;justify-content:space-between;
+  padding-top:16px;border-top:1px solid rgba(255,255,255,.08);
+}
+.card-cta span{font-size:13px;font-weight:600;color:rgba(255,255,255,.7);}
+.card-cta svg{color:rgba(255,255,255,.35);transition:transform .2s,color .2s;}
+.card:hover .card-cta svg{transform:translateX(4px);color:rgba(255,255,255,.7);}
+
+.sub-links{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap;justify-content:center;}
+.sub-link{font-size:12px;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s;}
+.sub-link:hover{color:rgba(255,255,255,.65);}
+.sub-link::after{content:" →"}
+
+.footer-note{margin-top:48px;font-size:12px;color:rgba(255,255,255,.2);text-align:center;line-height:1.7;}
+
+@media(max-width:640px){
+  .cards{flex-direction:column;align-items:center;}
+  .card{max-width:100%;}
+  .card-preview{height:160px;}
+  .card-preview iframe{width:768px;height:500px;transform:scale(0.416);}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="label">Design Review</div>
+  <h1>Two directions for<br>Reece's Outdoor Solutions</h1>
+  <p>Click into each design to explore the full site — homepage, about page, and portfolio are all built out.</p>
+</div>
+
+<div class="cards">
+
+  <!-- Design 1 -->
+  <a class="card" href="design-1/index.html">
+    <div class="card-preview">
+      <iframe src="design-1/index.html" tabindex="-1" aria-hidden="true"></iframe>
+      <div class="overlay"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag d1-tag">Design 1</div>
+      <h2>Dark &amp; Bold</h2>
+      <p>Deep navy background with glassmorphism cards, a hero slideshow, and a high-contrast green accent. Feels premium and confident.</p>
+      <div class="card-pills">
+        <span class="pill">Dark navy</span>
+        <span class="pill">Glassmorphism</span>
+        <span class="pill">Hero slideshow</span>
+        <span class="pill">Bricolage Grotesque</span>
+      </div>
+      <div class="card-cta">
+        <span>View Design 1</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </a>
+
+  <!-- Design 2 -->
+  <a class="card" href="design-2/index.html">
+    <div class="card-preview">
+      <iframe src="design-2/index.html" tabindex="-1" aria-hidden="true"></iframe>
+      <div class="overlay"></div>
+    </div>
+    <div class="card-body">
+      <div class="card-tag d2-tag">Design 2</div>
+      <h2>Light &amp; Editorial</h2>
+      <p>Warm cream background, serif headings, and a clean split-hero layout. Comes with a built-in dark mode toggle that saves your preference.</p>
+      <div class="card-pills">
+        <span class="pill">Light cream</span>
+        <span class="pill">Playfair Display</span>
+        <span class="pill">Split hero</span>
+        <span class="pill">Dark mode</span>
+      </div>
+      <div class="card-cta">
+        <span>View Design 2</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </div>
+  </a>
+
+</div>
+
+<div class="sub-links">
+  <a class="sub-link" href="design-1/about.html">D1 About</a>
+  <a class="sub-link" href="design-1/portfolio.html">D1 Portfolio</a>
+  <a class="sub-link" href="design-2/about.html">D2 About</a>
+  <a class="sub-link" href="design-2/portfolio.html">D2 Portfolio</a>
+</div>
+
+<p class="footer-note">Reece's Outdoor Solutions · Web Build Review · 2026</p>
+
+</body>
+</html>

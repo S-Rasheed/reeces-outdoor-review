@@ -1,0 +1,745 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Our Work — Reece's Outdoor Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d2244;--blue:#10347a;--green:#069106;--green-light:#3fbf3f;
+  --white:#fff;--ink-1:#eef1f5;--ink-2:#c3ccd6;--ink-3:#8b96a3;
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;--sp-20:80px;--sp-24:96px;
+  --gutter:clamp(24px,5vw,72px);
+  --container:min(1400px,calc(100% - (var(--gutter)*2)));
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--white);font-family:'Inter',Arial,sans-serif;font-size:16px;line-height:1.5}
+h1,h2,h3,.brand{font-family:'Bricolage Grotesque',Arial,sans-serif}
+a{color:inherit}
+button{font-family:inherit}
+img{display:block;max-width:100%}
+.wrap{width:var(--container);margin:0 auto;position:relative}
+
+/* ---- topbar ---- */
+.topbar{background:#050f1f;border-bottom:1px solid rgba(6,145,6,.35);padding:var(--sp-2) 0;z-index:15;position:relative;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+.topbar-social{display:flex;gap:var(--sp-4);}
+.topbar-social a{color:var(--ink-3);display:flex;transition:color .2s;}
+.topbar-social a:hover{color:var(--green-light);}
+.topbar-contact{display:flex;align-items:center;gap:var(--sp-4);font-size:12px;color:var(--ink-3);}
+.topbar-contact a{color:var(--ink-2);font-weight:600;text-decoration:none;transition:color .2s;}
+.topbar-contact a:hover{color:var(--green-light);}
+.topbar-contact .sep{width:1px;height:11px;background:rgba(255,255,255,.15);}
+
+/* ---- sticky header ---- */
+.site-header{background:#060f1e;border-bottom:1px solid rgba(255,255,255,.08);position:sticky;top:0;z-index:10;}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-5) 0;}
+.brand{display:flex;align-items:center;gap:var(--sp-3);font-weight:700;font-size:23px;letter-spacing:-.5px;text-decoration:none;color:var(--white);}
+.brand-mark{width:38px;height:38px;flex-shrink:0;}
+.brand em{color:var(--green-light);font-style:normal;font-weight:700;}
+.brand .lockup{line-height:1.05;}
+.brand small{display:block;font-size:9.5px;letter-spacing:3px;font-weight:600;color:var(--green-light);margin-top:3px;}
+nav{display:flex;gap:var(--sp-8);}
+nav a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink-1);position:relative;padding-bottom:14px;transition:color .2s;}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s;}
+nav a:hover{color:var(--white);}
+nav a:hover::after,nav a.active::after{transform:scaleX(1);}
+nav a.active{color:var(--white);}
+.btn{display:inline-flex;align-items:center;gap:var(--sp-2);padding:15px 26px;font-weight:700;font-size:13px;letter-spacing:.4px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1.5px solid transparent;border-radius:2px;transition:background .3s,border-color .3s;}
+.btn-primary{background:var(--green);color:var(--white);}
+.btn-primary:hover{background:var(--green-light);}
+.btn-outline{border-color:rgba(255,255,255,.45);color:var(--white);}
+.btn-outline:hover{border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.06);}
+.eyebrow{display:flex;align-items:center;gap:var(--sp-3);color:var(--green-light);font-size:12.5px;font-weight:700;letter-spacing:2.5px;margin-bottom:var(--sp-6);}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--green-light);}
+
+/* ---- page hero ---- */
+.page-hero{
+  position:relative;overflow:hidden;
+  background:#040e1c;
+  padding:clamp(72px,9vw,128px) 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.page-hero-bg{
+  position:absolute;inset:0;z-index:0;
+  background-image:url('images/hero/hero-green-canopy.jpg');
+  background-size:cover;background-position:center 40%;
+  opacity:.22;
+}
+.page-hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg,rgba(4,14,28,.98) 0%,rgba(4,14,28,.9) 30%,rgba(4,14,28,.65) 60%,rgba(4,14,28,.3) 100%),
+    linear-gradient(180deg,rgba(0,0,0,.2) 0%,transparent 40%,rgba(0,0,0,.3) 100%);
+}
+.page-hero-inner{position:relative;z-index:2;}
+.page-hero-inner h1{font-size:clamp(44px,5.5vw,80px);font-weight:700;letter-spacing:-2.5px;line-height:1.02;margin:0 0 var(--sp-5);max-width:700px;}
+.page-hero-inner h1 span{color:var(--green-light);}
+.page-hero-inner p{font-size:17px;color:var(--ink-2);line-height:1.7;max-width:500px;margin:0 0 var(--sp-10);}
+.hero-badges{display:flex;gap:var(--sp-8);flex-wrap:wrap;}
+.hero-badge{display:flex;align-items:center;gap:var(--sp-3);}
+.hero-badge-icon{width:34px;height:34px;border-radius:8px;background:rgba(63,191,63,.1);border:1px solid rgba(63,191,63,.22);display:flex;align-items:center;justify-content:center;color:var(--green-light);flex-shrink:0;}
+.hero-badge span{font-size:13px;font-weight:600;color:var(--ink-1);}
+
+/* ---- filter bar ---- */
+.filter-bar{
+  background:#060f1e;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;top:72px;z-index:8;
+}
+.filter-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:var(--sp-4) 0;gap:var(--sp-4);flex-wrap:wrap;
+}
+.filter-tabs{display:flex;gap:4px;}
+.filter-tab{
+  padding:9px 18px;border-radius:3px;
+  font-size:12.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+  border:1.5px solid rgba(255,255,255,.14);
+  background:transparent;color:var(--ink-3);cursor:pointer;
+  transition:all .2s var(--ease);
+}
+.filter-tab:hover{color:var(--ink-1);border-color:rgba(255,255,255,.3);}
+.filter-tab.active{background:var(--green);border-color:var(--green);color:var(--white);}
+.filter-cta{font-size:13px;font-weight:700;color:var(--green-light);text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid rgba(63,191,63,.35);padding-bottom:2px;transition:gap .3s,color .3s;}
+.filter-cta:hover{gap:13px;color:var(--white);}
+
+/* ---- project rows ---- */
+.projects{
+  padding:var(--sp-20) 0;
+  background:#050f1d;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.project-row{
+  display:grid;grid-template-columns:38% 1fr;
+  gap:clamp(32px,5vw,72px);align-items:center;
+  padding:var(--sp-16) 0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.project-row:first-child{padding-top:0;}
+.project-row:last-child{border-bottom:0;padding-bottom:0;}
+
+/* alternate image left / text left */
+.project-row.flip{grid-template-columns:1fr 38%;}
+.project-row.flip .project-info{order:2;}
+.project-row.flip .project-slider{order:1;}
+
+.project-cat{font-size:10.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--green-light);margin-bottom:var(--sp-3);}
+.project-info h2{font-size:clamp(24px,2.8vw,38px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin:0 0 var(--sp-2);}
+.project-loc{font-size:13px;color:var(--ink-3);margin-bottom:var(--sp-5);}
+.project-info p{font-size:15px;color:var(--ink-2);line-height:1.8;margin:0 0 var(--sp-8);max-width:360px;}
+.project-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--green-light);text-decoration:none;border-bottom:1px solid rgba(63,191,63,.35);padding-bottom:2px;transition:gap .3s,color .3s;}
+.project-link:hover{gap:13px;color:var(--white);}
+
+/* ---- before/after drag slider ---- */
+.ba-slider{
+  position:relative;
+  --split:52%;
+  height:460px;
+  border-radius:12px;overflow:hidden;
+  cursor:col-resize;user-select:none;
+  border:1px solid rgba(255,255,255,.1);
+  box-shadow:0 24px 64px rgba(0,0,0,.45);
+}
+.ba-after{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+}
+.ba-before-wrap{
+  position:absolute;inset:0;
+  clip-path:inset(0 calc(100% - var(--split)) 0 0);
+  transition:clip-path 0s;
+}
+.ba-before-wrap img{
+  position:absolute;inset:0;
+  width:100%;height:100%;object-fit:cover;
+}
+/* placeholder for when no before photo exists */
+.ba-before-ph{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,#07170a 0%,#091425 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-3);
+}
+.ba-before-ph span{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.25);}
+.ba-handle-line{
+  position:absolute;top:0;bottom:0;
+  left:var(--split);transform:translateX(-50%);
+  width:2px;background:rgba(255,255,255,.75);pointer-events:none;
+}
+.ba-handle-btn{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:rgba(255,255,255,.96);
+  display:flex;align-items:center;justify-content:center;
+  color:#0d2244;
+  box-shadow:0 4px 20px rgba(0,0,0,.5);
+}
+.ba-label{
+  position:absolute;top:14px;
+  font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+.ba-label-after{right:14px;background:rgba(6,145,6,.75);color:#fff;}
+.ba-label-before{left:14px;background:rgba(10,20,36,.75);color:rgba(255,255,255,.7);}
+.ba-hint{
+  position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  font-size:10.5px;font-weight:600;letter-spacing:.8px;color:rgba(255,255,255,.45);
+  pointer-events:none;white-space:nowrap;
+  display:flex;align-items:center;gap:6px;
+}
+.ba-hint svg{opacity:.5;}
+
+/* ---- CTA banner ---- */
+.cta-banner{
+  padding:var(--sp-16) 0;
+  background:
+    radial-gradient(ellipse 60% 80% at 80% 50%,rgba(6,145,6,.12) 0%,transparent 65%),
+    linear-gradient(160deg,#04101f 0%,#061629 100%);
+  border-top:1px solid rgba(255,255,255,.07);
+  border-bottom:1px solid rgba(255,255,255,.07);
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-8);flex-wrap:wrap;position:relative;z-index:1;}
+.cta-inner h2{font-size:clamp(24px,3vw,40px);font-weight:700;letter-spacing:-1.5px;line-height:1.1;margin:0 0 var(--sp-3);}
+.cta-inner h2 span{color:var(--green-light);}
+.cta-inner p{font-size:15px;color:var(--ink-3);margin:0;}
+
+/* ---- more work grid ---- */
+.more-work{
+  padding:var(--sp-24) 0;
+  background:#030c18;
+}
+.more-work-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:var(--sp-10);flex-wrap:wrap;gap:var(--sp-4);}
+.more-work-head h2{font-size:clamp(24px,3vw,38px);font-weight:700;letter-spacing:-1.5px;margin:0;}
+.more-work-link{font-size:13px;font-weight:700;color:var(--green-light);text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid rgba(63,191,63,.35);padding-bottom:2px;transition:gap .3s,color .3s;}
+.more-work-link:hover{gap:13px;color:var(--white);}
+.more-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+.more-tile{border-radius:8px;overflow:hidden;height:240px;position:relative;border:1px solid rgba(255,255,255,.08);}
+.more-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.more-tile:hover img{transform:scale(1.06);}
+.more-tile-tag{
+  position:absolute;bottom:10px;left:10px;
+  font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--white);background:rgba(6,145,6,.65);
+  padding:3px 9px;border-radius:20px;backdrop-filter:blur(4px);
+  pointer-events:none;
+}
+
+/* ---- contact/quote ---- */
+.contact{padding:var(--sp-24) 0;background:radial-gradient(ellipse 60% 60% at 90% 50%,rgba(16,52,122,.3) 0%,transparent 65%),linear-gradient(160deg,#04101f 0%,#061629 60%,#050f1d 100%);border-top:1px solid rgba(255,255,255,.07);position:relative;overflow:hidden;}
+.contact::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 70% 70% at 10% 50%,black 20%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 70% 70% at 10% 50%,black 20%,transparent 100%);}
+.contact-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(40px,6vw,88px);align-items:start;position:relative;z-index:1;}
+.contact-left h2{font-size:clamp(28px,3.4vw,46px);font-weight:700;letter-spacing:-2px;line-height:1.1;margin:0 0 var(--sp-5);}
+.contact-left h2 span{color:var(--green-light);}
+.contact-left p{font-size:15.5px;color:var(--ink-3);line-height:1.8;max-width:380px;margin:0 0 var(--sp-8);}
+.contact-perks{display:flex;flex-direction:column;gap:var(--sp-4);}
+.contact-perk{display:flex;align-items:flex-start;gap:var(--sp-3);}
+.contact-perk-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;background:rgba(63,191,63,.1);border:1px solid rgba(63,191,63,.2);display:flex;align-items:center;justify-content:center;color:var(--green-light);margin-top:1px;}
+.contact-perk strong{display:block;font-size:13.5px;font-weight:600;color:var(--white);}
+.contact-perk span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px;line-height:1.5;}
+.contact-channels{margin-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3);}
+.contact-channel{display:flex;align-items:center;gap:var(--sp-3);font-size:14px;color:var(--ink-2);text-decoration:none;transition:color .2s;}
+.contact-channel:hover{color:var(--green-light);}
+.contact-channel svg{color:var(--green-light);}
+.quote-form{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:clamp(24px,4vw,40px);backdrop-filter:blur(8px);}
+.quote-form h3{font-size:18px;font-weight:700;letter-spacing:-.5px;margin:0 0 var(--sp-6);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);}
+.form-group{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-5);}
+.form-group label{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--ink-2);text-transform:uppercase;}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.06);border:1.5px solid rgba(255,255,255,.12);border-radius:5px;padding:12px 14px;color:var(--white);font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s,background .2s;width:100%;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--ink-3);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(63,191,63,.5);background:rgba(255,255,255,.09);}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b96a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.form-group select option{background:#061527;color:var(--white);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;padding:15px;background:var(--green);color:var(--white);border:none;border-radius:5px;font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;cursor:pointer;transition:background .3s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.form-submit:hover{background:var(--green-light);}
+.form-note{font-size:11.5px;color:var(--ink-3);text-align:center;margin-top:var(--sp-4);}
+
+/* ---- footer ---- */
+.site-footer{background:#030c18;border-top:1px solid rgba(255,255,255,.07);}
+.footer-inner{display:flex;gap:clamp(40px,6vw,96px);padding:clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px);align-items:flex-start;}
+.footer-brand{flex-shrink:0;width:clamp(180px,22vw,260px);}
+.footer-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;line-height:1.2;color:var(--white);letter-spacing:-.4px;margin-bottom:var(--sp-4);}
+.footer-logo em{color:var(--green-light);font-style:normal;}
+.footer-tagline{font-size:13.5px;color:var(--ink-3);line-height:1.6;max-width:220px;margin-bottom:var(--sp-6);}
+.footer-social{display:flex;gap:var(--sp-3);}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);color:var(--ink-2);transition:background .25s,color .25s;}
+.footer-social a:hover{background:rgba(6,145,6,.18);color:var(--green-light);}
+.footer-nav{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-8);}
+.fn-col h4{font-size:11px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-4);}
+.fn-col a{display:block;font-size:14px;color:var(--ink-2);margin-bottom:var(--sp-2);text-decoration:none;transition:color .2s;}
+.fn-col a:hover{color:var(--white);}
+.footer-cta-link{color:var(--green-light) !important;font-weight:500;margin-top:var(--sp-3) !important;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.06);padding:var(--sp-4) 0;}
+.footer-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-2);}
+.footer-bar small{font-size:12px;color:var(--ink-3);}
+
+/* ---- responsive ---- */
+@media(max-width:980px){
+  nav{display:none;}
+  .filter-bar{top:64px;}
+  .project-row{grid-template-columns:1fr;gap:var(--sp-8);}
+  .project-row.flip{grid-template-columns:1fr;}
+  .project-row.flip .project-info{order:0;}
+  .project-row.flip .project-slider{order:0;}
+  .ba-slider{height:320px;}
+  .more-grid{grid-template-columns:1fr 1fr;}
+  .more-tile{height:200px;}
+  .cta-inner{flex-direction:column;}
+  .contact-inner{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:var(--sp-10);}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+  .hero-badges{gap:var(--sp-5);}
+}
+@media(max-width:640px){
+  :root{--gutter:20px;}
+  .btn{padding:12px 16px;font-size:11.5px;white-space:nowrap;}
+  .topbar-social{display:none;}
+  .topbar .wrap{justify-content:center;}
+  .filter-tabs{gap:2px;flex-wrap:wrap;}
+  .filter-tab{padding:7px 12px;font-size:11px;}
+  .more-grid{grid-template-columns:1fr 1fr;}
+  .ba-slider{height:260px;}
+  .form-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3.5h3V22h3.5v-6.5H16l.7-3.5h-3.2v-2c0-.6.4-1 1-1z" fill="currentColor"/></svg>
+      </a>
+    </div>
+    <div class="topbar-contact">
+      <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+      <span class="sep"></span>
+      <a href="tel:6124081817">612-408-1817</a>
+    </div>
+  </div>
+</div>
+
+<!-- STICKY HEADER -->
+<header class="site-header">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="9" fill="#069106"/>
+        <path d="M8 27C12.5 21.6 15.3 27 19 21.6C22.7 27 25.4 19.8 30 16" stroke="#0d2244" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <circle cx="30" cy="11" r="3.6" fill="#0d2244"/>
+      </svg>
+      <div class="lockup">Reece's <em>Outdoor</em><small>LAWN &amp; LANDSCAPING</small></div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="about.html">About Us</a>
+      <a class="active" href="portfolio.html">Our Work</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a class="btn btn-primary" href="index.html#contact">Get a Free Quote</a>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-scrim"></div>
+  <div class="wrap page-hero-inner">
+    <div class="eyebrow">Our Work</div>
+    <h1>Real Properties.<br><span>Real Results.</span></h1>
+    <p>Every property is different. But our standard stays the same — show up, do it right, and leave it better than we found it.</p>
+    <div class="hero-badges">
+      <div class="hero-badge">
+        <div class="hero-badge-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <span>Attention to Detail</span>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <span>Consistent Quality</span>
+      </div>
+      <div class="hero-badge">
+        <div class="hero-badge-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+        </div>
+        <span>Proudly Local</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="wrap filter-inner">
+    <div class="filter-tabs">
+      <button class="filter-tab active" data-filter="all" onclick="filterProjects('all')">All Projects</button>
+      <button class="filter-tab" data-filter="lawn" onclick="filterProjects('lawn')">Lawn Care</button>
+      <button class="filter-tab" data-filter="cleanup" onclick="filterProjects('cleanup')">Cleanups</button>
+      <button class="filter-tab" data-filter="landscape" onclick="filterProjects('landscape')">Landscaping</button>
+    </div>
+    <a class="filter-cta" href="index.html#contact">Request a Quote →</a>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+  <div class="wrap">
+
+    <!-- Project 1: Lawn Transformation -->
+    <div class="project-row" data-cat="lawn">
+      <div class="project-info">
+        <div class="project-cat">Lawn Care</div>
+        <h2>Lawn Transformation</h2>
+        <p class="project-loc">Eden Prairie, MN</p>
+        <p>From patchy and overgrown to clean, even, and healthy. Full cut, edge, and trim — plus debris cleared so the lawn could breathe again.</p>
+        <a class="project-link" href="index.html#contact">Get a similar result →</a>
+      </div>
+      <div class="project-slider ba-slider">
+        <img class="ba-after" src="images/portfolio/portfolio-lawn-maintenance.jpg" alt="After — Lawn Transformation">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(255,255,255,.2)"/><path d="M21 15l-5-5L5 21" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Before photo coming soon</span>
+          </div>
+        </div>
+        <div class="ba-handle-line">
+          <div class="ba-handle-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l-3 6 3 6M15 6l3 6-3 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="ba-label ba-label-after">After</div>
+        <div class="ba-label ba-label-before">Before</div>
+        <div class="ba-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to compare
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: Seasonal Cleanup -->
+    <div class="project-row flip" data-cat="cleanup">
+      <div class="project-info">
+        <div class="project-cat">Seasonal Cleanup</div>
+        <h2>Fall Cleanup</h2>
+        <p class="project-loc">Minnetonka, MN</p>
+        <p>Leaves, debris, and overgrowth cleared ahead of winter. Beds raked out, edges cleaned up, and the whole property reset for spring.</p>
+        <a class="project-link" href="index.html#contact">Book a seasonal cleanup →</a>
+      </div>
+      <div class="project-slider ba-slider">
+        <img class="ba-after" src="images/portfolio/portfolio-front-yard.jpg" alt="After — Fall Cleanup">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(255,255,255,.2)"/><path d="M21 15l-5-5L5 21" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Before photo coming soon</span>
+          </div>
+        </div>
+        <div class="ba-handle-line">
+          <div class="ba-handle-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l-3 6 3 6M15 6l3 6-3 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="ba-label ba-label-after">After</div>
+        <div class="ba-label ba-label-before">Before</div>
+        <div class="ba-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to compare
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: Landscape Refresh -->
+    <div class="project-row" data-cat="landscape">
+      <div class="project-info">
+        <div class="project-cat">Landscaping</div>
+        <h2>Landscape Refresh</h2>
+        <p class="project-loc">Burnsville, MN</p>
+        <p>New plantings, fresh mulch, and crisp edges. A full front-yard refresh that transformed how the property presents from the street.</p>
+        <a class="project-link" href="index.html#contact">Start your refresh →</a>
+      </div>
+      <div class="project-slider ba-slider">
+        <img class="ba-after" src="images/portfolio/portfolio-spring-cleanup.jpg" alt="After — Landscape Refresh">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(255,255,255,.2)"/><path d="M21 15l-5-5L5 21" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Before photo coming soon</span>
+          </div>
+        </div>
+        <div class="ba-handle-line">
+          <div class="ba-handle-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l-3 6 3 6M15 6l3 6-3 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="ba-label ba-label-after">After</div>
+        <div class="ba-label ba-label-before">Before</div>
+        <div class="ba-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to compare
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4: Edging & Trim -->
+    <div class="project-row flip" data-cat="lawn">
+      <div class="project-info">
+        <div class="project-cat">Lawn Care</div>
+        <h2>Edging &amp; Trim Detail</h2>
+        <p class="project-loc">Eden Prairie, MN</p>
+        <p>Sharp edges along every curb, bed, and walkway. The kind of finish that makes an already-good lawn look exceptional.</p>
+        <a class="project-link" href="index.html#contact">Book a maintenance visit →</a>
+      </div>
+      <div class="project-slider ba-slider">
+        <img class="ba-after" src="images/portfolio/portfolio-edging-trim.jpg" alt="After — Edging Detail">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="rgba(255,255,255,.2)" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" fill="rgba(255,255,255,.2)"/><path d="M21 15l-5-5L5 21" stroke="rgba(255,255,255,.2)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span>Before photo coming soon</span>
+          </div>
+        </div>
+        <div class="ba-handle-line">
+          <div class="ba-handle-btn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l-3 6 3 6M15 6l3 6-3 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+        <div class="ba-label ba-label-after">After</div>
+        <div class="ba-label ba-label-before">Before</div>
+        <div class="ba-hint">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 9l-3 3 3 3M19 9l3 3-3 3M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Drag to compare
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Like what you see?<br><span>Let's talk about your property.</span></h2>
+      <p>No contracts. No pressure. Just a free, honest quote.</p>
+    </div>
+    <a href="index.html#contact" class="btn btn-primary" style="flex-shrink:0;">Get Your Free Quote →</a>
+  </div>
+</div>
+
+<!-- MORE WORK GRID -->
+<section class="more-work">
+  <div class="wrap">
+    <div class="more-work-head">
+      <div>
+        <div class="eyebrow">More of Our Work</div>
+        <h2>More Projects</h2>
+      </div>
+      <a class="more-work-link" href="index.html#contact">Work with us →</a>
+    </div>
+    <div class="more-grid">
+      <div class="more-tile">
+        <img src="images/portfolio/portfolio-seasonal-care.jpg" alt="Seasonal lawn care" loading="lazy">
+        <div class="more-tile-tag">Seasonal Care</div>
+      </div>
+      <div class="more-tile">
+        <img src="images/about/about-lawn-result.jpg" alt="Lawn result" loading="lazy">
+        <div class="more-tile-tag">Lawn Care</div>
+      </div>
+      <div class="more-tile">
+        <img src="images/about/about-property-cleanup.jpg" alt="Property cleanup" loading="lazy">
+        <div class="more-tile-tag">Cleanup</div>
+      </div>
+      <div class="more-tile">
+        <img src="images/about/about-work-fence-cleanup.jpg" alt="Fence &amp; cleanup" loading="lazy">
+        <div class="more-tile-tag">Property Work</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / QUOTE -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Get Your Free<br><span>Quote Today</span></h2>
+        <p>No contracts, no pressure. Tell us about your property and we'll get back to you with a fast, fair estimate.</p>
+        <div class="contact-perks">
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><strong>Free Estimates</strong><span>No charge to get a quote, ever.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div><strong>Fast Response</strong><span>We reply within 1 business day.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div><strong>Serving the Twin Cities</strong><span>Eden Prairie · Minnetonka · Burnsville &amp; more.</span></div>
+          </div>
+        </div>
+        <div class="contact-channels">
+          <a class="contact-channel" href="tel:6124081817">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.8"/></svg>
+            612-408-1817
+          </a>
+          <a class="contact-channel" href="mailto:Reece2025@gmail.com">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Reece2025@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="quote-form">
+        <h3>Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="612-000-0000">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Lawn Mowing</option>
+            <option>Edging &amp; Trimming</option>
+            <option>Yard Cleanup</option>
+            <option>Fertilization</option>
+            <option>Mulching</option>
+            <option>Full Property Maintenance</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Property</label>
+          <textarea placeholder="Yard size, any specific concerns, frequency you're looking for…"></textarea>
+        </div>
+        <button class="form-submit">
+          Send My Request
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-note">No contracts · No commitments · We'll respond within 24 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's<br><em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Our Work</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div class="fn-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Fertilization</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
+      </div>
+      <div class="fn-col">
+        <h4>Contact</h4>
+        <a href="tel:6124081817">612-408-1817</a>
+        <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+        <a href="index.html#contact" class="footer-cta-link">Get a Free Quote →</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---- filter tabs ---- */
+function filterProjects(cat) {
+  document.querySelectorAll('[data-cat]').forEach(function(el) {
+    el.style.display = (cat === 'all' || el.dataset.cat === cat) ? '' : 'none';
+  });
+  document.querySelectorAll('.filter-tab').forEach(function(btn) {
+    btn.classList.toggle('active', btn.dataset.filter === cat);
+  });
+}
+
+/* ---- before/after drag sliders ---- */
+(function() {
+  document.querySelectorAll('.ba-slider').forEach(function(el) {
+    var dragging = false;
+
+    function setPos(x) {
+      var rect = el.getBoundingClientRect();
+      var pct = Math.max(3, Math.min(97, (x - rect.left) / rect.width * 100));
+      el.style.setProperty('--split', pct + '%');
+    }
+
+    el.addEventListener('mousedown', function(e) { dragging = true; setPos(e.clientX); e.preventDefault(); });
+    document.addEventListener('mousemove', function(e) { if (dragging) setPos(e.clientX); });
+    document.addEventListener('mouseup', function() { dragging = false; });
+
+    el.addEventListener('touchstart', function(e) { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+    el.addEventListener('touchmove', function(e) { if (dragging) { setPos(e.touches[0].clientX); e.preventDefault(); } }, { passive: false });
+    el.addEventListener('touchend', function() { dragging = false; });
+  });
+})();
+</script>
+
+</body>
+</html>

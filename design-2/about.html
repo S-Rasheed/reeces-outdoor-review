@@ -1,0 +1,674 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>About Us — Reece's Outdoor Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f9f7f4;--sand:#ede9e3;--sand-2:#e2ddd7;
+  --charcoal:#111110;--charcoal-2:#1c1c1a;
+  --green:#069106;--green-dark:#057305;--green-light:#3fbf3f;--green-pale:#edf7ed;
+  --white:#fff;--text:#1c1c1a;--text-2:#5a5a56;--text-3:#9a9a96;
+  --border:rgba(0,0,0,.1);--border-strong:rgba(0,0,0,.18);
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;--sp-20:80px;--sp-24:96px;
+  --gutter:clamp(24px,5vw,72px);--container:min(1400px,calc(100% - (var(--gutter)*2)));
+  --ease:cubic-bezier(.4,0,.2,1);--r:10px;
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--text);font-family:'DM Sans',Arial,sans-serif;font-size:16px;line-height:1.5}
+h1,h2,h3,.display{font-family:'Playfair Display',Georgia,serif}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{width:var(--container);margin:0 auto;position:relative}
+
+/* topbar */
+.topbar{background:var(--charcoal);padding:var(--sp-2) 0;position:relative;z-index:15;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+.topbar-social{display:flex;gap:var(--sp-4);}
+.topbar-social a{color:rgba(255,255,255,.45);display:flex;transition:color .2s;}
+.topbar-social a:hover{color:var(--green-light);}
+.topbar-contact{display:flex;align-items:center;gap:var(--sp-5);font-size:12.5px;color:rgba(255,255,255,.5);}
+.topbar-contact a{color:rgba(255,255,255,.75);font-weight:500;transition:color .2s;}
+.topbar-contact a:hover{color:var(--white);}
+.topbar-contact .sep{width:1px;height:11px;background:rgba(255,255,255,.2);}
+
+/* nav */
+.site-nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10;}
+.site-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-4) 0;}
+.brand{display:flex;align-items:center;gap:var(--sp-3);font-family:'DM Sans',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.4px;color:var(--text);}
+.brand-mark{width:36px;height:36px;flex-shrink:0;}
+.brand em{color:var(--green);font-style:normal;}
+.brand small{display:block;font-size:9px;letter-spacing:3px;font-weight:600;color:var(--text-3);margin-top:2px;}
+.brand .lockup{line-height:1.05;}
+nav{display:flex;gap:var(--sp-8);}
+nav a{font-size:14px;font-weight:500;color:var(--text-2);position:relative;padding-bottom:4px;transition:color .2s;}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+nav a:hover{color:var(--text);}
+nav a:hover::after,nav a.active::after{transform:scaleX(1);}
+nav a.active{color:var(--text);}
+.btn{display:inline-flex;align-items:center;gap:var(--sp-2);padding:13px 24px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.3px;cursor:pointer;border:1.5px solid transparent;border-radius:var(--r);transition:all .25s var(--ease);}
+.btn-primary{background:var(--green);color:var(--white);border-color:var(--green);}
+.btn-primary:hover{background:var(--green-dark);border-color:var(--green-dark);}
+.btn-outline{border-color:var(--border-strong);color:var(--text);}
+.btn-outline:hover{border-color:var(--green);color:var(--green);}
+.btn-white{background:var(--white);color:var(--charcoal);}
+.btn-white:hover{background:var(--cream);}
+.section-label{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:var(--sp-4);display:block;}
+
+/* page hero */
+.page-hero{
+  background:var(--cream);
+  padding:clamp(64px,8vw,112px) 0;
+  border-bottom:1px solid var(--border);
+  overflow:hidden;
+}
+.page-hero-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,88px);align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:var(--sp-2);
+  background:var(--green-pale);color:var(--green-dark);
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:6px 12px;border-radius:20px;margin-bottom:var(--sp-6);
+}
+.hero-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);}
+.page-hero h1{font-size:clamp(40px,5vw,68px);font-weight:900;line-height:1.02;letter-spacing:-1.5px;margin:0 0 var(--sp-6);}
+.page-hero h1 em{font-style:italic;color:var(--green);}
+.page-hero p{font-size:17px;color:var(--text-2);line-height:1.75;max-width:480px;margin:0 0 var(--sp-8);}
+.hero-trust{display:flex;gap:var(--sp-6);flex-wrap:wrap;}
+.trust-pill{display:flex;align-items:center;gap:var(--sp-2);font-size:13px;font-weight:500;color:var(--text-2);}
+.trust-pill svg{color:var(--green);flex-shrink:0;}
+
+/* hero photo */
+.hero-photo-wrap{position:relative;}
+.hero-photo-main{
+  border-radius:20px;overflow:hidden;
+  aspect-ratio:4/5;max-height:580px;
+  box-shadow:0 24px 64px rgba(0,0,0,.13),0 4px 16px rgba(0,0,0,.07);
+}
+.hero-photo-main img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+
+/* story */
+.story{
+  padding:var(--sp-24) 0;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:start;}
+.story-text h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:0 0 var(--sp-6);}
+.story-text p{font-size:15.5px;color:var(--text-2);line-height:1.85;margin:0 0 var(--sp-5);}
+.story-quote{
+  margin:var(--sp-8) 0;
+  padding:var(--sp-5) var(--sp-6) var(--sp-5) var(--sp-8);
+  border-left:3px solid var(--green);
+  background:var(--green-pale);border-radius:0 8px 8px 0;
+}
+.story-quote p{color:var(--text);font-size:16px;font-weight:500;line-height:1.65;font-style:italic;margin:0 0 var(--sp-2);}
+.story-quote cite{font-size:11.5px;color:var(--green-dark);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-style:normal;}
+
+/* story visual — stacked photos */
+.story-visual{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);align-items:start;}
+.sv-tall{grid-row:span 2;}
+.sv-photo{border-radius:14px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);}
+.sv-photo.sv-tall{aspect-ratio:3/4;}
+.sv-photo.sv-sq{aspect-ratio:1/1;}
+.sv-photo img{width:100%;height:100%;object-fit:cover;}
+.sv-cert{
+  background:var(--green);color:var(--white);border-radius:14px;
+  padding:var(--sp-6) var(--sp-5);text-align:center;
+  box-shadow:0 6px 24px rgba(6,145,6,.3);
+}
+.sv-cert strong{display:block;font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1;}
+.sv-cert strong em{font-style:normal;font-size:28px;}
+.sv-cert span{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;margin-top:4px;display:block;}
+
+/* values */
+.values{
+  padding:var(--sp-24) 0;
+  background:var(--cream);
+  border-bottom:1px solid var(--border);
+}
+.values-head{text-align:center;max-width:600px;margin:0 auto var(--sp-14);}
+.values-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;margin:0 0 var(--sp-4);}
+.values-head p{font-size:16px;color:var(--text-2);line-height:1.7;margin:0;}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5);}
+.val-card{
+  background:var(--white);border:1px solid var(--border);border-radius:14px;
+  padding:var(--sp-8) var(--sp-7);
+  transition:box-shadow .25s var(--ease),border-color .25s;
+}
+.val-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:rgba(6,145,6,.2);}
+.val-icon{
+  width:48px;height:48px;border-radius:12px;background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;color:var(--green);
+  margin-bottom:var(--sp-5);
+}
+.val-card h3{font-size:17px;font-weight:700;font-family:'Playfair Display',serif;letter-spacing:-.3px;margin:0 0 var(--sp-3);color:var(--text);}
+.val-card p{font-size:13.5px;color:var(--text-2);line-height:1.75;margin:0;}
+
+/* stats */
+.stats{
+  background:var(--charcoal);
+  padding:var(--sp-16) 0;
+  position:relative;overflow:hidden;
+}
+.stats::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1;}
+.stat-item{
+  text-align:center;padding:var(--sp-8) var(--sp-5);
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:54px;font-weight:700;line-height:1;color:var(--white);}
+.stat-num em{font-style:normal;color:var(--green-light);}
+.stat-label{font-size:13px;color:rgba(255,255,255,.45);margin-top:var(--sp-2);font-weight:500;}
+
+/* why us */
+.why{
+  padding:var(--sp-24) 0;
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+}
+.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(48px,7vw,96px);align-items:center;}
+.why-photo{position:relative;}
+.why-photo-frame{border-radius:20px;overflow:hidden;aspect-ratio:4/3;box-shadow:0 20px 60px rgba(0,0,0,.12);}
+.why-photo-frame img{width:100%;height:100%;object-fit:cover;}
+.why-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--white);border:1px solid var(--border);border-radius:14px;
+  padding:var(--sp-5) var(--sp-6);box-shadow:0 8px 32px rgba(0,0,0,.1);
+  min-width:200px;
+}
+.why-badge-icon{color:var(--green);font-size:22px;margin-bottom:var(--sp-2);}
+.why-badge strong{display:block;font-size:14.5px;font-weight:700;color:var(--text);}
+.why-badge span{font-size:12px;color:var(--text-3);}
+.why-text{padding-bottom:var(--sp-10);}
+.why-text h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:0 0 var(--sp-5);}
+.why-text p{font-size:15.5px;color:var(--text-2);line-height:1.85;margin:0 0 var(--sp-5);}
+.why-list{list-style:none;padding:0;margin:var(--sp-8) 0 var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-4);}
+.why-list li{display:flex;align-items:flex-start;gap:var(--sp-3);font-size:15px;color:var(--text);}
+.why-list li strong{display:block;font-size:14px;font-weight:600;color:var(--text);}
+.why-list li span{font-size:13.5px;color:var(--text-2);line-height:1.5;}
+.why-check{
+  width:22px;height:22px;flex-shrink:0;border-radius:50%;
+  background:var(--green-pale);display:flex;align-items:center;justify-content:center;
+  color:var(--green);margin-top:1px;
+}
+
+/* area */
+.area{
+  padding:var(--sp-20) 0;
+  background:var(--cream);
+  border-bottom:1px solid var(--border);
+}
+.area-inner{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-12);flex-wrap:wrap;}
+.area-text h2{font-size:clamp(22px,2.8vw,36px);font-weight:800;letter-spacing:-1px;margin:0 0 var(--sp-3);}
+.area-text p{font-size:15px;color:var(--text-2);line-height:1.7;max-width:480px;margin:0;}
+.area-tags{display:flex;flex-wrap:wrap;gap:var(--sp-2);flex-shrink:0;}
+.area-tag{padding:8px 16px;background:var(--white);border:1px solid var(--border);border-radius:20px;font-size:13px;font-weight:500;color:var(--text-2);}
+.area-tag.primary{background:var(--green-pale);border-color:rgba(6,145,6,.25);color:var(--green-dark);font-weight:600;}
+
+/* contact */
+.contact{padding:var(--sp-24) 0;background:var(--white);border-top:1px solid var(--border);}
+.contact-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(40px,6vw,88px);align-items:start;}
+.contact-left h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin:0 0 var(--sp-5);}
+.contact-left h2 em{font-style:italic;color:var(--green);}
+.contact-left p{font-size:15.5px;color:var(--text-2);line-height:1.8;max-width:380px;margin:0 0 var(--sp-8);}
+.contact-perks{display:flex;flex-direction:column;gap:var(--sp-4);}
+.contact-perk{display:flex;align-items:flex-start;gap:var(--sp-3);}
+.perk-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;color:var(--green);margin-top:1px;}
+.contact-perk strong{display:block;font-size:13.5px;font-weight:600;color:var(--text);}
+.contact-perk span{display:block;font-size:12.5px;color:var(--text-3);margin-top:2px;line-height:1.5;}
+.contact-channels{margin-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3);}
+.contact-channel{display:flex;align-items:center;gap:var(--sp-3);font-size:14px;color:var(--text-2);transition:color .2s;}
+.contact-channel:hover{color:var(--green);}
+.contact-channel svg{color:var(--green);}
+.quote-form{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:clamp(24px,4vw,40px);}
+.quote-form h3{font-size:19px;font-weight:700;font-family:'Playfair Display',serif;letter-spacing:-.4px;margin:0 0 var(--sp-6);color:var(--text);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);}
+.form-group{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-5);}
+.form-group label{font-size:11.5px;font-weight:700;letter-spacing:.8px;color:var(--text-2);text-transform:uppercase;}
+.form-group input,.form-group select,.form-group textarea{background:var(--white);border:1.5px solid var(--border-strong);border-radius:8px;padding:12px 14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-3);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(6,145,6,.1);}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239a9a96' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;padding:15px;background:var(--green);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.3px;cursor:pointer;transition:background .25s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.form-submit:hover{background:var(--green-dark);}
+.form-note{font-size:11.5px;color:var(--text-3);text-align:center;margin-top:var(--sp-4);}
+
+/* footer */
+.site-footer{background:var(--charcoal);}
+.footer-inner{display:flex;gap:clamp(40px,6vw,96px);padding:clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px);align-items:flex-start;}
+.footer-brand{flex-shrink:0;width:clamp(180px,22vw,260px);}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.2;color:var(--white);margin-bottom:var(--sp-4);}
+.footer-logo em{font-style:italic;color:var(--green-light);}
+.footer-tagline{font-size:13.5px;color:rgba(255,255,255,.4);line-height:1.6;max-width:220px;margin-bottom:var(--sp-6);}
+.footer-social{display:flex;gap:var(--sp-3);}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);transition:background .25s,color .25s;}
+.footer-social a:hover{background:rgba(63,191,63,.2);color:var(--green-light);}
+.footer-nav{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-8);}
+.fn-col h4{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:var(--sp-4);}
+.fn-col a{display:block;font-size:14px;color:rgba(255,255,255,.55);margin-bottom:var(--sp-3);transition:color .2s;}
+.fn-col a:hover{color:var(--white);}
+.footer-cta-link{color:var(--green-light) !important;font-weight:500;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.07);padding:var(--sp-4) 0;}
+.footer-bar .wrap{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-2);}
+.footer-bar small{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* responsive */
+@media(max-width:1100px){
+  .values-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(max-width:980px){
+  nav{display:none;}
+  .page-hero-inner{grid-template-columns:1fr;}
+  .hero-photo-wrap{display:none;}
+  .story-inner{grid-template-columns:1fr;}
+  .story-visual{display:none;}
+  .why-inner{grid-template-columns:1fr;}
+  .why-badge{display:none;}
+  .why-photo{margin-bottom:var(--sp-8);}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .area-inner{flex-direction:column;}
+  .contact-inner{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:var(--sp-10);}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  :root{--gutter:20px;}
+  .values-grid{grid-template-columns:1fr;}
+  .stats-inner{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .topbar-social{display:none;}
+  .topbar .wrap{justify-content:center;}
+}
+/* ---- dark mode ---- */
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --cream:#141412;--sand:#1e1e1b;--sand-2:#272723;--white:#242420;
+    --text:#f0ede8;--text-2:#a8a49e;--text-3:#7a7a76;
+    --border:rgba(255,255,255,.1);--border-strong:rgba(255,255,255,.2);
+    --charcoal:#0a0a09;--charcoal-2:#111110;--green-pale:rgba(6,145,6,.18);
+  }
+  :root:not([data-theme="light"]) .icon-sun{display:flex;}
+  :root:not([data-theme="light"]) .icon-moon{display:none;}
+}
+:root[data-theme="dark"]{
+  --cream:#141412;--sand:#1e1e1b;--sand-2:#272723;--white:#242420;
+  --text:#f0ede8;--text-2:#a8a49e;--text-3:#7a7a76;
+  --border:rgba(255,255,255,.1);--border-strong:rgba(255,255,255,.2);
+  --charcoal:#0a0a09;--charcoal-2:#111110;--green-pale:rgba(6,145,6,.18);
+}
+.theme-toggle{
+  width:36px;height:36px;border-radius:8px;
+  border:1.5px solid var(--border-strong);background:transparent;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--text-2);transition:border-color .2s,color .2s;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--green);color:var(--green);}
+.icon-sun{display:none;}
+:root[data-theme="dark"] .icon-sun{display:flex;}
+:root[data-theme="dark"] .icon-moon{display:none;}
+</style>
+<script>(function(){var t=localStorage.getItem('d2-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3.5h3V22h3.5v-6.5H16l.7-3.5h-3.2v-2c0-.6.4-1 1-1z" fill="currentColor"/></svg></a>
+    </div>
+    <div class="topbar-contact">
+      <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+      <span class="sep"></span>
+      <a href="tel:6124081817">612-408-1817</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none"><rect width="40" height="40" rx="9" fill="#069106"/><path d="M8 27C12.5 21.6 15.3 27 19 21.6C22.7 27 25.4 19.8 30 16" stroke="#fff" stroke-width="2.3" stroke-linecap="round" fill="none"/><circle cx="30" cy="11" r="3.6" fill="#fff"/></svg>
+      <div class="lockup">Reece's <em>Outdoor</em><small>LAWN &amp; LANDSCAPING</small></div>
+    </a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a class="active" href="about.html">About Us</a>
+      <a href="portfolio.html">Our Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="wrap">
+    <div class="page-hero-inner">
+      <div>
+        <div class="hero-tag">Our Story</div>
+        <h1>Built on<br><em>Honest Work.</em></h1>
+        <p>No crews, no handoffs, no guesswork. Reece started this business to do the work himself — and that's still exactly how it runs.</p>
+        <div class="hero-trust">
+          <div class="trust-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+            Owner-operated
+          </div>
+          <div class="trust-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Fully insured
+          </div>
+          <div class="trust-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            Twin Cities local
+          </div>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-main">
+          <img src="images/about/about-work-tree-service.jpg" alt="Reece on a job site" loading="eager">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="wrap">
+    <div class="story-inner">
+      <div class="story-text">
+        <span class="section-label">Our Story</span>
+        <h2>Started small. Still doing it ourselves.</h2>
+        <p>Reece launched this business after years of watching property maintenance companies send whoever was available — and watching quality suffer for it. He wanted to do things differently.</p>
+        <p>The idea was simple: be the person who shows up. Be the person who actually knows what the job needs. Be accountable for the result.</p>
+        <blockquote class="story-quote">
+          <p>"I started this so I could do the work right, not so I could manage people cutting corners."</p>
+          <cite>— Reece, Founder &amp; Owner</cite>
+        </blockquote>
+        <p>Five years in, that approach hasn't changed. Reece still handles every job personally. That's not a marketing line — it's how the business was built, and it's what keeps customers coming back.</p>
+        <a href="#contact" class="btn btn-primary" style="margin-top:var(--sp-8);">Get a Free Quote</a>
+      </div>
+      <div class="story-visual">
+        <div class="sv-photo sv-tall">
+          <img src="images/about/about-reece-portrait.jpg" alt="Reece — founder &amp; owner" loading="lazy">
+        </div>
+        <div class="sv-photo sv-sq">
+          <img src="images/about/about-work-heavy-equipment.jpg" alt="Reece working on a job" loading="lazy">
+        </div>
+        <div class="sv-cert">
+          <strong>5<em>+</em></strong>
+          <span>Years in<br>business</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="wrap">
+    <div class="values-head">
+      <span class="section-label">What We Stand For</span>
+      <h2>The things that don't change.</h2>
+      <p>These aren't aspirational values on a wall. They're the commitments that shape every job we take on.</p>
+    </div>
+    <div class="values-grid">
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10M4 7v10l8 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Owner-Operated</h3>
+        <p>Reece handles every job himself. You'll always know who's coming and what to expect — no surprises, no substitutions.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Fully Insured</h3>
+        <p>Full liability and worker's compensation coverage on every job. Your property — and your peace of mind — are protected.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3M3 16v3a2 2 0 002 2h3m8 0h3a2 2 0 002-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>No Contracts</h3>
+        <p>No lock-in, no annual fees, no fine print. Book when you need us. Keep using us because the work is good, not because you're stuck.</p>
+      </div>
+
+      <div class="val-card">
+        <div class="val-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Fast Response</h3>
+        <p>You'll hear back within 24 hours. Because sitting on a quote request isn't how we'd want to be treated either.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-num">5<em>+</em></div>
+        <div class="stat-label">Years in business</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">100<em>+</em></div>
+        <div class="stat-label">Properties served</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4.9<em>★</em></div>
+        <div class="stat-label">Average review rating</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Contracts required</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY CHOOSE US -->
+<section class="why">
+  <div class="wrap">
+    <div class="why-inner">
+      <div class="why-photo">
+        <div class="why-photo-frame">
+          <img src="images/about/about-work-heavy-equipment.jpg" alt="Reece at work on a job site" loading="lazy">
+        </div>
+        <div class="why-badge">
+          <div class="why-badge-icon">★★★★★</div>
+          <strong>4.9 out of 5 stars</strong>
+          <span>Based on 100+ reviews</span>
+        </div>
+      </div>
+      <div class="why-text">
+        <span class="section-label">Why Customers Stay</span>
+        <h2>The difference is actually showing up.</h2>
+        <p>Plenty of lawn care companies promise a great experience. What sets Reece apart is simpler than that — someone who actually does what they say, every time.</p>
+        <ul class="why-list">
+          <li>
+            <div class="why-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Consistent quality</strong><span>Same person, same standards — you'll never get a different crew with different results.</span></div>
+          </li>
+          <li>
+            <div class="why-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Honest pricing</strong><span>No hidden fees, no upsell pressure. You get a fair quote upfront and that's what you pay.</span></div>
+          </li>
+          <li>
+            <div class="why-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>No contracts needed</strong><span>We earn your repeat business by doing good work — not by locking you in.</span></div>
+          </li>
+          <li>
+            <div class="why-check"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Responsive communication</strong><span>You'll get a reply within 24 hours. Every time. No chasing, no waiting weeks to hear back.</span></div>
+          </li>
+        </ul>
+        <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<div class="area">
+  <div class="wrap area-inner">
+    <div class="area-text">
+      <span class="section-label">Service Area</span>
+      <h2>Serving the Twin Cities metro.</h2>
+      <p>Based locally and working across the southwest and west suburbs. If you're not sure we cover your area, reach out — we'll let you know.</p>
+    </div>
+    <div class="area-tags">
+      <div class="area-tag primary">Eden Prairie</div>
+      <div class="area-tag primary">Minnetonka</div>
+      <div class="area-tag primary">Burnsville</div>
+      <div class="area-tag">Chaska</div>
+      <div class="area-tag">Chanhassen</div>
+      <div class="area-tag">Prior Lake</div>
+      <div class="area-tag">Shakopee</div>
+      <div class="area-tag">Plymouth</div>
+      <div class="area-tag">Edina</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label">Get in Touch</span>
+        <h2>Get Your Free<br><em>Quote Today</em></h2>
+        <p>No contracts, no pressure. Tell us about your property and we'll get back to you with a fast, fair estimate.</p>
+        <div class="contact-perks">
+          <div class="contact-perk">
+            <div class="perk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div><strong>Free Estimates</strong><span>No charge to get a quote, ever.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="perk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+            <div><strong>Fast Response</strong><span>We reply within 1 business day.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="perk-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg></div>
+            <div><strong>Serving the Twin Cities</strong><span>Eden Prairie · Minnetonka · Burnsville &amp; more.</span></div>
+          </div>
+        </div>
+        <div class="contact-channels">
+          <a class="contact-channel" href="tel:6124081817">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.8"/></svg>
+            612-408-1817
+          </a>
+          <a class="contact-channel" href="mailto:Reece2025@gmail.com">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Reece2025@gmail.com
+          </a>
+        </div>
+      </div>
+      <div class="quote-form">
+        <h3>Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group"><label>First Name</label><input type="text" placeholder="John"></div>
+          <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="john@example.com"></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="612-000-0000"></div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select><option value="" disabled selected>Select a service…</option><option>Lawn Mowing</option><option>Edging &amp; Trimming</option><option>Yard Cleanup</option><option>Fertilization</option><option>Mulching</option><option>Full Property Maintenance</option><option>Other / Not Sure</option></select>
+        </div>
+        <div class="form-group"><label>Tell Us About Your Property</label><textarea placeholder="Yard size, specific concerns, frequency…"></textarea></div>
+        <button class="form-submit">Send My Request <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="form-note">No contracts · No commitments · Response within 24 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's <em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Our Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="fn-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Fertilization</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
+      </div>
+      <div class="fn-col">
+        <h4>Contact</h4>
+        <a href="tel:6124081817">612-408-1817</a>
+        <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+        <a href="#contact" class="footer-cta-link">Get a Free Quote →</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var h=document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var sys=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var cur=h.getAttribute('data-theme');
+    var isDark=(cur==='dark')||(cur===null&&sys);
+    var next=isDark?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('d2-theme',next);
+  });
+})();
+</script>
+</body>
+</html>

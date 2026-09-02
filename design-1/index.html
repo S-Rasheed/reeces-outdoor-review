@@ -1,0 +1,1285 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reece's Outdoor Solutions — Design 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0d2244;
+  --blue:#10347a;
+  --green:#069106;
+  --green-light:#3fbf3f;
+  --white:#fff;
+  --ink-1:#eef1f5;
+  --ink-2:#c3ccd6;
+  --ink-3:#8b96a3;
+
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:20px; --sp-6:24px;
+  --sp-8:32px; --sp-10:40px; --sp-12:48px; --sp-14:56px; --sp-16:64px; --sp-20:80px; --sp-24:96px;
+
+  --gutter:clamp(24px, 5vw, 72px);
+  --container: min(1400px, calc(100% - (var(--gutter) * 2)));
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;scroll-behavior:smooth}
+body{margin:0;background:var(--navy);color:var(--white);font-family:'Inter',Arial,sans-serif;font-size:16px;line-height:1.5}
+h1,h2,h3,.brand,.count,.service strong{font-family:'Bricolage Grotesque',Arial,sans-serif}
+a{color:inherit}
+button{font-family:inherit}
+img{display:block;max-width:100%}
+
+.wrap{width:var(--container);margin:0 auto;position:relative;z-index:2}
+
+/* ============ TOPBAR ============ */
+.topbar{background:#050f1f;border-bottom:1px solid rgba(6,145,6,.35);padding:var(--sp-2) 0;position:relative;z-index:5;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+.topbar-social{display:flex;gap:var(--sp-4);}
+.topbar-social a{color:var(--ink-3);display:flex;transition:color .2s var(--ease);}
+.topbar-social a:hover{color:var(--green-light);}
+.topbar-contact{display:flex;align-items:center;gap:var(--sp-4);font-size:12px;color:var(--ink-3);}
+.topbar-contact a{color:var(--ink-2);font-weight:600;text-decoration:none;transition:color .2s var(--ease);}
+.topbar-contact a:hover{color:var(--green-light);}
+.topbar-contact .sep{width:1px;height:11px;background:rgba(255,255,255,.15);}
+
+/* ============ HERO ============ */
+.hero{
+  min-height:95vh;
+  position:relative;
+  overflow:hidden;
+  background:var(--navy);
+  display:flex;
+  flex-direction:column;
+}
+.hero-bg{position:absolute;inset:0;z-index:0;background-size:cover;background-position:center 30%;opacity:0;transition:opacity 1.4s var(--ease);}
+.hero-bg.active{opacity:1;}
+.hero-scrim{
+  position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg, rgba(6,17,33,.97) 0%, rgba(6,17,33,.93) 24%, rgba(6,17,33,.72) 42%, rgba(6,17,33,.22) 64%, rgba(6,17,33,.04) 84%),
+    linear-gradient(180deg, rgba(0,0,0,.32) 0%, transparent 30%, rgba(0,0,0,.4) 100%);
+}
+
+header{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;padding:var(--sp-8) 0 var(--sp-6);}
+.brand{display:flex;align-items:center;gap:var(--sp-3);font-weight:700;font-size:23px;letter-spacing:-.5px;}
+.brand-mark{width:38px;height:38px;flex-shrink:0;}
+.brand em{color:var(--green-light);font-style:normal;font-weight:700;}
+.brand .lockup{line-height:1.05;}
+.brand small{display:block;font-size:9.5px;letter-spacing:3px;font-weight:600;color:var(--green-light);margin-top:3px;}
+
+nav{display:flex;gap:var(--sp-8);}
+nav a{text-decoration:none;font-size:14.5px;font-weight:500;color:var(--ink-1);position:relative;padding-bottom:14px;transition:color .2s var(--ease);}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+nav a:hover{color:var(--white);}
+nav a:hover::after,nav a.active::after{transform:scaleX(1);}
+nav a.active{color:var(--white);}
+
+.btn{display:inline-flex;align-items:center;gap:var(--sp-2);padding:15px 26px;font-weight:700;font-size:13px;letter-spacing:.4px;text-transform:uppercase;text-decoration:none;cursor:pointer;border:1.5px solid transparent;border-radius:2px;transition:background-color .3s var(--ease), border-color .3s var(--ease), opacity .3s var(--ease);}
+.btn-primary{background:var(--green);color:var(--white);}
+.btn-primary:hover{background:var(--green-light);}
+.btn-outline{border-color:rgba(255,255,255,.45);color:var(--white);}
+.btn-outline:hover{border-color:rgba(255,255,255,.85);background:rgba(255,255,255,.06);}
+
+.content{position:relative;z-index:2;padding-top:var(--sp-16);max-width:640px;}
+.eyebrow{display:flex;align-items:center;gap:var(--sp-3);color:var(--green-light);font-size:12.5px;font-weight:700;letter-spacing:2.5px;margin-bottom:var(--sp-6);}
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--green-light);}
+
+h1{font-size:clamp(46px, 5.4vw, 80px);font-weight:700;line-height:1.01;letter-spacing:-2.5px;margin:0 0 var(--sp-6);}
+h1 b{color:var(--green-light);font-weight:700;}
+
+.lead{font-size:19px;line-height:1.6;color:var(--ink-2);max-width:520px;font-weight:400;margin:0;}
+.actions{display:flex;gap:var(--sp-4);margin-top:var(--sp-8);flex-wrap:wrap;}
+
+.rating{display:flex;align-items:center;gap:var(--sp-3);margin-top:var(--sp-8);font-size:14px;color:var(--ink-1);}
+.stars{color:#f0b429;font-size:18px;letter-spacing:2px;}
+.rating .div{width:1px;height:14px;background:rgba(255,255,255,.25);}
+
+.trust{display:flex;margin-top:var(--sp-8);gap:var(--sp-6);flex-wrap:wrap;}
+.trust-item{display:flex;gap:var(--sp-3);align-items:flex-start;padding-right:var(--sp-6);border-right:1px solid rgba(255,255,255,.14);}
+.trust-item:last-child{border-right:0;padding-right:0;}
+.trust-item .tick{width:20px;height:20px;flex-shrink:0;margin-top:1px;color:var(--green-light);}
+.trust-item strong{display:block;font-size:12px;letter-spacing:.5px;font-weight:700;}
+.trust-item span{display:block;color:var(--ink-3);font-size:12px;line-height:1.5;margin-top:3px;}
+
+.slide-controls{display:flex;align-items:center;gap:var(--sp-4);margin-top:var(--sp-8);opacity:.6;transition:opacity .3s var(--ease);}
+.slide-controls:hover,.slide-controls:focus-within{opacity:1;}
+.sc-bars{display:flex;flex-direction:row;gap:6px;align-items:center;}
+.sc-bar{width:28px;height:3px;border-radius:2px;border:0;padding:0;cursor:pointer;background:rgba(255,255,255,.25);position:relative;overflow:hidden;}
+.sc-bar span{position:absolute;inset:0;background:var(--green-light);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease);}
+.sc-bar.on span{transform:scaleX(1);}
+.sc-arrows{display:flex;gap:var(--sp-2);}
+.sc-arrow{width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:transparent;color:var(--white);cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:0;transition:all .2s var(--ease);}
+.sc-arrow:hover{border-color:var(--green-light);color:var(--green-light);}
+
+/* ---- services strip ---- */
+.services-strip-wrap{
+  position:absolute;bottom:0;left:50%;transform:translateX(-50%);
+  width:var(--container);z-index:3;
+}
+.services-strip{
+  position:relative;z-index:3;
+  display:grid;grid-template-columns:repeat(4,1fr);
+  background:rgba(4,16,32,.58);backdrop-filter:blur(14px);
+  border-top:1px solid rgba(255,255,255,.1);
+}
+.service-item{
+  padding:var(--sp-6);
+  display:flex;gap:var(--sp-4);align-items:flex-start;
+  border-right:1px solid rgba(255,255,255,.1);
+  transition:background-color .25s var(--ease);
+}
+.service-item:hover{background:rgba(255,255,255,.045);}
+.service-item:last-child{border-right:0;}
+.service-item .icon{width:38px;height:38px;flex-shrink:0;border-radius:9px;background:rgba(63,191,63,.09);border:1px solid rgba(63,191,63,.22);display:flex;align-items:center;justify-content:center;color:var(--green-light);}
+.service-item strong{display:block;font-size:14.5px;font-weight:600;letter-spacing:-.2px;}
+.service-item span{display:block;color:var(--ink-3);font-size:12px;margin-top:4px;line-height:1.5;}
+
+/* ============ TESTIMONIALS ============ */
+.testimonials{
+  position:relative;
+  padding:var(--sp-24) 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 8% 50%, rgba(6,145,6,.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 92% 20%, rgba(16,52,122,.35) 0%, transparent 65%),
+    linear-gradient(160deg, #050e1d 0%, #061527 45%, #04101f 100%);
+  border-top:1px solid rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.testimonials::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.022) 1px, transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+}
+.testi-head{text-align:center;margin-bottom:var(--sp-14);position:relative;z-index:1;}
+.testi-head .eyebrow{justify-content:center;margin-bottom:var(--sp-5);}
+.testi-head .eyebrow::before{display:none;}
+.testi-head h2{font-size:clamp(30px,3.8vw,52px);font-weight:700;letter-spacing:-2px;line-height:1.1;margin:0 0 var(--sp-5);}
+.testi-head h2 span{color:var(--green-light);}
+.testi-score-row{display:flex;align-items:center;justify-content:center;gap:var(--sp-8);flex-wrap:wrap;margin-top:var(--sp-6);}
+.testi-score-box{text-align:center;}
+.testi-score-num{font-family:'Bricolage Grotesque',sans-serif;font-size:48px;font-weight:700;line-height:1;letter-spacing:-2px;color:var(--white);}
+.testi-score-num sup{font-size:.42em;vertical-align:super;letter-spacing:0;}
+.testi-score-label{font-size:12px;color:var(--ink-3);margin-top:4px;letter-spacing:.5px;}
+.testi-score-stars{color:#f0b429;font-size:16px;letter-spacing:2px;display:block;margin-top:4px;}
+.testi-divider{width:1px;height:48px;background:rgba(255,255,255,.12);}
+
+.testi-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  position:relative;z-index:1;
+}
+.testi-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:8px;
+  padding:var(--sp-8);
+  transition:background .25s var(--ease),border-color .25s var(--ease);
+}
+.testi-card:hover{background:rgba(255,255,255,.07);border-color:rgba(63,191,63,.2);}
+.testi-card-stars{color:#f0b429;font-size:12px;letter-spacing:2px;margin-bottom:var(--sp-4);}
+.testi-card-text{font-size:15px;line-height:1.75;color:var(--ink-2);margin:0 0 var(--sp-5);}
+.testi-card-text::before{content:'\201C';color:rgba(63,191,63,.5);font-size:1.1em;}
+.testi-card-text::after{content:'\201D';color:rgba(63,191,63,.5);font-size:1.1em;}
+.testi-card-meta{display:flex;align-items:center;gap:var(--sp-3);}
+.testi-avatar{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg, rgba(6,145,6,.4) 0%, rgba(16,52,122,.6) 100%);
+  border:1.5px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  font-size:13px;font-weight:700;color:var(--white);
+  font-family:'Bricolage Grotesque',sans-serif;
+}
+.testi-name{font-size:13px;font-weight:600;color:var(--white);}
+.testi-loc{font-size:11.5px;color:var(--ink-3);margin-top:2px;}
+.testi-google{
+  display:flex;align-items:center;justify-content:center;gap:var(--sp-3);
+  margin-top:var(--sp-10);
+  font-size:13px;color:var(--ink-3);
+  position:relative;z-index:1;
+}
+.testi-google a{color:var(--green-light);text-decoration:none;font-weight:600;border-bottom:1px solid rgba(63,191,63,.35);}
+.testi-google a:hover{color:var(--white);}
+
+/* ============ SERVICES FULL ============ */
+.services-full{
+  padding:var(--sp-24) 0;
+  background:#040d1a;
+  border-top:1px solid rgba(255,255,255,.06);
+  position:relative;overflow:hidden;
+}
+.services-full::after{
+  content:"";position:absolute;top:-120px;right:-180px;
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(6,145,6,.08) 0%, transparent 65%);
+  pointer-events:none;
+}
+.sec-head{margin-bottom:var(--sp-14);}
+.sec-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:700;letter-spacing:-1.8px;line-height:1.1;margin:0 0 var(--sp-4);}
+.sec-head p{font-size:16px;color:var(--ink-3);max-width:480px;line-height:1.7;margin:0;}
+
+.srv-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.07);
+  border-radius:10px;
+  overflow:hidden;
+}
+.srv-card{
+  background:#040d1a;
+  padding:var(--sp-8) var(--sp-8);
+  position:relative;
+  transition:background .25s var(--ease);
+}
+.srv-card:hover{background:#061426;}
+.srv-card-icon{
+  width:48px;height:48px;border-radius:10px;
+  background:rgba(63,191,63,.08);
+  border:1px solid rgba(63,191,63,.2);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green-light);
+  margin-bottom:var(--sp-5);
+}
+.srv-card h3{font-size:17px;font-weight:700;letter-spacing:-.4px;margin:0 0 var(--sp-3);}
+.srv-card p{font-size:13.5px;color:var(--ink-3);line-height:1.7;margin:0 0 var(--sp-5);}
+.srv-features{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--sp-2);}
+.srv-features li{font-size:12.5px;color:var(--ink-2);display:flex;align-items:center;gap:var(--sp-2);}
+.srv-features li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green-light);flex-shrink:0;}
+.srv-card-tag{
+  position:absolute;top:var(--sp-6);right:var(--sp-6);
+  font-size:9.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--green-light);background:rgba(63,191,63,.1);
+  border:1px solid rgba(63,191,63,.2);padding:3px 8px;border-radius:20px;
+}
+
+/* ============ ABOUT ============ */
+.about{
+  padding:var(--sp-24) 0 0;
+  background:#050f1d;
+  border-top:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
+}
+.about-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(40px,5vw,80px);
+  align-items:center;
+  padding-bottom:var(--sp-16);
+}
+.about-text h2{font-size:clamp(28px,3.4vw,48px);font-weight:700;letter-spacing:-2px;line-height:1.1;margin:0 0 var(--sp-5);}
+.about-text h2 span{color:var(--green-light);}
+.about-text p{font-size:15.5px;line-height:1.8;color:var(--ink-3);margin:0 0 var(--sp-5);}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-5);margin:var(--sp-8) 0;}
+.about-stat{padding:var(--sp-5);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;}
+.about-stat-num{font-family:'Bricolage Grotesque',sans-serif;font-size:32px;font-weight:700;letter-spacing:-1.5px;color:var(--white);line-height:1;}
+.about-stat-num span{color:var(--green-light);}
+.about-stat-label{font-size:12px;color:var(--ink-3);margin-top:4px;}
+
+/* portrait + tile strip side */
+.about-visual{position:relative;display:flex;align-items:center;gap:10px;height:440px;overflow:visible;}
+.about-portrait{
+  flex-shrink:0;width:220px;height:100%;
+  border-radius:10px;overflow:hidden;
+  border:1.5px solid rgba(255,255,255,.1);
+  position:relative;z-index:2;
+  box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+.about-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;}
+.about-portrait-badge{
+  position:absolute;bottom:16px;left:50%;transform:translateX(-50%);
+  background:var(--green);color:var(--white);
+  padding:8px 16px;border-radius:40px;
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  white-space:nowrap;box-shadow:0 6px 24px rgba(6,145,6,.5);
+  z-index:3;
+}
+
+/* horizontal work tile strip */
+.about-tiles{
+  display:flex;gap:8px;height:100%;
+  flex:1;overflow:hidden;
+  /* fade tiles out toward right horizon */
+  mask-image:linear-gradient(to right, black 0%, black 40%, rgba(0,0,0,.6) 65%, transparent 92%);
+  -webkit-mask-image:linear-gradient(to right, black 0%, black 40%, rgba(0,0,0,.6) 65%, transparent 92%);
+}
+.about-tile{
+  flex-shrink:0;
+  border-radius:8px;overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+}
+.about-tile img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.about-tile:hover img{transform:scale(1.04);}
+.about-tile-lg{width:190px;height:100%;}
+.about-tile-sm{width:150px;height:48%;align-self:flex-start;}
+.about-tile-sm:nth-child(3){align-self:flex-end;}
+.about-tile-col{display:flex;flex-direction:column;gap:8px;height:100%;}
+.about-tile-col .about-tile{flex:1;width:150px;}
+
+/* badge on wide only */
+.about-badge{display:none;}
+
+/* ============ PORTFOLIO ============ */
+.portfolio{
+  padding:var(--sp-24) 0;
+  background:#030c18;
+  border-top:1px solid rgba(255,255,255,.06);
+  overflow:hidden;
+}
+.port-header{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  margin-bottom:var(--sp-12);flex-wrap:wrap;gap:var(--sp-4);
+}
+.port-header h2{font-size:clamp(26px,3vw,42px);font-weight:700;letter-spacing:-1.5px;color:var(--white);margin:0;}
+.port-header .eyebrow{margin-bottom:var(--sp-2);}
+.port-view-all{font-size:13px;font-weight:700;color:var(--green-light);text-decoration:none;display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid rgba(63,191,63,.35);padding-bottom:2px;transition:gap .3s var(--ease),color .3s var(--ease);}
+.port-view-all:hover{gap:12px;color:var(--white);}
+
+/* project card strip — horizontal, fades right */
+.port-cards-wrap{
+  overflow:hidden;
+  mask-image:linear-gradient(to right, black 0%, black 68%, rgba(0,0,0,.5) 82%, transparent 96%);
+  -webkit-mask-image:linear-gradient(to right, black 0%, black 68%, rgba(0,0,0,.5) 82%, transparent 96%);
+}
+.port-cards{
+  display:flex;
+  gap:16px;
+  align-items:flex-start;
+}
+.port-card{
+  display:flex;flex-direction:column;
+  flex-shrink:0;
+  cursor:pointer;
+  width:320px;
+}
+.port-card.port-card-featured{width:420px;}
+@media(max-width:980px){
+  .port-card{width:260px;}
+  .port-card.port-card-featured{width:320px;}
+}
+@media(max-width:640px){
+  .port-cards-wrap{mask-image:none;-webkit-mask-image:none;overflow-x:auto;}
+  .port-card{width:280px;}
+  .port-card.port-card-featured{width:280px;}
+  .port-cards{padding-bottom:var(--sp-4);}
+}
+
+/* before/after visual */
+.port-card-visual{
+  position:relative;
+  height:320px;
+  border-radius:10px;
+  overflow:hidden;
+  background:#0c1a28;
+}
+.port-img-after,
+.port-img-before{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:opacity .45s var(--ease);
+}
+.port-img-before{opacity:0;}
+.port-card.show-before .port-img-after{opacity:0;}
+.port-card.show-before .port-img-before{opacity:1;}
+
+/* divider line */
+.port-divider{
+  position:absolute;top:0;bottom:0;left:50%;
+  width:2px;background:rgba(255,255,255,.55);
+  transform:translateX(-50%);
+  pointer-events:none;
+  opacity:0;transition:opacity .3s var(--ease);
+}
+.port-card.show-before .port-divider{opacity:1;}
+
+/* toggle button */
+.port-toggle{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:42px;height:42px;border-radius:50%;
+  background:rgba(10,20,36,.75);backdrop-filter:blur(8px);
+  border:1.5px solid rgba(255,255,255,.35);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);cursor:pointer;z-index:4;
+  transition:background .25s var(--ease),border-color .25s var(--ease),transform .25s var(--ease);
+}
+.port-toggle:hover{background:rgba(6,145,6,.6);border-color:var(--green-light);transform:translate(-50%,-50%) scale(1.1);}
+.port-card.show-before .port-toggle{background:rgba(6,145,6,.7);border-color:var(--green-light);}
+
+/* before/after labels inside visual */
+.port-state-label{
+  position:absolute;top:12px;
+  font-size:9.5px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;
+  backdrop-filter:blur(6px);
+  pointer-events:none;
+}
+.port-state-after{left:12px;background:rgba(6,145,6,.7);color:#fff;}
+.port-state-before{right:12px;background:rgba(10,20,36,.7);color:rgba(255,255,255,.7);}
+
+/* bottom label */
+.port-card-label{
+  padding:var(--sp-5) var(--sp-2) var(--sp-2);
+  display:flex;justify-content:space-between;align-items:flex-start;
+}
+.port-card-label-left{}
+.port-card-cat{font-size:10px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;color:var(--green-light);margin-bottom:4px;}
+.port-card-name{font-size:16px;font-weight:700;letter-spacing:-.3px;color:var(--white);}
+.port-card-loc{font-size:12.5px;color:var(--ink-3);margin-top:3px;}
+.port-card-arrow{
+  width:32px;height:32px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.15);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--ink-3);flex-shrink:0;margin-top:4px;
+  transition:border-color .25s,color .25s;
+}
+.port-card:hover .port-card-arrow{border-color:var(--green-light);color:var(--green-light);}
+
+/* placeholder gradient when no before image */
+.port-ph-before{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg, #0a1e10 0%, #061527 100%);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .45s var(--ease);
+}
+.port-ph-before span{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);}
+.port-card.show-before .port-ph-before{opacity:1;}
+.port-card.show-before .port-img-after{opacity:0;}
+
+@media(max-width:640px){.port-card-visual{height:240px;}}
+
+/* ============ CONTACT / QUOTE ============ */
+.contact{
+  padding:var(--sp-24) 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 90% 50%, rgba(16,52,122,.3) 0%, transparent 65%),
+    linear-gradient(160deg, #04101f 0%, #061629 60%, #050f1d 100%);
+  border-top:1px solid rgba(255,255,255,.07);
+  position:relative;overflow:hidden;
+}
+.contact::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+  background-size:60px 60px;
+  mask-image:radial-gradient(ellipse 70% 70% at 10% 50%, black 20%, transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 70% at 10% 50%, black 20%, transparent 100%);
+}
+.contact-inner{
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:clamp(40px,6vw,88px);
+  align-items:start;
+  position:relative;z-index:1;
+}
+.contact-left h2{font-size:clamp(28px,3.4vw,46px);font-weight:700;letter-spacing:-2px;line-height:1.1;margin:0 0 var(--sp-5);}
+.contact-left h2 span{color:var(--green-light);}
+.contact-left p{font-size:15.5px;color:var(--ink-3);line-height:1.8;max-width:380px;margin:0 0 var(--sp-8);}
+.contact-perks{display:flex;flex-direction:column;gap:var(--sp-4);}
+.contact-perk{display:flex;align-items:flex-start;gap:var(--sp-3);}
+.contact-perk-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;background:rgba(63,191,63,.1);border:1px solid rgba(63,191,63,.2);display:flex;align-items:center;justify-content:center;color:var(--green-light);margin-top:1px;}
+.contact-perk strong{display:block;font-size:13.5px;font-weight:600;color:var(--white);}
+.contact-perk span{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px;line-height:1.5;}
+.contact-channels{margin-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3);}
+.contact-channel{display:flex;align-items:center;gap:var(--sp-3);font-size:14px;color:var(--ink-2);text-decoration:none;transition:color .2s;}
+.contact-channel:hover{color:var(--green-light);}
+.contact-channel svg{color:var(--green-light);}
+
+/* form */
+.quote-form{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:10px;
+  padding:clamp(24px,4vw,40px);
+  backdrop-filter:blur(8px);
+}
+.quote-form h3{font-size:18px;font-weight:700;letter-spacing:-.5px;margin:0 0 var(--sp-6);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);}
+.form-group{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-5);}
+.form-group label{font-size:12px;font-weight:600;letter-spacing:.5px;color:var(--ink-2);text-transform:uppercase;}
+.form-group input,
+.form-group select,
+.form-group textarea{
+  background:rgba(255,255,255,.06);
+  border:1.5px solid rgba(255,255,255,.12);
+  border-radius:5px;
+  padding:12px 14px;
+  color:var(--white);
+  font-size:14px;
+  font-family:'Inter',sans-serif;
+  outline:none;
+  transition:border-color .2s,background .2s;
+  width:100%;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder{color:var(--ink-3);}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{border-color:rgba(63,191,63,.5);background:rgba(255,255,255,.09);}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238b96a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.form-group select option{background:#061527;color:var(--white);}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{
+  width:100%;padding:15px;
+  background:var(--green);color:var(--white);
+  border:none;border-radius:5px;
+  font-family:'Inter',sans-serif;font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  cursor:pointer;transition:background .3s var(--ease);
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.form-submit:hover{background:var(--green-light);}
+.form-note{font-size:11.5px;color:var(--ink-3);text-align:center;margin-top:var(--sp-4);}
+
+/* ============ FOOTER ============ */
+.site-footer{
+  background:#030c18;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.footer-inner{
+  display:flex;
+  gap:clamp(40px,6vw,96px);
+  padding:clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px);
+  align-items:flex-start;
+}
+.footer-brand{flex-shrink:0;width:clamp(180px,22vw,260px);}
+.footer-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;line-height:1.2;color:var(--white);letter-spacing:-.4px;margin-bottom:var(--sp-4);}
+.footer-logo em{color:var(--green-light);font-style:normal;}
+.footer-tagline{font-size:13.5px;color:var(--ink-3);line-height:1.6;max-width:220px;margin-bottom:var(--sp-6);}
+.footer-social{display:flex;gap:var(--sp-3);}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);color:var(--ink-2);transition:background .25s,color .25s;}
+.footer-social a:hover{background:rgba(6,145,6,.18);color:var(--green-light);}
+.footer-nav{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-8);}
+.fn-col h4{font-size:11px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:var(--ink-3);margin-bottom:var(--sp-4);}
+.fn-col a{display:block;font-size:14px;color:var(--ink-2);margin-bottom:var(--sp-2);text-decoration:none;transition:color .2s;}
+.fn-col a:hover{color:var(--white);}
+.footer-cta-link{color:var(--green-light) !important;font-weight:500;margin-top:var(--sp-3) !important;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.06);padding:var(--sp-4) 0;}
+.footer-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-2);}
+.footer-bar small{font-size:12px;color:var(--ink-3);}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1100px){
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .srv-grid{grid-template-columns:1fr 1fr;}
+  .port-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 220px 220px;}
+  .port-tile:first-child{grid-row:auto;}
+  .contact-inner{grid-template-columns:1fr;}
+  .contact-left p{max-width:100%;}
+}
+@media(max-width:980px){
+  nav{display:none;}
+  .hero{min-height:auto;padding-bottom:var(--sp-10);}
+  .slide-controls{display:none;}
+  .content{padding-top:var(--sp-8);}
+  .trust{display:none;}
+  .rating{margin-top:var(--sp-5);}
+  .services-strip-wrap{
+    position:relative;
+    left:auto;transform:none;
+    width:100%;
+  }
+  .services-strip{grid-template-columns:repeat(2,1fr);}
+  .service-item{border-bottom:1px solid rgba(255,255,255,.1);}
+  .service-item:nth-child(2){border-right:0;}
+  .about-inner{grid-template-columns:1fr;}
+  .about-visual{height:280px;}
+  .about-portrait{width:140px;}
+  .about-tile-col .about-tile{width:110px;}
+  .about-tile-lg{width:130px;}
+  .footer-inner{flex-direction:column;gap:var(--sp-10);}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:640px){
+  :root{--gutter:20px;}
+  .btn{padding:12px 16px;font-size:11.5px;white-space:nowrap;}
+  .brand{font-size:17px;}
+  header{padding:var(--sp-5) 0;}
+  .content{padding-top:var(--sp-6);}
+  h1{letter-spacing:-1.2px;}
+  .lead{font-size:16px;}
+  .trust{display:none;}
+  .rating{font-size:13px;}
+  .rating .div,.rating span:last-child{display:none;}
+  .stars{font-size:16px;}
+  .services-strip{grid-template-columns:1fr;}
+  .service-item{border-right:0;}
+  .testi-grid{grid-template-columns:1fr;}
+  .srv-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .port-grid{grid-template-columns:1fr;grid-template-rows:auto;}
+  .port-tile{height:220px;}
+  .topbar-social{display:none;}
+  .topbar .wrap{justify-content:center;}
+  .testi-score-row{gap:var(--sp-5);}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3.5h3V22h3.5v-6.5H16l.7-3.5h-3.2v-2c0-.6.4-1 1-1z" fill="currentColor"/></svg>
+      </a>
+    </div>
+    <div class="topbar-contact">
+      <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+      <span class="sep"></span>
+      <a href="tel:6124081817">612-408-1817</a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div id="bgLayers"></div>
+  <div class="hero-scrim"></div>
+
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+          <rect width="40" height="40" rx="9" fill="#069106"/>
+          <path d="M8 27C12.5 21.6 15.3 27 19 21.6C22.7 27 25.4 19.8 30 16" stroke="#0d2244" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+          <circle cx="30" cy="11" r="3.6" fill="#0d2244"/>
+        </svg>
+        <div class="lockup">Reece's <em>Outdoor</em><small>LAWN &amp; LANDSCAPING</small></div>
+      </div>
+      <nav>
+        <a class="active" href="#hero">Home</a>
+        <a href="#services">Services</a>
+        <a href="about.html">About Us</a>
+        <a href="portfolio.html">Our Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+    </header>
+
+    <div class="content">
+      <h1>A Lawn You'll<br>Be Proud Of<b>.</b></h1>
+      <p class="lead">Reliable lawn care and property maintenance that keeps your home looking its best all year round.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#contact">Get a Free Quote</a>
+        <a class="btn btn-outline" href="#services">View Our Services</a>
+      </div>
+      <div class="rating">
+        <span class="stars">★★★★★</span>
+        <span>4.9 / 5</span>
+        <span class="div"></span>
+        <span>Trusted by 100+ homeowners</span>
+      </div>
+      <div class="slide-controls">
+        <div class="sc-bars" id="bars">
+          <button class="sc-bar on" data-i="0"><span></span></button>
+          <button class="sc-bar" data-i="1"><span></span></button>
+          <button class="sc-bar" data-i="2"><span></span></button>
+          <button class="sc-bar" data-i="3"><span></span></button>
+        </div>
+        <div class="sc-arrows">
+          <button class="sc-arrow" onclick="prevSlide()" aria-label="Previous">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M6 15l6-6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <button class="sc-arrow" onclick="nextSlide()" aria-label="Next">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </div>
+      </div>
+      <div class="trust">
+        <div class="trust-item">
+          <svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><strong>FULLY INSURED</strong><span>Your property is<br>in safe hands.</span></div>
+        </div>
+        <div class="trust-item">
+          <svg class="tick" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <div><strong>RELIABLE SERVICE</strong><span>On time, every time.<br>No exceptions.</span></div>
+        </div>
+        <div class="trust-item">
+          <svg class="tick" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          <div><strong>LOCAL &amp; TRUSTED</strong><span>Proudly serving our<br>community.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="services-strip-wrap">
+    <div class="services-strip" id="services-strip">
+      <div class="service-item">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M12 21V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14C12 14 5 12 5 5C12 5 12 12 12 14Z" fill="currentColor"/></svg></div>
+        <div><strong>Lawn Mowing</strong><span>Clean, even cuts for a healthy lawn.</span></div>
+      </div>
+      <div class="service-item">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M4 20L16 8M16 8H10M16 8V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Edging &amp; Trimming</strong><span>Neat edges and precise finishing.</span></div>
+      </div>
+      <div class="service-item">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M5 19h14M7 19V9l5-5 5 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Yard Cleanups</strong><span>Leaves, debris, and clutter cleared.</span></div>
+      </div>
+      <div class="service-item">
+        <div class="icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg></div>
+        <div><strong>Seasonal Care</strong><span>Year-round care for your lawn.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="testi-head">
+      <div class="eyebrow">What Clients Say</div>
+      <h2>Real Results,<br><span>Real Customers</span></h2>
+      <div class="testi-score-row">
+        <div class="testi-score-box">
+          <div class="testi-score-num">4.9<sup>/5</sup></div>
+          <span class="testi-score-stars">★★★★★</span>
+          <div class="testi-score-label">Average rating</div>
+        </div>
+        <div class="testi-divider"></div>
+        <div class="testi-score-box">
+          <div class="testi-score-num">100<sup>+</sup></div>
+          <div class="testi-score-label">Happy homeowners</div>
+        </div>
+        <div class="testi-divider"></div>
+        <div class="testi-score-box">
+          <div class="testi-score-num">5<sup>yr</sup></div>
+          <div class="testi-score-label">In the community</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="testi-card-stars">★★★★★</div>
+        <p class="testi-card-text">Great work, quick turnaround, and the crew really cared about the details on our property. Best decision we made this summer.</p>
+        <div class="testi-card-meta">
+          <div class="testi-avatar">JM</div>
+          <div>
+            <div class="testi-name">Jessica M.</div>
+            <div class="testi-loc">Eden Prairie, MN</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-card-stars">★★★★★</div>
+        <p class="testi-card-text">Reasonably priced, on time, and left the yard looking better than we expected. Would absolutely call them again without hesitation.</p>
+        <div class="testi-card-meta">
+          <div class="testi-avatar">TR</div>
+          <div>
+            <div class="testi-name">Tom R.</div>
+            <div class="testi-loc">Minnetonka, MN</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-card-stars">★★★★★</div>
+        <p class="testi-card-text">Reece showed up exactly when he said he would. Yard looked immaculate. Neighbors even asked who did the work — that says it all.</p>
+        <div class="testi-card-meta">
+          <div class="testi-avatar">KL</div>
+          <div>
+            <div class="testi-name">Karen L.</div>
+            <div class="testi-loc">Burnsville, MN</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-google">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Read all reviews on <a href="#">Google →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES FULL -->
+<section class="services-full" id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">What We Do</div>
+      <h2>Services Built Around<br>Your Property</h2>
+      <p>From weekly mowing to full seasonal cleanups — we handle everything so you don't have to.</p>
+    </div>
+    <div class="srv-grid">
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14C12 14 5 12 5 5C12 5 12 12 12 14Z" fill="currentColor"/><path d="M12 14C12 14 19 12 19 5C12 5 12 12 12 14Z" fill="currentColor" opacity=".5"/></svg>
+        </div>
+        <div class="srv-card-tag">Most Popular</div>
+        <h3>Lawn Mowing</h3>
+        <p>Consistent, clean cuts that keep your lawn healthy and looking sharp week after week.</p>
+        <ul class="srv-features">
+          <li>Weekly or bi-weekly schedules</li>
+          <li>Bag or mulch clippings</li>
+          <li>Includes edging along drives</li>
+          <li>Blow-down of hard surfaces</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20L16 8M16 8H10M16 8V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Edging &amp; Trimming</h3>
+        <p>Crisp, defined borders along sidewalks, driveways, and beds that give your yard a finished, professional look.</p>
+        <ul class="srv-features">
+          <li>Sidewalk &amp; driveway edging</li>
+          <li>Fence line trimming</li>
+          <li>Around trees &amp; obstacles</li>
+          <li>String trimming in tight areas</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19h14M7 19V9l5-5 5 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Yard Cleanups</h3>
+        <p>Thorough removal of leaves, debris, and clutter to restore your yard to its best condition.</p>
+        <ul class="srv-features">
+          <li>Leaf removal &amp; haul-away</li>
+          <li>Debris &amp; branch clearing</li>
+          <li>Spring &amp; fall packages</li>
+          <li>Flower bed cleanup</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <h3>Fertilization</h3>
+        <p>Feed your lawn the nutrients it needs to stay thick, green, and resistant to weeds and drought.</p>
+        <ul class="srv-features">
+          <li>Seasonal fertilizer programs</li>
+          <li>Pre-emergent weed control</li>
+          <li>Soil health assessment</li>
+          <li>Overseeding thin areas</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3C12 3 4 7 4 14a8 8 0 0016 0c0-7-8-11-8-11z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Mulching</h3>
+        <p>Fresh mulch application that improves moisture retention, suppresses weeds, and boosts curb appeal instantly.</p>
+        <ul class="srv-features">
+          <li>Bed prep &amp; edging</li>
+          <li>Bulk mulch delivery</li>
+          <li>Colour &amp; material options</li>
+          <li>Around trees &amp; shrubs</li>
+        </ul>
+      </div>
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Property Maintenance</h3>
+        <p>Full-service seasonal packages for homeowners who want everything handled, start to finish, all year long.</p>
+        <ul class="srv-features">
+          <li>Full-season contracts</li>
+          <li>Priority scheduling</li>
+          <li>Bundled service discounts</li>
+          <li>Single point of contact</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="eyebrow">About Reece</div>
+        <h2>Built on honest work,<br>trusted by <span>neighbors</span>.</h2>
+        <p>Owner-operated means when you call, you talk to Reece — not a dispatcher, not a call center. One person, fully accountable, every single time.</p>
+        <p>Every property gets the same attention whether it's a routine mow or a complete seasonal transformation. That's not a policy — it's how we work.</p>
+        <div class="about-stats">
+          <div class="about-stat">
+            <div class="about-stat-num">100<span>+</span></div>
+            <div class="about-stat-label">Properties maintained</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">5<span>yr</span></div>
+            <div class="about-stat-label">Serving the Twin Cities</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">4.9<span>★</span></div>
+            <div class="about-stat-label">Average review rating</div>
+          </div>
+          <div class="about-stat">
+            <div class="about-stat-num">0</div>
+            <div class="about-stat-label">Complaints — ever</div>
+          </div>
+        </div>
+        <a class="btn btn-primary" href="#contact">Work With Reece</a>
+      </div>
+      <div class="about-visual">
+        <div class="about-portrait">
+          <img src="images/about/about-reece-portrait.jpg" alt="Reece — owner operator">
+          <div class="about-portrait-badge">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Owner &amp; Operator
+          </div>
+        </div>
+        <div class="about-tiles">
+          <div class="about-tile about-tile-lg">
+            <img src="images/about/about-work-tree-service.jpg" alt="Reece tree service — bucket truck" loading="lazy">
+          </div>
+          <div class="about-tile-col">
+            <div class="about-tile">
+              <img src="images/about/about-work-fence-cleanup.jpg" alt="Fence line cleanup" loading="lazy">
+            </div>
+            <div class="about-tile">
+              <img src="images/about/about-reece-at-work.jpg" alt="Reece at work" loading="lazy">
+            </div>
+          </div>
+          <div class="about-tile-col">
+            <div class="about-tile">
+              <img src="images/about/about-work-heavy-equipment.jpg" alt="Heavy equipment on site" loading="lazy">
+            </div>
+            <div class="about-tile">
+              <img src="images/about/about-work-4.jpg" alt="Work shot" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="port-header">
+      <div>
+        <div class="eyebrow">Our Work</div>
+        <h2>Recent Projects</h2>
+      </div>
+      <a class="port-view-all" href="portfolio.html">View Full Portfolio <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+    <div class="port-cards-wrap">
+    <div class="port-cards">
+
+      <!-- Card 1 — featured wide -->
+      <div class="port-card port-card-featured" id="pc1">
+        <div class="port-card-visual">
+          <img class="port-img-after"  src="images/portfolio/portfolio-lawn-maintenance.jpg" alt="Lawn transformation — after" loading="lazy">
+          <div class="port-ph-before"><span>Before</span></div>
+          <div class="port-divider"></div>
+          <span class="port-state-label port-state-after">After</span>
+          <span class="port-state-label port-state-before">Before</span>
+          <button class="port-toggle" onclick="toggleBA('pc1')" aria-label="Toggle before/after">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
+        </div>
+        <div class="port-card-label">
+          <div class="port-card-label-left">
+            <div class="port-card-cat">Lawn Care</div>
+            <div class="port-card-name">Lawn Transformation</div>
+            <div class="port-card-loc">Eden Prairie, MN</div>
+          </div>
+          <div class="port-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="port-card" id="pc2">
+        <div class="port-card-visual">
+          <img class="port-img-after"  src="images/portfolio/portfolio-spring-cleanup.jpg" alt="Seasonal cleanup — after" loading="lazy">
+          <div class="port-ph-before"><span>Before</span></div>
+          <div class="port-divider"></div>
+          <span class="port-state-label port-state-after">After</span>
+          <span class="port-state-label port-state-before">Before</span>
+          <button class="port-toggle" onclick="toggleBA('pc2')" aria-label="Toggle before/after">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
+        </div>
+        <div class="port-card-label">
+          <div class="port-card-label-left">
+            <div class="port-card-cat">Yard Cleanup</div>
+            <div class="port-card-name">Seasonal Cleanup</div>
+            <div class="port-card-loc">Minnetonka, MN</div>
+          </div>
+          <div class="port-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="port-card" id="pc3">
+        <div class="port-card-visual">
+          <img class="port-img-after"  src="images/portfolio/portfolio-edging-trim.jpg" alt="Landscape refresh — after" loading="lazy">
+          <div class="port-ph-before"><span>Before</span></div>
+          <div class="port-divider"></div>
+          <span class="port-state-label port-state-after">After</span>
+          <span class="port-state-label port-state-before">Before</span>
+          <button class="port-toggle" onclick="toggleBA('pc3')" aria-label="Toggle before/after">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
+        </div>
+        <div class="port-card-label">
+          <div class="port-card-label-left">
+            <div class="port-card-cat">Landscaping</div>
+            <div class="port-card-name">Landscape Refresh</div>
+            <div class="port-card-loc">Burnsville, MN</div>
+          </div>
+          <div class="port-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 — fades into horizon -->
+      <div class="port-card" id="pc4">
+        <div class="port-card-visual">
+          <img class="port-img-after" src="images/portfolio/portfolio-front-yard.jpg" alt="Garden bed refresh — after" loading="lazy">
+          <div class="port-ph-before"><span>Before</span></div>
+          <div class="port-divider"></div>
+          <span class="port-state-label port-state-after">After</span>
+          <span class="port-state-label port-state-before">Before</span>
+          <button class="port-toggle" onclick="toggleBA('pc4')" aria-label="Toggle before/after">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
+        </div>
+        <div class="port-card-label">
+          <div class="port-card-label-left">
+            <div class="port-card-cat">Mulching</div>
+            <div class="port-card-name">Garden Bed Refresh</div>
+            <div class="port-card-loc">Eden Prairie, MN</div>
+          </div>
+          <div class="port-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 — furthest, barely visible -->
+      <div class="port-card" id="pc5">
+        <div class="port-card-visual">
+          <img class="port-img-after" src="images/portfolio/portfolio-seasonal-care.jpg" alt="Full lawn revival — after" loading="lazy">
+          <div class="port-ph-before"><span>Before</span></div>
+          <div class="port-divider"></div>
+          <span class="port-state-label port-state-after">After</span>
+          <span class="port-state-label port-state-before">Before</span>
+          <button class="port-toggle" onclick="toggleBA('pc5')" aria-label="Toggle before/after">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z" stroke="currentColor" stroke-width="1.8"/></svg>
+          </button>
+        </div>
+        <div class="port-card-label">
+          <div class="port-card-label-left">
+            <div class="port-card-cat">Fertilization</div>
+            <div class="port-card-name">Full Lawn Revival</div>
+            <div class="port-card-loc">Minnetonka, MN</div>
+          </div>
+          <div class="port-card-arrow">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT / QUOTE -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <div class="eyebrow">Get in Touch</div>
+        <h2>Get Your Free<br><span>Quote Today</span></h2>
+        <p>No contracts, no pressure. Just tell us about your property and we'll get back to you with a fast, fair estimate.</p>
+        <div class="contact-perks">
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div>
+              <strong>Free Estimates</strong>
+              <span>No charge to get a quote, ever.</span>
+            </div>
+          </div>
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div>
+              <strong>Fast Response</strong>
+              <span>We reply within 1 business day.</span>
+            </div>
+          </div>
+          <div class="contact-perk">
+            <div class="contact-perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div>
+              <strong>Serving the Twin Cities</strong>
+              <span>Eden Prairie · Minnetonka · Burnsville &amp; more.</span>
+            </div>
+          </div>
+        </div>
+        <div class="contact-channels">
+          <a class="contact-channel" href="tel:6124081817">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.8"/></svg>
+            612-408-1817
+          </a>
+          <a class="contact-channel" href="mailto:Reece2025@gmail.com">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Reece2025@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="quote-form">
+        <h3>Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="612-000-0000">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Lawn Mowing</option>
+            <option>Edging &amp; Trimming</option>
+            <option>Yard Cleanup</option>
+            <option>Fertilization</option>
+            <option>Mulching</option>
+            <option>Full Property Maintenance</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Property</label>
+          <textarea placeholder="Describe your yard size, any specific concerns, or anything else you'd like us to know…"></textarea>
+        </div>
+        <button class="form-submit">
+          Send My Request
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-note">No contracts · No commitments · We'll respond within 24 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's<br><em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="#">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="fn-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Fertilization</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
+      </div>
+      <div class="fn-col">
+        <h4>Contact</h4>
+        <a href="tel:6124081817">612-408-1817</a>
+        <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+        <a href="#contact" class="footer-cta-link">Get a Free Quote →</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const imgs = [
+    'images/hero/hero-green-canopy.jpg',
+    'images/hero/hero-house-sky.jpg',
+    'images/hero/hero-lawn-fence.jpg',
+    'images/hero/hero-birch-sky.jpg'
+  ];
+
+  const layerHost = document.getElementById('bgLayers');
+  const layers = imgs.map((src, idx) => {
+    const d = document.createElement('div');
+    d.className = 'hero-bg' + (idx === 0 ? ' active' : '');
+    d.style.backgroundImage = `url("${src}")`;
+    layerHost.appendChild(d);
+    return d;
+  });
+
+  const bars = [...document.querySelectorAll('.sc-bar')];
+  let i = 0, timer;
+
+  function render(){
+    layers.forEach((l, n) => l.classList.toggle('active', n === i));
+    bars.forEach((b, n) => b.classList.toggle('on', n === i));
+  }
+  window.nextSlide = function(){ i = (i + 1) % imgs.length; render(); restart(); };
+  window.prevSlide = function(){ i = (i - 1 + imgs.length) % imgs.length; render(); restart(); };
+  bars.forEach(b => b.addEventListener('click', () => { i = +b.dataset.i; render(); restart(); }));
+
+  function restart(){ clearInterval(timer); timer = setInterval(window.nextSlide, 6500); }
+  const hero = document.getElementById('hero');
+  hero.addEventListener('mouseenter', () => clearInterval(timer));
+  hero.addEventListener('mouseleave', restart);
+
+  render();
+  restart();
+})();
+
+function toggleBA(id){
+  const card = document.getElementById(id);
+  if(card) card.classList.toggle('show-before');
+}
+</script>
+</body>
+</html>

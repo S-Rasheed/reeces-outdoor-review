@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Reece's Outdoor Solutions — Design 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#f9f7f4;
+  --sand:#ede9e3;
+  --sand-2:#e2ddd7;
+  --charcoal:#111110;
+  --charcoal-2:#1c1c1a;
+  --green:#069106;
+  --green-dark:#057305;
+  --green-light:#3fbf3f;
+  --green-pale:#edf7ed;
+  --white:#fff;
+  --text:#1c1c1a;
+  --text-2:#5a5a56;
+  --text-3:#9a9a96;
+  --border:rgba(0,0,0,.1);
+  --border-strong:rgba(0,0,0,.18);
+
+  --sp-1:4px;--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-5:20px;--sp-6:24px;
+  --sp-8:32px;--sp-10:40px;--sp-12:48px;--sp-14:56px;--sp-16:64px;--sp-20:80px;--sp-24:96px;
+  --gutter:clamp(24px,5vw,72px);
+  --container:min(1400px,calc(100% - (var(--gutter)*2)));
+  --ease:cubic-bezier(.4,0,.2,1);
+  --r:10px;
+}
+*{box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--text);font-family:'DM Sans',Arial,sans-serif;font-size:16px;line-height:1.5}
+h1,h2,h3,.display{font-family:'Playfair Display',Georgia,serif}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+img{display:block;max-width:100%}
+.wrap{width:var(--container);margin:0 auto;position:relative}
+
+/* ---- topbar ---- */
+.topbar{background:var(--charcoal);padding:var(--sp-2) 0;position:relative;z-index:15;}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;}
+.topbar-social{display:flex;gap:var(--sp-4);}
+.topbar-social a{color:rgba(255,255,255,.45);display:flex;transition:color .2s;}
+.topbar-social a:hover{color:var(--green-light);}
+.topbar-contact{display:flex;align-items:center;gap:var(--sp-5);font-size:12.5px;color:rgba(255,255,255,.5);}
+.topbar-contact a{color:rgba(255,255,255,.75);font-weight:500;transition:color .2s;}
+.topbar-contact a:hover{color:var(--white);}
+.topbar-contact .sep{width:1px;height:11px;background:rgba(255,255,255,.2);}
+
+/* ---- nav ---- */
+.site-nav{
+  background:var(--white);
+  border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10;
+}
+.site-nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:var(--sp-4) 0;}
+.brand{display:flex;align-items:center;gap:var(--sp-3);font-family:'DM Sans',sans-serif;font-weight:700;font-size:21px;letter-spacing:-.4px;color:var(--text);}
+.brand-mark{width:36px;height:36px;flex-shrink:0;}
+.brand em{color:var(--green);font-style:normal;}
+.brand .lockup{line-height:1.05;}
+.brand small{display:block;font-size:9px;letter-spacing:3px;font-weight:600;color:var(--text-3);margin-top:2px;}
+nav{display:flex;gap:var(--sp-8);}
+nav a{font-size:14px;font-weight:500;color:var(--text-2);position:relative;padding-bottom:4px;transition:color .2s var(--ease);}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1.5px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .25s var(--ease);}
+nav a:hover{color:var(--text);}
+nav a:hover::after,nav a.active::after{transform:scaleX(1);}
+nav a.active{color:var(--text);}
+.btn{display:inline-flex;align-items:center;gap:var(--sp-2);padding:13px 24px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.3px;cursor:pointer;border:1.5px solid transparent;border-radius:var(--r);transition:all .25s var(--ease);}
+.btn-primary{background:var(--green);color:var(--white);border-color:var(--green);}
+.btn-primary:hover{background:var(--green-dark);border-color:var(--green-dark);}
+.btn-outline{border-color:var(--border-strong);color:var(--text);}
+.btn-outline:hover{border-color:var(--green);color:var(--green);}
+.btn-white{background:var(--white);color:var(--charcoal);border-color:var(--white);}
+.btn-white:hover{background:var(--cream);}
+
+/* ---- hero ---- */
+.hero{
+  background:var(--cream);
+  padding:clamp(64px,8vw,112px) 0 clamp(48px,6vw,80px);
+  overflow:hidden;position:relative;
+}
+.hero-inner{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(32px,5vw,72px);
+  align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:var(--sp-2);
+  background:var(--green-pale);color:var(--green-dark);
+  font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  padding:6px 12px;border-radius:20px;margin-bottom:var(--sp-6);
+}
+.hero-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--green);}
+h1{font-size:clamp(44px,5vw,76px);font-weight:900;line-height:1.02;letter-spacing:-1.5px;margin:0 0 var(--sp-6);color:var(--text);}
+h1 em{font-style:italic;color:var(--green);}
+.hero-sub{font-size:17.5px;color:var(--text-2);line-height:1.7;max-width:440px;margin:0 0 var(--sp-8);}
+.hero-actions{display:flex;gap:var(--sp-3);flex-wrap:wrap;margin-bottom:var(--sp-8);}
+.hero-trust{display:flex;align-items:center;gap:var(--sp-5);flex-wrap:wrap;}
+.trust-pill{display:flex;align-items:center;gap:var(--sp-2);font-size:13px;font-weight:500;color:var(--text-2);}
+.trust-pill svg{color:var(--green);flex-shrink:0;}
+.trust-divider{width:1px;height:16px;background:var(--border-strong);}
+
+/* hero photo side */
+.hero-photo{position:relative;}
+.hero-photo-frame{
+  position:relative;
+  border-radius:20px;overflow:hidden;
+  aspect-ratio:4/5;
+  box-shadow:0 24px 64px rgba(0,0,0,.14),0 4px 16px rgba(0,0,0,.08);
+}
+.hero-photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+/* floating rating card */
+.hero-card{
+  position:absolute;bottom:24px;left:-24px;
+  background:var(--white);border-radius:12px;
+  padding:var(--sp-4) var(--sp-5);
+  box-shadow:0 8px 32px rgba(0,0,0,.12);
+  display:flex;align-items:center;gap:var(--sp-3);
+  min-width:200px;
+}
+.hero-card-stars{color:#f0b429;font-size:16px;letter-spacing:1px;}
+.hero-card-text strong{display:block;font-size:14px;font-weight:700;color:var(--text);}
+.hero-card-text span{font-size:12px;color:var(--text-3);}
+/* floating badge top right */
+.hero-badge{
+  position:absolute;top:20px;right:-16px;
+  background:var(--green);color:var(--white);border-radius:10px;
+  padding:var(--sp-3) var(--sp-4);
+  box-shadow:0 6px 20px rgba(6,145,6,.35);
+  font-size:12px;font-weight:700;letter-spacing:.3px;
+  white-space:nowrap;
+}
+
+/* ---- services bar ---- */
+.services-bar{
+  background:var(--white);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  padding:var(--sp-10) 0;
+}
+.services-bar-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);}
+.srv-item{
+  background:var(--white);
+  padding:var(--sp-6) var(--sp-6);
+  display:flex;align-items:flex-start;gap:var(--sp-4);
+  transition:background .2s var(--ease);
+}
+.srv-item:hover{background:var(--cream);}
+.srv-icon{
+  width:42px;height:42px;flex-shrink:0;border-radius:10px;
+  background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green);
+}
+.srv-item strong{display:block;font-size:14.5px;font-weight:700;color:var(--text);letter-spacing:-.2px;}
+.srv-item span{display:block;font-size:12.5px;color:var(--text-3);margin-top:3px;line-height:1.5;}
+
+/* ---- about ---- */
+.about{
+  padding:var(--sp-24) 0;
+  background:var(--cream);
+  border-top:1px solid var(--border);
+  overflow:hidden;
+}
+.about-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:clamp(40px,6vw,96px);align-items:center;
+}
+.about-photos{position:relative;height:540px;}
+.about-main-photo{
+  position:absolute;top:0;left:0;
+  width:75%;height:85%;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+.about-main-photo img{width:100%;height:100%;object-fit:cover;}
+.about-accent-photo{
+  position:absolute;bottom:0;right:0;
+  width:55%;height:55%;
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 12px 40px rgba(0,0,0,.14);
+  border:5px solid var(--cream);
+}
+.about-accent-photo img{width:100%;height:100%;object-fit:cover;}
+.about-cert{
+  position:absolute;top:36%;left:68%;
+  background:var(--green);color:var(--white);
+  border-radius:12px;padding:var(--sp-4);
+  box-shadow:0 6px 24px rgba(6,145,6,.35);
+  text-align:center;border:3px solid var(--cream);
+}
+.about-cert strong{display:block;font-size:22px;font-weight:700;font-family:'Playfair Display',serif;line-height:1;}
+.about-cert span{font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;opacity:.85;}
+
+.section-label{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:var(--sp-4);display:block;}
+.about-text h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.08;margin:0 0 var(--sp-6);}
+.about-text p{font-size:15.5px;color:var(--text-2);line-height:1.85;margin:0 0 var(--sp-5);}
+.about-text blockquote{
+  margin:var(--sp-8) 0;
+  padding:var(--sp-5) var(--sp-6);
+  border-left:3px solid var(--green);
+  background:var(--green-pale);border-radius:0 8px 8px 0;
+}
+.about-text blockquote p{color:var(--text);font-size:15px;font-weight:500;line-height:1.6;margin:0 0 var(--sp-2);}
+.about-text blockquote cite{font-size:11.5px;color:var(--green-dark);font-weight:700;letter-spacing:1px;text-transform:uppercase;font-style:normal;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-4);margin:var(--sp-8) 0 var(--sp-8);}
+.a-stat{text-align:center;padding:var(--sp-5);background:var(--white);border-radius:var(--r);border:1px solid var(--border);}
+.a-stat-num{font-family:'Playfair Display',serif;font-size:36px;font-weight:700;color:var(--text);line-height:1;}
+.a-stat-num em{font-style:normal;color:var(--green);}
+.a-stat-label{font-size:12px;color:var(--text-3);margin-top:4px;}
+
+/* ---- portfolio grid ---- */
+.portfolio{
+  padding:var(--sp-24) 0;
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+.port-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:var(--sp-12);flex-wrap:wrap;gap:var(--sp-4);}
+.port-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;margin:0;}
+.port-view-all{font-size:13px;font-weight:700;color:var(--green);display:inline-flex;align-items:center;gap:8px;border-bottom:1px solid rgba(6,145,6,.3);padding-bottom:2px;transition:gap .3s,color .3s;}
+.port-view-all:hover{gap:13px;color:var(--green-dark);}
+
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);}
+.port-card{
+  border-radius:14px;overflow:hidden;
+  background:var(--cream);
+  border:1px solid var(--border);
+  transition:box-shadow .3s var(--ease),transform .3s var(--ease);
+}
+.port-card:hover{box-shadow:0 16px 48px rgba(0,0,0,.1);transform:translateY(-4px);}
+.port-card-img{
+  position:relative;height:240px;overflow:hidden;
+}
+.port-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);}
+.port-card:hover .port-card-img img{transform:scale(1.05);}
+.port-card-cat{
+  position:absolute;top:12px;left:12px;
+  font-size:9.5px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+  background:var(--white);color:var(--text);
+  padding:4px 10px;border-radius:20px;
+}
+.port-card-body{padding:var(--sp-5) var(--sp-6);}
+.port-card-body h3{font-size:17px;font-weight:700;font-family:'Playfair Display',serif;letter-spacing:-.3px;margin:0 0 var(--sp-2);color:var(--text);}
+.port-card-body p{font-size:13px;color:var(--text-3);margin:0;line-height:1.6;}
+.port-card-loc{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3);margin-top:var(--sp-3);}
+.port-card-loc svg{color:var(--green);flex-shrink:0;}
+
+/* featured card (spans 2 cols) */
+.port-card.featured{grid-column:span 2;}
+.port-card.featured .port-card-img{height:320px;}
+
+/* ---- testimonials (dark section) ---- */
+.testimonials{
+  padding:var(--sp-24) 0;
+  background:var(--charcoal);
+  position:relative;overflow:hidden;
+}
+.testimonials::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 100%);
+}
+.testi-head{text-align:center;margin-bottom:var(--sp-14);position:relative;z-index:1;}
+.testi-head .section-label{color:var(--green-light);}
+.testi-head h2{font-size:clamp(28px,3.6vw,50px);font-weight:800;letter-spacing:-1.5px;color:var(--white);margin:0 0 var(--sp-4);}
+.testi-head p{font-size:16px;color:rgba(255,255,255,.5);max-width:460px;margin:0 auto;line-height:1.7;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);position:relative;z-index:1;}
+.testi-card{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:14px;padding:var(--sp-8);
+  transition:background .25s,border-color .25s;
+}
+.testi-card:hover{background:rgba(255,255,255,.09);border-color:rgba(63,191,63,.3);}
+.testi-stars{color:#f0b429;font-size:12px;letter-spacing:2px;margin-bottom:var(--sp-5);}
+.testi-text{font-size:15px;line-height:1.8;color:rgba(255,255,255,.75);margin:0 0 var(--sp-6);font-style:italic;}
+.testi-author{display:flex;align-items:center;gap:var(--sp-3);}
+.testi-avatar{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,rgba(6,145,6,.5),rgba(6,145,6,.2));
+  border:2px solid rgba(63,191,63,.3);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);
+}
+.testi-name{font-size:13.5px;font-weight:700;color:var(--white);}
+.testi-loc{font-size:12px;color:rgba(255,255,255,.4);margin-top:1px;}
+.testi-cta{text-align:center;margin-top:var(--sp-12);position:relative;z-index:1;}
+.testi-cta p{font-size:14px;color:rgba(255,255,255,.45);margin:var(--sp-4) 0 0;}
+
+/* ---- services full grid ---- */
+.services-full{
+  padding:var(--sp-24) 0;
+  background:var(--cream);
+  border-top:1px solid var(--border);
+}
+.sec-head{margin-bottom:var(--sp-14);}
+.sec-head h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;margin:0 0 var(--sp-3);}
+.sec-head p{font-size:16px;color:var(--text-2);max-width:480px;line-height:1.7;margin:0;}
+.srv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);}
+.srv-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:14px;padding:var(--sp-8);
+  transition:box-shadow .25s var(--ease),border-color .25s var(--ease);
+}
+.srv-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);border-color:rgba(6,145,6,.25);}
+.srv-card-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--green-pale);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--green);margin-bottom:var(--sp-5);
+}
+.srv-card h3{font-size:17px;font-weight:700;font-family:'Playfair Display',serif;letter-spacing:-.3px;margin:0 0 var(--sp-3);color:var(--text);}
+.srv-card p{font-size:13.5px;color:var(--text-2);line-height:1.75;margin:0 0 var(--sp-5);}
+.srv-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:var(--sp-2);}
+.srv-list li{font-size:13px;color:var(--text-2);display:flex;align-items:center;gap:var(--sp-2);}
+.srv-list li::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--green);flex-shrink:0;}
+
+/* ---- CTA band ---- */
+.cta-band{
+  background:var(--green);
+  padding:var(--sp-16) 0;
+  position:relative;overflow:hidden;
+}
+.cta-band::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1px);
+  background-size:28px 28px;
+}
+.cta-band-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:var(--sp-8);flex-wrap:wrap;position:relative;z-index:1;
+}
+.cta-band-inner h2{font-size:clamp(26px,3vw,42px);font-weight:800;letter-spacing:-1.5px;color:var(--white);margin:0 0 var(--sp-2);}
+.cta-band-inner p{font-size:15px;color:rgba(255,255,255,.8);margin:0;}
+
+/* ---- contact ---- */
+.contact{
+  padding:var(--sp-24) 0;
+  background:var(--white);
+  border-top:1px solid var(--border);
+}
+.contact-inner{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(40px,6vw,88px);align-items:start;}
+.contact-left h2{font-size:clamp(28px,3.4vw,46px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin:0 0 var(--sp-5);}
+.contact-left h2 em{font-style:italic;color:var(--green);}
+.contact-left p{font-size:15.5px;color:var(--text-2);line-height:1.8;max-width:380px;margin:0 0 var(--sp-8);}
+.contact-perks{display:flex;flex-direction:column;gap:var(--sp-4);}
+.contact-perk{display:flex;align-items:flex-start;gap:var(--sp-3);}
+.perk-icon{width:32px;height:32px;flex-shrink:0;border-radius:8px;background:var(--green-pale);display:flex;align-items:center;justify-content:center;color:var(--green);margin-top:1px;}
+.contact-perk strong{display:block;font-size:13.5px;font-weight:600;color:var(--text);}
+.contact-perk span{display:block;font-size:12.5px;color:var(--text-3);margin-top:2px;line-height:1.5;}
+.contact-channels{margin-top:var(--sp-8);display:flex;flex-direction:column;gap:var(--sp-3);}
+.contact-channel{display:flex;align-items:center;gap:var(--sp-3);font-size:14px;color:var(--text-2);transition:color .2s;}
+.contact-channel:hover{color:var(--green);}
+.contact-channel svg{color:var(--green);}
+.quote-form{background:var(--cream);border:1px solid var(--border);border-radius:14px;padding:clamp(24px,4vw,40px);}
+.quote-form h3{font-size:19px;font-weight:700;font-family:'Playfair Display',serif;letter-spacing:-.4px;margin:0 0 var(--sp-6);color:var(--text);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-4);}
+.form-group{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-5);}
+.form-group label{font-size:11.5px;font-weight:700;letter-spacing:.8px;color:var(--text-2);text-transform:uppercase;}
+.form-group input,.form-group select,.form-group textarea{
+  background:var(--white);border:1.5px solid var(--border-strong);border-radius:8px;
+  padding:12px 14px;color:var(--text);font-size:14px;font-family:'DM Sans',sans-serif;
+  outline:none;transition:border-color .2s,box-shadow .2s;width:100%;
+}
+.form-group input::placeholder,.form-group textarea::placeholder{color:var(--text-3);}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(6,145,6,.1);}
+.form-group select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%239a9a96' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
+.form-group textarea{resize:vertical;min-height:100px;}
+.form-submit{width:100%;padding:15px;background:var(--green);color:var(--white);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.3px;cursor:pointer;transition:background .25s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.form-submit:hover{background:var(--green-dark);}
+.form-note{font-size:11.5px;color:var(--text-3);text-align:center;margin-top:var(--sp-4);}
+
+/* ---- footer ---- */
+.site-footer{background:var(--charcoal);}
+.footer-inner{display:flex;gap:clamp(40px,6vw,96px);padding:clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px);align-items:flex-start;}
+.footer-brand{flex-shrink:0;width:clamp(180px,22vw,260px);}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;line-height:1.2;color:var(--white);margin-bottom:var(--sp-4);}
+.footer-logo em{font-style:italic;color:var(--green-light);}
+.footer-tagline{font-size:13.5px;color:rgba(255,255,255,.4);line-height:1.6;max-width:220px;margin-bottom:var(--sp-6);}
+.footer-social{display:flex;gap:var(--sp-3);}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.5);transition:background .25s,color .25s;}
+.footer-social a:hover{background:rgba(63,191,63,.2);color:var(--green-light);}
+.footer-nav{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-8);}
+.fn-col h4{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:var(--sp-4);}
+.fn-col a{display:block;font-size:14px;color:rgba(255,255,255,.55);margin-bottom:var(--sp-3);transition:color .2s;}
+.fn-col a:hover{color:var(--white);}
+.footer-cta-link{color:var(--green-light) !important;font-weight:500;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.07);padding:var(--sp-4) 0;}
+.footer-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--sp-2);}
+.footer-bar small{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* ---- responsive ---- */
+@media(max-width:1100px){
+  .port-card.featured{grid-column:span 1;}
+  .port-card.featured .port-card-img{height:240px;}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .srv-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:980px){
+  nav{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+  .hero-photo{display:none;}
+  .about-inner{grid-template-columns:1fr;}
+  .about-photos{height:340px;margin-bottom:var(--sp-8);}
+  .about-cert{top:28%;left:60%;}
+  .port-grid{grid-template-columns:1fr 1fr;}
+  .contact-inner{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;gap:var(--sp-10);}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+  .services-bar-inner{grid-template-columns:1fr 1fr;}
+  .cta-band-inner{flex-direction:column;text-align:center;}
+}
+@media(max-width:640px){
+  :root{--gutter:20px;}
+  .btn{padding:11px 18px;font-size:12.5px;}
+  .topbar-social{display:none;}
+  .topbar .wrap{justify-content:center;}
+  .port-grid{grid-template-columns:1fr;}
+  .testi-grid{grid-template-columns:1fr;}
+  .srv-grid{grid-template-columns:1fr;}
+  .services-bar-inner{grid-template-columns:1fr;}
+  .about-stats{grid-template-columns:repeat(3,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .about-photos{height:280px;}
+  .hero-card{display:none;}
+  .hero-badge{display:none;}
+}
+/* ---- dark mode ---- */
+@media(prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --cream:#141412;--sand:#1e1e1b;--sand-2:#272723;--white:#242420;
+    --text:#f0ede8;--text-2:#a8a49e;--text-3:#7a7a76;
+    --border:rgba(255,255,255,.1);--border-strong:rgba(255,255,255,.2);
+    --charcoal:#0a0a09;--charcoal-2:#111110;--green-pale:rgba(6,145,6,.18);
+  }
+  :root:not([data-theme="light"]) .icon-sun{display:flex;}
+  :root:not([data-theme="light"]) .icon-moon{display:none;}
+}
+:root[data-theme="dark"]{
+  --cream:#141412;--sand:#1e1e1b;--sand-2:#272723;--white:#242420;
+  --text:#f0ede8;--text-2:#a8a49e;--text-3:#7a7a76;
+  --border:rgba(255,255,255,.1);--border-strong:rgba(255,255,255,.2);
+  --charcoal:#0a0a09;--charcoal-2:#111110;--green-pale:rgba(6,145,6,.18);
+}
+.theme-toggle{
+  width:36px;height:36px;border-radius:8px;
+  border:1.5px solid var(--border-strong);background:transparent;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--text-2);transition:border-color .2s,color .2s;flex-shrink:0;
+}
+.theme-toggle:hover{border-color:var(--green);color:var(--green);}
+.icon-sun{display:none;}
+:root[data-theme="dark"] .icon-sun{display:flex;}
+:root[data-theme="dark"] .icon-moon{display:none;}
+</style>
+<script>(function(){var t=localStorage.getItem('d2-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();</script>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="topbar-social">
+      <a href="#" aria-label="Instagram">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.6"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor"/></svg>
+      </a>
+      <a href="#" aria-label="Facebook">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M14 9h3V5.5h-3c-2.2 0-4 1.8-4 4V12H7v3.5h3V22h3.5v-6.5H16l.7-3.5h-3.2v-2c0-.6.4-1 1-1z" fill="currentColor"/></svg>
+      </a>
+    </div>
+    <div class="topbar-contact">
+      <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+      <span class="sep"></span>
+      <a href="tel:6124081817">612-408-1817</a>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none">
+        <rect width="40" height="40" rx="9" fill="#069106"/>
+        <path d="M8 27C12.5 21.6 15.3 27 19 21.6C22.7 27 25.4 19.8 30 16" stroke="#fff" stroke-width="2.3" stroke-linecap="round" fill="none"/>
+        <circle cx="30" cy="11" r="3.6" fill="#fff"/>
+      </svg>
+      <div class="lockup">Reece's <em>Outdoor</em><small>LAWN &amp; LANDSCAPING</small></div>
+    </a>
+    <nav>
+      <a class="active" href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="about.html">About Us</a>
+      <a href="portfolio.html">Our Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="wrap hero-inner">
+    <div class="hero-text">
+      <div class="hero-tag">Twin Cities Lawn Care</div>
+      <h1>A Lawn You'll<br>Be <em>Proud Of.</em></h1>
+      <p class="hero-sub">Reliable lawn care and property maintenance from an owner who shows up, does the work, and actually cares about the results.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">Get a Free Quote</a>
+        <a href="portfolio.html" class="btn btn-outline">See Our Work</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/></svg>
+          Owner-operated
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Fully insured
+        </div>
+        <div class="trust-divider"></div>
+        <div class="trust-pill">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+          Twin Cities local
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="hero-photo-frame">
+        <img src="images/hero/hero-lawn-fence.jpg" alt="Reece's Outdoor Solutions — fresh cut lawn" loading="eager">
+      </div>
+      <div class="hero-card">
+        <div>
+          <div class="hero-card-stars">★★★★★</div>
+          <div class="hero-card-text">
+            <strong>4.9 / 5 Rating</strong>
+            <span>100+ happy homeowners</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-badge">No contracts required</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES BAR -->
+<div class="services-bar" id="services">
+  <div class="wrap">
+    <div class="services-bar-inner">
+      <div class="srv-item">
+        <div class="srv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14C12 14 5 12 5 5C12 5 12 12 12 14Z" fill="currentColor"/></svg>
+        </div>
+        <div><strong>Lawn Mowing</strong><span>Clean, even cuts every visit.</span></div>
+      </div>
+      <div class="srv-item">
+        <div class="srv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 20L16 8M16 8H10M16 8V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong>Edging &amp; Trimming</strong><span>Crisp edges, precise finish.</span></div>
+      </div>
+      <div class="srv-item">
+        <div class="srv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M5 19h14M7 19V9l5-5 5 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div><strong>Yard Cleanups</strong><span>Leaves, debris and clutter gone.</span></div>
+      </div>
+      <div class="srv-item">
+        <div class="srv-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.4"/></svg>
+        </div>
+        <div><strong>Seasonal Care</strong><span>Year-round property maintenance.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-inner">
+      <div class="about-photos">
+        <div class="about-main-photo">
+          <img src="images/about/about-work-tree-service.jpg" alt="Reece working on a job site" loading="lazy">
+        </div>
+        <div class="about-accent-photo">
+          <img src="images/about/about-reece-portrait.jpg" alt="Reece — owner &amp; operator" loading="lazy">
+        </div>
+        <div class="about-cert">
+          <strong>5<em>+</em></strong>
+          <span>Years serving<br>Twin Cities</span>
+        </div>
+      </div>
+
+      <div class="about-text">
+        <span class="section-label">About Us</span>
+        <h2>Owner-operated from the ground up.</h2>
+        <p>Reece started this business to do the work himself — not to dispatch strangers. When you book with Reece's Outdoor Solutions, Reece shows up. Same person, every time.</p>
+        <p>That accountability shows in the results. No corners cut, no rushed jobs, no handoffs to whoever's available. Just consistent, quality work on every property.</p>
+        <blockquote>
+          <p>"I started this so I could do the work right, not manage people cutting corners."</p>
+          <cite>— Reece, Founder &amp; Owner</cite>
+        </blockquote>
+        <div class="about-stats">
+          <div class="a-stat">
+            <div class="a-stat-num">5<em>+</em></div>
+            <div class="a-stat-label">Years of service</div>
+          </div>
+          <div class="a-stat">
+            <div class="a-stat-num">100<em>+</em></div>
+            <div class="a-stat-label">Properties served</div>
+          </div>
+          <div class="a-stat">
+            <div class="a-stat-num">4.9<em>★</em></div>
+            <div class="a-stat-label">Average rating</div>
+          </div>
+        </div>
+        <a href="about.html" class="btn btn-outline">Our Full Story →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO GRID -->
+<section class="portfolio" id="portfolio">
+  <div class="wrap">
+    <div class="port-head">
+      <div>
+        <span class="section-label">Our Work</span>
+        <h2>Recent Projects</h2>
+      </div>
+      <a href="portfolio.html" class="port-view-all">View Full Portfolio →</a>
+    </div>
+    <div class="port-grid">
+
+      <div class="port-card featured">
+        <div class="port-card-img">
+          <img src="images/portfolio/portfolio-lawn-maintenance.jpg" alt="Lawn Transformation — Eden Prairie" loading="lazy">
+          <div class="port-card-cat">Lawn Care</div>
+        </div>
+        <div class="port-card-body">
+          <h3>Lawn Transformation</h3>
+          <p>Full cut, edge, and trim — from patchy and overgrown to clean and healthy.</p>
+          <div class="port-card-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Eden Prairie, MN
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-card-img">
+          <img src="images/portfolio/portfolio-spring-cleanup.jpg" alt="Landscape Refresh — Burnsville" loading="lazy">
+          <div class="port-card-cat">Landscaping</div>
+        </div>
+        <div class="port-card-body">
+          <h3>Landscape Refresh</h3>
+          <p>New plantings, fresh mulch, and crisp edges all round.</p>
+          <div class="port-card-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Burnsville, MN
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-card-img">
+          <img src="images/portfolio/portfolio-front-yard.jpg" alt="Seasonal Cleanup — Minnetonka" loading="lazy">
+          <div class="port-card-cat">Cleanup</div>
+        </div>
+        <div class="port-card-body">
+          <h3>Seasonal Cleanup</h3>
+          <p>Leaves, overgrowth, and debris cleared ahead of winter.</p>
+          <div class="port-card-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Minnetonka, MN
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-card-img">
+          <img src="images/portfolio/portfolio-edging-trim.jpg" alt="Edging Detail — Eden Prairie" loading="lazy">
+          <div class="port-card-cat">Lawn Care</div>
+        </div>
+        <div class="port-card-body">
+          <h3>Edging &amp; Trim Detail</h3>
+          <p>Sharp edges along every curb, bed, and walkway.</p>
+          <div class="port-card-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Eden Prairie, MN
+          </div>
+        </div>
+      </div>
+
+      <div class="port-card">
+        <div class="port-card-img">
+          <img src="images/portfolio/portfolio-seasonal-care.jpg" alt="Year-Round Care — Minnetonka" loading="lazy">
+          <div class="port-card-cat">Seasonal Care</div>
+        </div>
+        <div class="port-card-body">
+          <h3>Year-Round Maintenance</h3>
+          <p>Ongoing seasonal care keeping the property looking its best all year.</p>
+          <div class="port-card-loc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg>
+            Minnetonka, MN
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES FULL -->
+<section class="services-full">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="section-label">Services</span>
+      <h2>Everything your property needs.</h2>
+      <p>From weekly mowing to full seasonal overhauls — we handle it all, so you don't have to think about it.</p>
+    </div>
+    <div class="srv-grid">
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21V10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 14C12 14 5 12 5 5C12 5 12 12 12 14Z" fill="currentColor"/></svg>
+        </div>
+        <h3>Lawn Mowing</h3>
+        <p>Consistent, clean cuts on a schedule that works for your lawn and your life.</p>
+        <ul class="srv-list">
+          <li>Weekly or bi-weekly service</li>
+          <li>Height adjusted per season</li>
+          <li>Clippings cleared after every cut</li>
+        </ul>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 20L16 8M16 8H10M16 8V14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Edging &amp; Trimming</h3>
+        <p>Sharp, defined lines along every edge — the detail work that makes a property look professionally maintained.</p>
+        <ul class="srv-list">
+          <li>Curb and driveway edging</li>
+          <li>Bed and walkway borders</li>
+          <li>String trim around obstacles</li>
+        </ul>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 19h14M7 19V9l5-5 5 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Yard Cleanups</h3>
+        <p>Seasonal and one-time cleanups to clear leaves, debris, dead growth, and anything else cluttering your yard.</p>
+        <ul class="srv-list">
+          <li>Spring and fall cleanup packages</li>
+          <li>Leaf blowing and removal</li>
+          <li>Bed clearing and prep</li>
+        </ul>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2z" stroke="currentColor" stroke-width="1.8"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Fertilization</h3>
+        <p>The right nutrients at the right time of year to keep your lawn thick, green, and resilient through every season.</p>
+        <ul class="srv-list">
+          <li>Seasonal application programs</li>
+          <li>Weed control treatments</li>
+          <li>Soil health assessment</li>
+        </ul>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9,22 9,12 15,12 15,22" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Mulching</h3>
+        <p>Fresh mulch laid in garden beds to lock in moisture, suppress weeds, and give your property a clean, finished look.</p>
+        <ul class="srv-list">
+          <li>Bed prep and edging included</li>
+          <li>Multiple mulch types available</li>
+          <li>Spring and fall application</li>
+        </ul>
+      </div>
+
+      <div class="srv-card">
+        <div class="srv-card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-14L4 7m8 4v10M4 7v10l8 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Property Maintenance</h3>
+        <p>Full-service recurring plans that cover everything — so your property stays sharp without you having to manage it.</p>
+        <ul class="srv-list">
+          <li>Weekly, bi-weekly or monthly</li>
+          <li>All services included</li>
+          <li>No contracts required</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="wrap">
+    <div class="testi-head">
+      <span class="section-label">Reviews</span>
+      <h2>What our customers say.</h2>
+      <p>Real results, real feedback — from homeowners across the Twin Cities.</p>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Reece showed up on time, did exactly what he said, and the lawn looked better than it ever has. Booked him for the whole season."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">J</div>
+          <div>
+            <div class="testi-name">Jennifer M.</div>
+            <div class="testi-loc">Eden Prairie, MN</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"I've tried three other lawn services. None of them paid attention to detail the way Reece does. My yard finally looks the way I wanted it to."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Steve K.</div>
+            <div class="testi-loc">Minnetonka, MN</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"The fall cleanup was incredible. He cleared everything in one visit and the beds looked brand new. Already booked for spring."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">D</div>
+          <div>
+            <div class="testi-name">Diane W.</div>
+            <div class="testi-loc">Burnsville, MN</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="testi-cta">
+      <a href="#contact" class="btn btn-white">Get Your Free Quote</a>
+      <p>No contracts · No pressure · Response within 24 hours</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <h2>Ready for a lawn you're proud of?</h2>
+      <p>Free estimate, no commitment. We'll get back to you within one business day.</p>
+    </div>
+    <a href="#contact" class="btn btn-white" style="flex-shrink:0;">Get a Free Quote →</a>
+  </div>
+</div>
+
+<!-- CONTACT / QUOTE -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="contact-left">
+        <span class="section-label">Get in Touch</span>
+        <h2>Get Your Free<br><em>Quote Today</em></h2>
+        <p>No contracts, no pressure. Tell us about your property and we'll get back to you with a fast, fair estimate.</p>
+        <div class="contact-perks">
+          <div class="contact-perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <div><strong>Free Estimates</strong><span>No charge to get a quote, ever.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v4l2.5 2.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <div><strong>Fast Response</strong><span>We reply within 1 business day.</span></div>
+          </div>
+          <div class="contact-perk">
+            <div class="perk-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/></svg>
+            </div>
+            <div><strong>Serving the Twin Cities</strong><span>Eden Prairie · Minnetonka · Burnsville &amp; more.</span></div>
+          </div>
+        </div>
+        <div class="contact-channels">
+          <a class="contact-channel" href="tel:6124081817">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 16.9v3a2 2 0 01-2.18 2 19.8 19.8 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.8 19.8 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.8 12.8 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.8 12.8 0 002.81.7A2 2 0 0122 16.9z" stroke="currentColor" stroke-width="1.8"/></svg>
+            612-408-1817
+          </a>
+          <a class="contact-channel" href="mailto:Reece2025@gmail.com">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" stroke-width="1.8"/><path d="M22 6l-10 7L2 6" stroke="currentColor" stroke-width="1.8"/></svg>
+            Reece2025@gmail.com
+          </a>
+        </div>
+      </div>
+
+      <div class="quote-form">
+        <h3>Request a Free Quote</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="john@example.com">
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="612-000-0000">
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="" disabled selected>Select a service…</option>
+            <option>Lawn Mowing</option>
+            <option>Edging &amp; Trimming</option>
+            <option>Yard Cleanup</option>
+            <option>Fertilization</option>
+            <option>Mulching</option>
+            <option>Full Property Maintenance</option>
+            <option>Other / Not Sure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Property</label>
+          <textarea placeholder="Yard size, any specific concerns, frequency you're looking for…"></textarea>
+        </div>
+        <button class="form-submit">
+          Send My Request
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <p class="form-note">No contracts · No commitments · We'll respond within 24 hours</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's <em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Our Work</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="fn-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Fertilization</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
+      </div>
+      <div class="fn-col">
+        <h4>Contact</h4>
+        <a href="tel:6124081817">612-408-1817</a>
+        <a href="mailto:Reece2025@gmail.com">Reece2025@gmail.com</a>
+        <a href="#contact" class="footer-cta-link">Get a Free Quote →</a>
+      </div>
+    </nav>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var h=document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var sys=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var cur=h.getAttribute('data-theme');
+    var isDark=(cur==='dark')||(cur===null&&sys);
+    var next=isDark?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('d2-theme',next);
+  });
+})();
+</script>
+</body>
+</html>
