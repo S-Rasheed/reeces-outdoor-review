@@ -6,362 +6,462 @@
 <title>About — Reece's Outdoor Solutions</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>(function(){var t=localStorage.getItem('d3-theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-:root{
-  --green:#18a018;--gd:#0f820f;--gxd:#0a5c0a;--gp:#edf7ed;
-  --blk:#080807;--wh:#ffffff;--off:#f7f8f6;
-  --tx:#0d0e0b;--tx2:#5a6472;--tx3:#9ba394;
-  --brc:#e2e6df;
-}
-[data-theme="dark"]{
-  --wh:#141412;--off:#1c1c1a;
-  --tx:#f0ede8;--tx2:#a0a099;--tx3:#6a6a66;
-  --brc:rgba(255,255,255,.1);--gp:rgba(24,160,24,.15);
-  --blk:#f0ede8;
-}
-body{font-family:'Inter',system-ui,sans-serif;background:var(--wh);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;}
+body{font-family:'Manrope',system-ui,sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased;}
 img{max-width:100%;display:block;}
 a{text-decoration:none;color:inherit;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 44px;}
 
-/* NAV */
-nav{background:var(--green);position:sticky;top:0;z-index:100;height:62px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;}
-.n-logo{display:flex;align-items:center;gap:10px;}
-.n-mark{width:34px;height:34px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:var(--green);flex-shrink:0;}
-.n-text .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff;line-height:1.1;}
-.n-text .sub{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.4px;text-transform:uppercase;}
-.n-links{display:flex;align-items:center;gap:32px;}
-.n-links a{font-size:12.5px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s;}
-.n-links a:hover,.n-links a.active{color:#fff;}
-.n-right{display:flex;align-items:center;gap:12px;}
-.n-btn{background:#fff;color:var(--green);font-size:12.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:9px 20px;border-radius:6px;transition:opacity .2s;display:inline-block;}
-.n-btn:hover{opacity:.9;}
-.ttoggle{width:34px;height:34px;border-radius:6px;border:1.5px solid rgba(255,255,255,.3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:border-color .2s,color .2s;}
-.ttoggle:hover{border-color:#fff;color:#fff;}
-.i-sun{display:none;}
-[data-theme="dark"] .i-sun{display:flex;}
-[data-theme="dark"] .i-moon{display:none;}
+/* ── TOPBAR ── */
+.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 44px;height:36px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(5,5,5,.92);}
+.tb-social{display:flex;align-items:center;gap:18px;}
+.tb-social a{color:rgba(255,255,255,.35);display:flex;transition:color .2s;}
+.tb-social a:hover{color:rgba(255,255,255,.8);}
+.tb-contact{display:flex;align-items:center;gap:24px;}
+.tb-contact a{font-size:11px;letter-spacing:.4px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.tb-contact a:hover{color:rgba(255,255,255,.85);}
+.tb-contact a.hl{color:rgba(255,255,255,.75);}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.12);}
 
-/* HERO */
-.hero{background:var(--green);display:grid;grid-template-columns:1fr 1fr;min-height:72vh;overflow:hidden;}
-.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 48px 80px max(48px,calc((100vw - 1180px)/2 + 28px));}
-.h-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);color:#fff;font-size:11.5px;font-weight:600;letter-spacing:.5px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:24px;border:1px solid rgba(255,255,255,.2);width:fit-content;}
-.h-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:#fff;flex-shrink:0;}
-.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,5vw,72px);line-height:.93;letter-spacing:-2px;color:#fff;margin-bottom:20px;}
-.hero-sub{font-size:16px;color:rgba(255,255,255,.72);line-height:1.7;max-width:380px;}
-.hero-right{display:flex;align-items:center;justify-content:center;padding:60px 40px 60px 0;}
-.h-img{border-radius:18px;overflow:hidden;border:4px solid rgba(255,255,255,.2);box-shadow:0 24px 64px rgba(0,0,0,.3);max-width:480px;width:100%;aspect-ratio:3/4;}
-.h-img img{width:100%;height:100%;object-fit:cover;}
+/* ── NAV ── */
+nav{
+  position:sticky;top:0;z-index:100;
+  display:grid;grid-template-columns:1fr auto 1fr;
+  align-items:center;padding:22px 44px;
+  background:rgba(10,10,10,.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.n-left{display:flex;align-items:center;justify-content:flex-start;gap:36px;}
+.n-right{display:flex;align-items:center;justify-content:flex-end;gap:36px;}
+.n-left a,.n-right a{font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;white-space:nowrap;transition:color .2s;}
+.n-left a:hover,.n-right a:hover,.n-left a.active,.n-right a.active{color:#fff;}
+.n-center{display:flex;flex-direction:column;align-items:center;gap:6px;border-left:1px solid rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.18);padding:4px 40px;text-align:center;}
+.n-center .logo{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1;}
+.n-center .logo-subs{display:flex;gap:18px;}
+.n-center .logo-subs a{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
+.n-center .logo-subs a:hover{color:rgba(255,255,255,.7);}
 
-/* SECTION SHARED */
-.s-lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
-.s-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,3.5vw,44px);letter-spacing:-1px;color:var(--tx);line-height:1.1;margin-bottom:12px;}
-.s-p{font-size:15.5px;color:var(--tx2);line-height:1.75;}
+/* ── HAMBURGER + MOBILE NAV ── */
+.n-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:15;}
+.n-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;}
+.mobile-nav{position:fixed;inset:0;z-index:500;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;clip-path:circle(0% at calc(100% - 44px) 44px);transition:clip-path .4s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+.mobile-nav.is-open{clip-path:circle(160% at calc(100% - 44px) 44px);pointer-events:all;}
+.mob-bar{position:absolute;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.08);}
+.mob-logo{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.mob-close{background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:26px;line-height:1;padding:4px;}
+.mobile-nav > a{font-size:clamp(22px,5vw,30px);font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.5px;padding:16px 40px;text-align:center;width:100%;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
+.mobile-nav > a:hover{color:#069106;}
+.mob-cta-link{margin-top:32px;display:inline-flex;align-items:center;gap:8px;background:#069106!important;color:#fff!important;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:14px 36px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.mob-cta-link:hover{background:#057305!important;border-bottom:none!important;}
 
-/* STORY */
-.story{padding:100px 0;background:var(--wh);}
-.story-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.story-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.story-imgs .img-tall{grid-row:span 2;}
-.s-img{border-radius:14px;overflow:hidden;border:1.5px solid var(--brc);}
-.s-img img{width:100%;height:100%;object-fit:cover;}
-.story-text .s-p{margin-bottom:20px;}
-.story-text p+p{margin-top:16px;}
+/* ── HERO ── */
+.about-hero{position:relative;min-height:58vh;display:flex;align-items:flex-end;overflow:hidden;}
+.about-hero-bg{position:absolute;inset:0;background-image:url('../design-1/images/about/about-work-tree-service.jpg');background-size:cover;background-position:center top;}
+.about-hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.92) 0%,rgba(0,0,0,.7) 45%,rgba(0,0,0,.2) 100%);}
+.about-hero-ov2{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,transparent 50%);}
+.about-hero-content{position:relative;z-index:2;padding:60px 44px 56px;max-width:620px;}
+.about-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#069106;margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.about-label span{display:inline-block;width:24px;height:1.5px;background:#069106;}
+.about-hero-content h1{font-size:clamp(28px,4vw,52px);font-weight:800;line-height:1.08;letter-spacing:-1.5px;color:#fff;margin-bottom:18px;}
+.about-hero-sub{font-size:14.5px;color:rgba(255,255,255,.52);line-height:1.7;max-width:440px;margin-bottom:32px;}
+.btn-fill{display:inline-flex;align-items:center;gap:8px;background:#069106;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:12px 28px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.btn-fill:hover{background:#057305;}
 
-/* VALUES */
-.values{padding:100px 0;background:var(--off);}
-.val-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:48px;}
-.val{border:1.5px solid var(--brc);border-radius:14px;padding:28px 22px;background:var(--wh);transition:border-color .25s,transform .25s;}
-.val:hover{border-color:var(--green);transform:translateY(-4px);}
-.val-ico{width:48px;height:48px;border-radius:12px;background:var(--gp);display:flex;align-items:center;justify-content:center;color:var(--green);margin-bottom:16px;}
-.val h3{font-family:'Syne',sans-serif;font-weight:700;font-size:15.5px;color:var(--tx);margin-bottom:8px;}
-.val p{font-size:13px;color:var(--tx2);line-height:1.65;}
+/* ── STORY ── */
+.story-section{padding:96px 0;background:#0a0a0a;}
+.section-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#069106;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.section-label span{display:inline-block;width:24px;height:1.5px;background:#069106;}
+.section-h{font-size:clamp(24px,3vw,38px);font-weight:800;letter-spacing:-.8px;line-height:1.1;color:#fff;margin-bottom:14px;}
+.section-sub{font-size:14px;color:rgba(255,255,255,.42);line-height:1.75;max-width:520px;}
+.story-header{margin-bottom:56px;}
+.milestones{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden;}
+.milestone{background:#111;padding:32px 28px;}
+.milestone-num{font-size:11px;font-weight:800;letter-spacing:2px;color:#069106;margin-bottom:20px;}
+.milestone-icon{width:36px;height:36px;background:rgba(6,145,6,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;}
+.milestone h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;}
+.milestone p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;}
 
-/* STATS */
-.stats-band{background:#080807;padding:72px 0;}
-[data-theme="dark"] .stats-band{background:#0a0a09;}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
-.stat{text-align:center;padding:24px;border-right:1px solid rgba(255,255,255,.09);}
-.stat:last-child{border-right:none;}
-.stat .big{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(48px,6vw,72px);color:#fff;line-height:1;letter-spacing:-2px;margin-bottom:8px;}
-.stat .big b{color:var(--green);font-weight:inherit;}
-.stat .lbl{font-size:12.5px;color:rgba(255,255,255,.4);letter-spacing:.5px;}
+/* ── TEAM ── */
+.team-section{padding:96px 0;background:#060606;}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;}
+.team-card{border-radius:10px;overflow:hidden;background:#111;}
+.team-photo{height:280px;background-size:cover;background-position:center top;}
+.team-info{padding:22px 24px;}
+.team-name{font-size:17px;font-weight:800;color:#fff;margin-bottom:2px;}
+.team-role{font-size:10.5px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#069106;margin-bottom:10px;}
+.team-bio{font-size:13px;color:rgba(255,255,255,.42);line-height:1.65;}
+.team-social{display:flex;gap:10px;margin-top:14px;}
+.team-social a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:6px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.45);transition:background .2s,color .2s;}
+.team-social a:hover{background:rgba(6,145,6,.18);color:#069106;}
 
-/* WHY US */
-.why{padding:100px 0;background:var(--wh);}
-.why-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.why-img{border-radius:16px;overflow:hidden;border:1.5px solid var(--brc);aspect-ratio:1;}
-.why-img img{width:100%;height:100%;object-fit:cover;}
-.check-list{list-style:none;display:flex;flex-direction:column;gap:14px;margin:24px 0 28px;}
-.check-list li{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--tx2);}
-.check-list li::before{content:'';flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--gp);border:1.5px solid var(--green);background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 10 8' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 4l2.5 2.5L9 1' stroke='%2318a018' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:center;background-size:10px;}
+/* ── VALUES ── */
+.values-section{padding:96px 0;background:#0a0a0a;}
+.values-header{margin-bottom:64px;}
+.values-header h2{font-size:clamp(28px,3.5vw,48px);font-weight:800;letter-spacing:-1.2px;line-height:1.08;color:#fff;}
+.values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:10px;overflow:hidden;}
+.value-item{background:#0e0e0e;padding:32px 28px;}
+.value-icon{width:40px;height:40px;background:rgba(6,145,6,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;}
+.value-item h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:8px;}
+.value-item p{font-size:13px;color:rgba(255,255,255,.4);line-height:1.65;}
 
-/* SERVICE AREA */
-.area{padding:80px 0;background:var(--off);text-align:center;}
-.area-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px;}
-.area-tag{background:var(--wh);border:1.5px solid var(--brc);border-radius:24px;padding:8px 18px;font-size:13px;color:var(--tx2);font-weight:500;}
+/* ── SERVICE AREA ── */
+.area-section{padding:96px 0;background:#060606;}
+.area-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+.area-map{border-radius:10px;overflow:hidden;height:340px;background:#111;position:relative;}
+.area-map img{width:100%;height:100%;object-fit:cover;opacity:.35;}
+.area-map-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,145,6,.15) 0%,transparent 60%);}
+.area-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:16px;height:16px;background:#069106;border-radius:50%;box-shadow:0 0 0 6px rgba(6,145,6,.25),0 0 0 12px rgba(6,145,6,.1);}
+.area-services{margin-top:28px;display:flex;flex-direction:column;gap:10px;}
+.area-svc{display:flex;align-items:center;gap:10px;font-size:13.5px;color:rgba(255,255,255,.65);}
+.area-svc::before{content:'';width:7px;height:7px;background:#069106;border-radius:50%;flex-shrink:0;}
 
-/* CTA */
-.cta{background:#080807;padding:100px 0;text-align:center;}
-[data-theme="dark"] .cta{background:var(--gxd);}
-.cta .s-lbl{display:block;color:var(--green);margin-bottom:12px;}
-.cta .s-h{color:#fff;max-width:540px;margin:0 auto 14px;}
-.cta .s-p{color:rgba(255,255,255,.5);max-width:420px;margin:0 auto 40px;}
-.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
-.btn-wh{background:#fff;color:var(--green);font-size:13.5px;font-weight:700;padding:13px 26px;border-radius:8px;border:2px solid #fff;transition:opacity .2s;display:inline-block;}
-.btn-wh:hover{opacity:.9;}
-.btn-wh-out{background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:13px 26px;border-radius:8px;border:2px solid rgba(255,255,255,.25);transition:border-color .2s;display:inline-block;}
-.btn-wh-out:hover{border-color:rgba(255,255,255,.7);}
-.btn-g{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-size:13.5px;font-weight:700;padding:13px 26px;border-radius:8px;transition:background .2s;}
-.btn-g:hover{background:var(--gd);}
+/* ── BOTTOM CTA ── */
+.bottom-cta{background:#030c18;padding:80px 44px;display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.bottom-cta-left{display:flex;align-items:center;gap:20px;}
+.cta-phone-icon{width:52px;height:52px;border-radius:50%;background:rgba(6,145,6,.15);border:1px solid rgba(6,145,6,.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.bottom-cta h2{font-size:clamp(16px,2vw,22px);font-weight:800;letter-spacing:-.4px;color:#fff;margin-bottom:4px;}
+.bottom-cta p{font-size:13px;color:rgba(255,255,255,.4);}
+.btn-cta-green{display:inline-block;background:#069106;color:#fff;font-size:11.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:15px 36px;border-radius:4px;text-decoration:none;transition:background .2s;white-space:nowrap;}
+.btn-cta-green:hover{background:#057305;}
 
-/* FOOTER */
-footer{background:#080807;border-top:1px solid rgba(255,255,255,.07);padding:64px 0 36px;}
-[data-theme="dark"] footer{background:#0a0a09;}
-.foot-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-.foot-brand .fn{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:#fff;margin-bottom:10px;}
-.foot-brand p{font-size:13px;color:rgba(255,255,255,.32);line-height:1.7;max-width:200px;}
-.foot-col h4{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px;}
-.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.foot-col ul a{font-size:13.5px;color:rgba(255,255,255,.5);transition:color .2s;}
-.foot-col ul a:hover{color:#fff;}
-.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);}
-.foot-bot p{font-size:12px;color:rgba(255,255,255,.2);}
+/* ── FOOTER ── */
+.site-footer{background:#030c18;border-top:1px solid rgba(255,255,255,.07);}
+.footer-inner{display:flex;gap:clamp(40px,6vw,96px);padding:clamp(48px,6vw,80px) 0 clamp(40px,5vw,64px);align-items:flex-start;}
+.footer-brand{flex-shrink:0;width:clamp(180px,22vw,260px);}
+.footer-logo{font-family:'Bricolage Grotesque','Manrope',sans-serif;font-size:20px;font-weight:700;line-height:1.2;color:#fff;letter-spacing:-.4px;margin-bottom:16px;}
+.footer-logo em{color:#069106;font-style:normal;}
+.footer-tagline{font-size:13.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:220px;margin-bottom:24px;}
+.footer-social{display:flex;gap:12px;}
+.footer-social a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.55);transition:background .25s,color .25s;}
+.footer-social a:hover{background:rgba(6,145,6,.18);color:#069106;}
+.footer-nav{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.fn-col h4{font-size:11px;font-weight:600;letter-spacing:.9px;text-transform:uppercase;color:rgba(255,255,255,.38);margin-bottom:16px;}
+.fn-col a{display:block;font-size:14px;color:rgba(255,255,255,.55);margin-bottom:8px;text-decoration:none;transition:color .2s;}
+.fn-col a:hover{color:#fff;}
+.footer-cta-link{color:#069106 !important;font-weight:500;margin-top:12px !important;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.06);padding:16px 0;}
+.footer-bar-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-bar small{font-size:12px;color:rgba(255,255,255,.38);}
 
-@media(max-width:1024px){.val-grid{grid-template-columns:repeat(2,1fr);}.foot-inner{grid-template-columns:1fr 1fr;gap:32px;}}
-@media(max-width:768px){.hero{grid-template-columns:1fr;}.hero-right{display:none;}.hero-left{padding:64px 28px;}.story-inner,.why-inner{grid-template-columns:1fr;}.stats-grid{grid-template-columns:repeat(2,1fr);}.n-links{display:none;}}
-@media(max-width:480px){.val-grid{grid-template-columns:1fr;}.foot-inner{grid-template-columns:1fr;}}
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .topbar{padding:0 20px;}.tb-contact{display:none;}
+  nav{grid-template-columns:auto 1fr;padding:14px 20px;}
+  .n-left,.n-right{display:none;}
+  .n-hamburger{display:flex;}
+  .n-center{border:none;padding:0;justify-self:start;}
+  .wrap{padding:0 20px;}
+  .about-hero-content{padding:40px 20px 36px;}
+  .milestones{grid-template-columns:1fr 1fr;}
+  .team-grid{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr 1fr;}
+  .area-inner{grid-template-columns:1fr;gap:32px;}
+  .area-map{height:240px;}
+  .bottom-cta{flex-direction:column;align-items:flex-start;padding:56px 20px;}
+  .footer-inner{flex-direction:column;gap:32px;}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+  .footer-bar-inner{flex-direction:column;align-items:flex-start;gap:4px;}
+  .story-section,.team-section,.values-section,.area-section{padding:64px 0;}
+  .story-section .wrap,.team-section .wrap,.values-section .wrap,.area-section .wrap{padding:0 20px;}
+}
+@media(max-width:480px){
+  .milestones{grid-template-columns:1fr;}
+  .values-grid{grid-template-columns:1fr;}
+  .footer-nav{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="n-logo">
-    <div class="n-mark">RO</div>
-    <div class="n-text">
-      <div class="brand">Reece's Outdoor</div>
-      <div class="sub">Lawn &amp; Landscaping</div>
-    </div>
-  </a>
-  <div class="n-links">
-    <a href="index.html#services">Services</a>
-    <a href="portfolio.html">Portfolio</a>
-    <a href="about.html" class="active">About</a>
-    <a href="index.html#contact">Contact</a>
+<!-- ── TOPBAR ── -->
+<div class="topbar">
+  <div class="tb-social">
+    <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+    <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
   </div>
-  <div class="n-right">
-    <button class="ttoggle" id="themeToggle" aria-label="Toggle dark mode">
-      <svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-    </button>
-    <a href="index.html#contact" class="n-btn">Get a Quote</a>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="h-badge">Owner-Operated · Twin Cities</div>
-    <h1>Built on<br>Honest Work.</h1>
-    <p class="hero-sub">Reece's Outdoor Solutions was built on a simple promise — show up, do great work, and treat every property like it's your own.</p>
-  </div>
-  <div class="hero-right">
-    <div class="h-img">
-      <img src="../design-1/images/about/about-reece-at-work.jpg" alt="Reece at work">
-    </div>
-  </div>
-</section>
-
-<!-- OUR STORY -->
-<section class="story">
-  <div class="wrap">
-    <div class="story-inner">
-      <div>
-        <div class="s-lbl">Our Story</div>
-        <h2 class="s-h">Started Small.<br>Built Right.</h2>
-        <p class="s-p">Reece started this business with a truck, a trailer, and a belief that lawn care doesn't have to be complicated — just consistent and done well.</p>
-        <p class="s-p" style="margin-top:16px;">Over five years serving the Twin Cities, we've grown entirely through word-of-mouth from homeowners who trust us to show up, do the work, and leave their property looking better than we found it.</p>
-        <p class="s-p" style="margin-top:16px;">We're not a franchise. We're not a call center. When you call us, you're talking to Reece.</p>
-      </div>
-      <div class="story-imgs">
-        <div class="s-img img-tall" style="min-height:320px;">
-          <img src="../design-1/images/about/about-reece-portrait.jpg" alt="Reece" style="height:100%;">
-        </div>
-        <div class="s-img" style="height:185px;">
-          <img src="../design-1/images/about/about-work-fence-cleanup.jpg" alt="Work">
-        </div>
-        <div class="s-img" style="height:185px;">
-          <img src="../design-1/images/about/about-work-heavy-equipment.jpg" alt="Equipment">
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VALUES -->
-<section class="values">
-  <div class="wrap">
-    <div class="s-lbl">What We Stand For</div>
-    <h2 class="s-h">Four Things We Don't Compromise On</h2>
-    <div class="val-grid">
-      <div class="val">
-        <div class="val-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
-        </div>
-        <h3>Owner-Operated</h3>
-        <p>Reece is on every job — not managing from an office. You get accountability at every visit.</p>
-      </div>
-      <div class="val">
-        <div class="val-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3>Fully Insured</h3>
-        <p>We carry full liability insurance so you're covered on every job — no exceptions, no fine print.</p>
-      </div>
-      <div class="val">
-        <div class="val-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <h3>No Long Contracts</h3>
-        <p>We earn your business every visit. No lock-in, no cancellation fees — just good work that keeps you coming back.</p>
-      </div>
-      <div class="val">
-        <div class="val-ico">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.8"/><polyline points="12,6 12,12 16,14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </div>
-        <h3>Fast Response</h3>
-        <p>We reply to every quote request within one business day and can typically schedule within the same week.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS -->
-<div class="stats-band">
-  <div class="wrap">
-    <div class="stats-grid">
-      <div class="stat"><div class="big">100<b>+</b></div><div class="lbl">Happy Clients</div></div>
-      <div class="stat"><div class="big">4.9<b>★</b></div><div class="lbl">Average Rating</div></div>
-      <div class="stat"><div class="big">5<b>+</b></div><div class="lbl">Years in Business</div></div>
-      <div class="stat"><div class="big">0<b>%</b></div><div class="lbl">Missed Appointments</div></div>
-    </div>
+  <div class="tb-contact">
+    <a href="mailto:contact@reecesoutdoor.com" class="hl">contact@reecesoutdoor.com</a>
+    <div class="tb-sep"></div>
+    <a href="tel:6129998067">(612) 999-8067</a>
   </div>
 </div>
 
-<!-- WHY US -->
-<section class="why">
+<!-- ── NAV ── -->
+<nav>
+  <div class="n-left">
+    <a href="#">Lawn Care</a>
+    <a href="#">Landscaping</a>
+    <a href="portfolio.html">Portfolio</a>
+  </div>
+  <div class="n-center">
+    <a href="index.html" class="logo">Reece's Outdoor</a>
+    <div class="logo-subs">
+      <a href="#">Free Quote</a>
+      <a href="tel:6129998067">(612) 999-8067</a>
+    </div>
+  </div>
+  <div class="n-right">
+    <a href="about.html" class="active">About</a>
+    <a href="#">Reviews</a>
+    <a href="#">Contact</a>
+  </div>
+  <button class="n-hamburger" id="mob-open" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="about-hero">
+  <div class="about-hero-bg"></div>
+  <div class="about-hero-ov"></div>
+  <div class="about-hero-ov2"></div>
+  <div class="about-hero-content">
+    <div class="about-label"><span></span>About Us</div>
+    <h1>Built on honest work,<br>trusted by neighbors.</h1>
+    <p class="about-hero-sub">Reece's Outdoor Solutions was founded on a simple belief: do great work, treat people right, and leave every property better than we found it. We're a local team that takes pride in our craft and in the community we call home.</p>
+    <a href="#story" class="btn-fill">Our Story
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- ── OUR STORY ── -->
+<section class="story-section" id="story">
   <div class="wrap">
-    <div class="why-inner">
-      <div class="why-img">
-        <img src="../design-1/images/about/about-lawn-result.jpg" alt="Lawn result">
+    <div class="story-header">
+      <div class="section-label"><span></span>Our Story</div>
+      <h2 class="section-h">What started as a one-man operation<br>has grown into a trusted local business.</h2>
+      <p class="section-sub">Focused on quality, reliability, and customer care — from our first yard to the hundredth.</p>
+    </div>
+    <div class="milestones">
+      <div class="milestone">
+        <div class="milestone-num">01</div>
+        <div class="milestone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h4>The Beginning</h4>
+        <p>Reece started mowing lawns and helping neighbors with property maintenance. Word spread fast.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-num">02</div>
+        <div class="milestone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4>Growing Together</h4>
+        <p>More customers, more projects, and a lot of early mornings. Our commitment to showing up never changed.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-num">03</div>
+        <div class="milestone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        </div>
+        <h4>Building the Team</h4>
+        <p>As demand grew, so did our team. We brought in skilled, reliable people who share our work ethic and values.</p>
+      </div>
+      <div class="milestone">
+        <div class="milestone-num">04</div>
+        <div class="milestone-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h4>Today</h4>
+        <p>We're proud to serve our community with professional, high-quality lawn care and property maintenance.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TEAM ── -->
+<section class="team-section">
+  <div class="wrap">
+    <div class="section-label"><span></span>The Team</div>
+    <h2 class="section-h">The people behind the work.</h2>
+    <p class="section-sub">We're more than a crew — we're a team that genuinely cares about the work we do and the people we serve.</p>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-photo" style="background-image:url('../design-1/images/about/about-work-1.jpg');"></div>
+        <div class="team-info">
+          <div class="team-name">Reece</div>
+          <div class="team-role">Founder &amp; Owner</div>
+          <p class="team-bio">Hands-on leader with a passion for quality work and happy customers.</p>
+          <div class="team-social">
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" style="background-image:url('../design-1/images/about/about-work-3.jpg');"></div>
+        <div class="team-info">
+          <div class="team-name">Marcus</div>
+          <div class="team-role">Lawn Care Specialist</div>
+          <p class="team-bio">Detail-oriented and dependable. Marcus keeps every lawn looking its best.</p>
+          <div class="team-social">
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-photo" style="background-image:url('../design-1/images/about/about-work-4.jpg');"></div>
+        <div class="team-info">
+          <div class="team-name">Tyler</div>
+          <div class="team-role">Landscaping Technician</div>
+          <p class="team-bio">From cleanups to installations, Tyler brings skill and pride to every project.</p>
+          <div class="team-social">
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VALUES ── -->
+<section class="values-section">
+  <div class="wrap">
+    <div class="values-header">
+      <div class="section-label"><span></span>Why Choose Us</div>
+      <h2>We don't cut corners.<br>We build trust.</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="value-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <h4>Reliable Service</h4>
+        <p>We show up on time and get the job done right — every single visit.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <h4>Quality Work</h4>
+        <p>Attention to detail in everything we do. No shortcuts, no cutting corners.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h4>Local &amp; Insured</h4>
+        <p>We're local, fully insured, and easy to reach. A team you can actually trust.</p>
+      </div>
+      <div class="value-item">
+        <div class="value-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h4>Straightforward Pricing</h4>
+        <p>Honest estimates with no surprises. You know the cost before we start.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SERVICE AREA ── -->
+<section class="area-section">
+  <div class="wrap">
+    <div class="area-inner">
+      <div class="area-map">
+        <img src="../design-1/images/about/about-work-fence-cleanup.jpg" alt="Service area">
+        <div class="area-map-overlay"></div>
+        <div class="area-pin"></div>
+        <div style="position:absolute;bottom:20px;left:20px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);">Twin Cities Metro</div>
       </div>
       <div>
-        <div class="s-lbl">Why Choose Us</div>
-        <h2 class="s-h">We Treat Every Yard<br>Like It's Ours.</h2>
-        <p class="s-p">The work you see in our portfolio is the work you'll get at your property — no shortcuts, no cutting corners.</p>
-        <ul class="check-list">
-          <li>Consistent crew — the same people every visit</li>
-          <li>Clear, flat-rate pricing with no surprise add-ons</li>
-          <li>We clean up completely before we leave</li>
-          <li>Photo updates sent after every service</li>
-          <li>Locally-rooted, community-focused approach</li>
-        </ul>
-        <a href="portfolio.html" class="btn-g">See the Results →</a>
+        <div class="section-label"><span></span>Our Service Area</div>
+        <h2 class="section-h">Proudly Serving<br>Our Community</h2>
+        <p class="section-sub">We provide lawn care and property maintenance services to homeowners and businesses within 25 miles of our base.</p>
+        <div class="area-services">
+          <div class="area-svc">Residential &amp; Commercial Properties</div>
+          <div class="area-svc">Weekly, Bi-Weekly &amp; One-Time Services</div>
+          <div class="area-svc">Seasonal Cleanups &amp; More</div>
+        </div>
+        <a href="#" style="font-size:11.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#069106;display:inline-flex;align-items:center;gap:6px;margin-top:28px;transition:gap .2s;">
+          View Service Area
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICE AREA -->
-<section class="area">
-  <div class="wrap">
-    <div class="s-lbl" style="justify-content:center;display:flex;">Where We Work</div>
-    <h2 class="s-h" style="text-align:center;">Serving the Twin Cities Metro</h2>
-    <div class="area-tags">
-      <span class="area-tag">Minneapolis</span>
-      <span class="area-tag">St. Paul</span>
-      <span class="area-tag">Edina</span>
-      <span class="area-tag">Plymouth</span>
-      <span class="area-tag">Minnetonka</span>
-      <span class="area-tag">Eden Prairie</span>
-      <span class="area-tag">Bloomington</span>
-      <span class="area-tag">Richfield</span>
-      <span class="area-tag">Hopkins</span>
-      <span class="area-tag">St. Louis Park</span>
-      <span class="area-tag">Golden Valley</span>
-      <span class="area-tag">Maple Grove</span>
+<!-- ── BOTTOM CTA ── -->
+<div class="bottom-cta">
+  <div class="bottom-cta-left">
+    <div class="cta-phone-icon">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.16h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+    </div>
+    <div>
+      <h2>Ready to work with a team you can trust?</h2>
+      <p>Let's make your lawn the best on the block.</p>
     </div>
   </div>
-</section>
+  <a href="tel:6129998067" class="btn-cta-green">Get a Free Quote →</a>
+</div>
 
-<!-- CTA -->
-<section class="cta">
-  <div class="wrap">
-    <span class="s-lbl">Ready to Start?</span>
-    <h2 class="s-h">Get Your Free<br>Property Quote</h2>
-    <p class="s-p">No commitment. We'll assess your property and send a clear, itemized quote within one business day.</p>
-    <div class="cta-btns">
-      <a href="tel:6129998067" class="btn-wh">Call (612) 999-8067</a>
-      <a href="mailto:contact@freshwaterlandscaping.com" class="btn-wh-out">Send an Email</a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap">
-    <div class="foot-inner">
-      <div class="foot-brand">
-        <div class="fn">Reece's Outdoor Solutions</div>
-        <p>Professional lawn care and property maintenance serving the Twin Cities.</p>
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's<br><em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
       </div>
-      <div class="foot-col">
+    </div>
+    <div class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="fn-col">
         <h4>Services</h4>
-        <ul>
-          <li><a href="index.html#services">Lawn Care</a></li>
-          <li><a href="index.html#services">Property Cleanups</a></li>
-          <li><a href="index.html#services">Landscaping</a></li>
-          <li><a href="index.html#services">Tree Services</a></li>
-        </ul>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Fertilization</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
       </div>
-      <div class="foot-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="index.html#contact">Get a Quote</a></li>
-        </ul>
-      </div>
-      <div class="foot-col">
+      <div class="fn-col">
         <h4>Contact</h4>
-        <ul>
-          <li><a href="tel:6129998067">(612) 999-8067</a></li>
-          <li><a href="mailto:contact@freshwaterlandscaping.com">contact@...</a></li>
-          <li><a href="#">Twin Cities, MN</a></li>
-        </ul>
+        <a href="tel:6129998067">(612) 999-8067</a>
+        <a href="mailto:contact@reecesoutdoor.com">contact@reecesoutdoor.com</a>
+        <a href="#" class="footer-cta-link">Get a Free Quote →</a>
       </div>
     </div>
-    <div class="foot-bot">
-      <p>&copy; 2026 Reece's Outdoor Solutions. All rights reserved.</p>
-      <p style="color:rgba(255,255,255,.12);">Design 3</p>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
     </div>
   </div>
 </footer>
 
+<!-- ── MOBILE NAV ── -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mob-bar">
+    <span class="mob-logo">Reece's Outdoor</span>
+    <button class="mob-close" id="mob-close" aria-label="Close menu">✕</button>
+  </div>
+  <a href="index.html">Home</a>
+  <a href="#">Lawn Care</a>
+  <a href="#">Landscaping</a>
+  <a href="portfolio.html">Portfolio</a>
+  <a href="about.html">About</a>
+  <a href="#">Reviews</a>
+  <a class="mob-cta-link" href="#">Get a Free Quote →</a>
+</div>
+
 <script>
 (function(){
-  var h=document.documentElement;
-  document.getElementById('themeToggle').addEventListener('click',function(){
-    var sys=window.matchMedia('(prefers-color-scheme:dark)').matches;
-    var cur=h.getAttribute('data-theme');
-    var isDark=(cur==='dark')||(cur===null&&sys);
-    var next=isDark?'light':'dark';
-    h.setAttribute('data-theme',next);
-    localStorage.setItem('d3-theme',next);
-  });
+  var btn=document.getElementById('mob-open');
+  var nav=document.getElementById('mobile-nav');
+  var cls=document.getElementById('mob-close');
+  function open(){nav.classList.add('is-open');nav.removeAttribute('aria-hidden');document.body.style.overflow='hidden';}
+  function close(){nav.classList.remove('is-open');nav.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+  if(btn)btn.addEventListener('click',open);
+  if(cls)cls.addEventListener('click',close);
+  nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
 })();
 </script>
 </body>
