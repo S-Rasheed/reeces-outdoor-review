@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio — Reece's Outdoor Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script>(function(){var t=localStorage.getItem('d3-theme');if(t)document.documentElement.setAttribute('data-theme',t);})()</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --green:#18a018;--gd:#0f820f;--gxd:#0a5c0a;--gp:#edf7ed;
+  --blk:#080807;--wh:#ffffff;--off:#f7f8f6;
+  --tx:#0d0e0b;--tx2:#5a6472;--tx3:#9ba394;
+  --brc:#e2e6df;
+}
+[data-theme="dark"]{
+  --wh:#141412;--off:#1c1c1a;
+  --tx:#f0ede8;--tx2:#a0a099;--tx3:#6a6a66;
+  --brc:rgba(255,255,255,.1);--gp:rgba(24,160,24,.15);
+  --blk:#f0ede8;
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--wh);color:var(--tx);line-height:1.6;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+/* NAV */
+nav{background:var(--green);position:sticky;top:0;z-index:100;height:62px;display:flex;align-items:center;padding:0 28px;justify-content:space-between;}
+.n-logo{display:flex;align-items:center;gap:10px;}
+.n-mark{width:34px;height:34px;background:#fff;border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:var(--green);flex-shrink:0;}
+.n-text .brand{font-family:'Syne',sans-serif;font-weight:800;font-size:15px;color:#fff;line-height:1.1;}
+.n-text .sub{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.4px;text-transform:uppercase;}
+.n-links{display:flex;align-items:center;gap:32px;}
+.n-links a{font-size:12.5px;font-weight:500;letter-spacing:.5px;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s;}
+.n-links a:hover,.n-links a.active{color:#fff;}
+.n-right{display:flex;align-items:center;gap:12px;}
+.n-btn{background:#fff;color:var(--green);font-size:12.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;padding:9px 20px;border-radius:6px;transition:opacity .2s;display:inline-block;}
+.n-btn:hover{opacity:.9;}
+.ttoggle{width:34px;height:34px;border-radius:6px;border:1.5px solid rgba(255,255,255,.3);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.7);transition:border-color .2s,color .2s;}
+.ttoggle:hover{border-color:#fff;color:#fff;}
+.i-sun{display:none;}
+[data-theme="dark"] .i-sun{display:flex;}
+[data-theme="dark"] .i-moon{display:none;}
+
+/* HERO */
+.hero{background:var(--green);padding:80px 0;text-align:center;}
+.hero h1{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(40px,5.5vw,72px);line-height:.93;letter-spacing:-2px;color:#fff;margin-bottom:18px;}
+.hero-sub{font-size:16.5px;color:rgba(255,255,255,.72);line-height:1.7;max-width:480px;margin:0 auto 40px;}
+.hero-stats{display:flex;justify-content:center;gap:48px;padding-top:32px;border-top:1px solid rgba(255,255,255,.18);max-width:500px;margin:0 auto;}
+.hs .n{font-family:'Syne',sans-serif;font-weight:800;font-size:26px;color:#fff;line-height:1;}
+.hs .l{font-size:11.5px;color:rgba(255,255,255,.55);margin-top:3px;}
+
+/* SECTION SHARED */
+.s-lbl{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.s-h{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(28px,3.5vw,44px);letter-spacing:-1px;color:var(--tx);line-height:1.1;margin-bottom:12px;}
+.s-p{font-size:15.5px;color:var(--tx2);line-height:1.75;}
+
+/* FILTER BAR */
+.filter-bar{
+  position:sticky;top:62px;z-index:50;
+  background:var(--wh);
+  border-bottom:1px solid var(--brc);
+  padding:0;
+}
+.filter-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 28px;max-width:1180px;margin:0 auto;
+  gap:16px;
+}
+.filter-tabs{display:flex;gap:4px;padding:12px 0;}
+.ftab{
+  font-size:12.5px;font-weight:600;letter-spacing:.3px;
+  padding:7px 16px;border-radius:8px;cursor:pointer;
+  border:1.5px solid transparent;color:var(--tx3);
+  transition:all .2s;background:transparent;
+}
+.ftab:hover{color:var(--tx);background:var(--off);}
+.ftab.active{background:var(--green);color:#fff;border-color:var(--green);}
+.filter-cta{
+  font-size:13px;font-weight:700;color:#fff;
+  background:var(--green);padding:9px 20px;border-radius:8px;
+  white-space:nowrap;flex-shrink:0;transition:background .2s;
+}
+.filter-cta:hover{background:var(--gd);}
+
+/* PROJECTS */
+.projects{padding:80px 0;background:var(--wh);}
+
+.project-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;
+  padding-bottom:80px;margin-bottom:80px;border-bottom:1px solid var(--brc);
+}
+.project-row:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0;}
+.project-row.rev{direction:rtl;}
+.project-row.rev>*{direction:ltr;}
+
+/* B/A SLIDER */
+.ba-slider{
+  position:relative;--split:52%;aspect-ratio:4/3;
+  border-radius:14px;overflow:hidden;cursor:col-resize;user-select:none;
+  border:1.5px solid var(--brc);
+  box-shadow:0 8px 32px rgba(0,0,0,.08);
+}
+.ba-after{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.ba-before-wrap{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--split)) 0 0);}
+.ba-before{width:100%;height:100%;object-fit:cover;}
+.ba-divider{
+  position:absolute;top:0;bottom:0;left:var(--split);
+  width:3px;background:#fff;transform:translateX(-50%);
+  box-shadow:0 0 8px rgba(0,0,0,.25);
+}
+.ba-handle{
+  position:absolute;top:50%;left:var(--split);
+  width:36px;height:36px;border-radius:50%;
+  background:#fff;border:3px solid var(--green);
+  transform:translate(-50%,-50%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 16px rgba(0,0,0,.2);
+}
+.ba-handle svg{color:var(--green);}
+.ba-labels{position:absolute;bottom:14px;left:0;right:0;display:flex;justify-content:space-between;padding:0 14px;pointer-events:none;}
+.ba-lbl{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;background:rgba(0,0,0,.55);color:#fff;padding:3px 9px;border-radius:5px;}
+/* before placeholder */
+.ba-before-ph{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#d0d8cc 0%,#b8c4b2 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:8px;color:rgba(0,0,0,.35);
+}
+.ba-before-ph svg{opacity:.4;}
+.ba-before-ph span{font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;opacity:.5;}
+
+.proj-meta{}
+.proj-tag{display:inline-block;background:var(--gp);color:var(--green);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;margin-bottom:16px;border:1px solid rgba(24,160,24,.2);}
+.proj-meta h3{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(22px,2.5vw,30px);color:var(--tx);letter-spacing:-.5px;margin-bottom:12px;}
+.proj-meta p{font-size:14.5px;color:var(--tx2);line-height:1.75;margin-bottom:20px;}
+.proj-details{display:flex;gap:24px;flex-wrap:wrap;}
+.proj-detail{display:flex;flex-direction:column;gap:3px;}
+.proj-detail .d-lbl{font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);}
+.proj-detail .d-val{font-size:13.5px;font-weight:600;color:var(--tx);}
+
+/* GALLERY */
+.gallery{padding:100px 0;background:var(--off);}
+.g-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:48px;}
+.g-grid .g-wide{grid-column:span 2;}
+.g-cell{border-radius:10px;overflow:hidden;position:relative;}
+.g-cell img{width:100%;height:200px;object-fit:cover;transition:transform .4s;}
+.g-grid .g-wide img{height:200px;}
+.g-cell:hover img{transform:scale(1.05);}
+
+/* CTA / CONTACT */
+.cta{background:#080807;padding:100px 0;text-align:center;}
+[data-theme="dark"] .cta{background:var(--gxd);}
+.cta .s-lbl{display:block;color:var(--green);margin-bottom:12px;}
+.cta .s-h{color:#fff;max-width:540px;margin:0 auto 14px;}
+.cta .s-p{color:rgba(255,255,255,.5);max-width:420px;margin:0 auto 40px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-wh{background:#fff;color:var(--green);font-size:13.5px;font-weight:700;padding:13px 26px;border-radius:8px;border:2px solid #fff;transition:opacity .2s;display:inline-block;}
+.btn-wh:hover{opacity:.9;}
+.btn-wh-out{background:transparent;color:#fff;font-size:13.5px;font-weight:600;padding:13px 26px;border-radius:8px;border:2px solid rgba(255,255,255,.25);transition:border-color .2s;display:inline-block;}
+.btn-wh-out:hover{border-color:rgba(255,255,255,.7);}
+
+/* FOOTER */
+footer{background:#080807;border-top:1px solid rgba(255,255,255,.07);padding:64px 0 36px;}
+[data-theme="dark"] footer{background:#0a0a09;}
+.foot-inner{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.foot-brand .fn{font-family:'Syne',sans-serif;font-weight:800;font-size:17px;color:#fff;margin-bottom:10px;}
+.foot-brand p{font-size:13px;color:rgba(255,255,255,.32);line-height:1.7;max-width:200px;}
+.foot-col h4{font-family:'Syne',sans-serif;font-weight:700;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:18px;}
+.foot-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.foot-col ul a{font-size:13.5px;color:rgba(255,255,255,.5);transition:color .2s;}
+.foot-col ul a:hover{color:#fff;}
+.foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:24px;border-top:1px solid rgba(255,255,255,.07);}
+.foot-bot p{font-size:12px;color:rgba(255,255,255,.2);}
+
+@media(max-width:1024px){.foot-inner{grid-template-columns:1fr 1fr;gap:32px;}}
+@media(max-width:768px){.project-row,.project-row.rev{grid-template-columns:1fr;direction:ltr;gap:32px;}.g-grid{grid-template-columns:repeat(2,1fr);}.g-grid .g-wide{grid-column:auto;}.n-links{display:none;}.hero-stats{gap:24px;}}
+@media(max-width:480px){.g-grid{grid-template-columns:1fr;}.foot-inner{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="n-logo">
+    <div class="n-mark">RO</div>
+    <div class="n-text">
+      <div class="brand">Reece's Outdoor</div>
+      <div class="sub">Lawn &amp; Landscaping</div>
+    </div>
+  </a>
+  <div class="n-links">
+    <a href="index.html#services">Services</a>
+    <a href="portfolio.html" class="active">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="index.html#contact">Contact</a>
+  </div>
+  <div class="n-right">
+    <button class="ttoggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="i-moon" width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="i-sun" width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+    </button>
+    <a href="index.html#contact" class="n-btn">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Real Work.<br>Real Results.</h1>
+    <p class="hero-sub">Every project below is a real property we've maintained, cleaned up, or transformed — right here in the Twin Cities.</p>
+    <div class="hero-stats">
+      <div class="hs"><div class="n">100<span style="color:rgba(255,255,255,.55);font-size:.7em;">+</span></div><div class="l">Projects Done</div></div>
+      <div class="hs"><div class="n">4.9<span style="color:rgba(255,255,255,.55);font-size:.7em;">★</span></div><div class="l">Average Rating</div></div>
+      <div class="hs"><div class="n">5<span style="color:rgba(255,255,255,.55);font-size:.7em;">+ yrs</span></div><div class="l">Serving MN</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <div class="filter-tabs">
+      <button class="ftab active" data-cat="all">All Projects</button>
+      <button class="ftab" data-cat="lawn">Lawn Care</button>
+      <button class="ftab" data-cat="cleanup">Cleanups</button>
+      <button class="ftab" data-cat="landscape">Landscaping</button>
+    </div>
+    <a href="index.html#contact" class="filter-cta">Request a Quote →</a>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects">
+  <div class="wrap">
+
+    <!-- Project 1 -->
+    <div class="project-row" data-cat="lawn">
+      <div class="ba-slider" id="ba1">
+        <img class="ba-after" src="../design-1/images/portfolio/portfolio-lawn-maintenance.jpg" alt="After">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Before Photo</span>
+          </div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-handle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-lbl">Before</span>
+          <span class="ba-lbl">After</span>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-tag">Lawn Care</span>
+        <h3>Weekly Lawn Maintenance</h3>
+        <p>Full-season lawn care program including mowing, edging, trimming, and blowing. Property went from overgrown and patchy to consistently sharp across all visits.</p>
+        <div class="proj-details">
+          <div class="proj-detail"><span class="d-lbl">Service</span><span class="d-val">Weekly Maintenance</span></div>
+          <div class="proj-detail"><span class="d-lbl">Location</span><span class="d-val">Edina, MN</span></div>
+          <div class="proj-detail"><span class="d-lbl">Season</span><span class="d-val">Full Season</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="project-row rev" data-cat="cleanup">
+      <div class="ba-slider" id="ba2">
+        <img class="ba-after" src="../design-1/images/portfolio/portfolio-spring-cleanup.jpg" alt="After">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Before Photo</span>
+          </div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-handle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-lbl">Before</span>
+          <span class="ba-lbl">After</span>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-tag">Cleanup</span>
+        <h3>Spring Property Cleanup</h3>
+        <p>Full spring cleanup after a heavy winter — leaf and debris removal, bed edging, pruning, and fresh mulch. Property was completely refreshed in one visit.</p>
+        <div class="proj-details">
+          <div class="proj-detail"><span class="d-lbl">Service</span><span class="d-val">Spring Cleanup</span></div>
+          <div class="proj-detail"><span class="d-lbl">Location</span><span class="d-val">Plymouth, MN</span></div>
+          <div class="proj-detail"><span class="d-lbl">Duration</span><span class="d-val">1 Day</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="project-row" data-cat="landscape">
+      <div class="ba-slider" id="ba3">
+        <img class="ba-after" src="../design-1/images/portfolio/portfolio-front-yard.jpg" alt="After">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Before Photo</span>
+          </div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-handle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-lbl">Before</span>
+          <span class="ba-lbl">After</span>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-tag">Landscaping</span>
+        <h3>Front Yard Overhaul</h3>
+        <p>Complete front yard transformation — new bed edging, plant installation, fresh mulch, and sod repair on high-traffic areas. Major curb appeal improvement.</p>
+        <div class="proj-details">
+          <div class="proj-detail"><span class="d-lbl">Service</span><span class="d-val">Landscaping</span></div>
+          <div class="proj-detail"><span class="d-lbl">Location</span><span class="d-val">Minnetonka, MN</span></div>
+          <div class="proj-detail"><span class="d-lbl">Duration</span><span class="d-val">2 Days</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 4 -->
+    <div class="project-row rev" data-cat="lawn">
+      <div class="ba-slider" id="ba4">
+        <img class="ba-after" src="../design-1/images/portfolio/portfolio-edging-trim.jpg" alt="After">
+        <div class="ba-before-wrap">
+          <div class="ba-before-ph">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><circle cx="8.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M21 15l-5-5L5 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span>Before Photo</span>
+          </div>
+        </div>
+        <div class="ba-divider"></div>
+        <div class="ba-handle">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M9 18l-6-6 6-6M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="ba-labels">
+          <span class="ba-lbl">Before</span>
+          <span class="ba-lbl">After</span>
+        </div>
+      </div>
+      <div class="proj-meta">
+        <span class="proj-tag">Lawn Care</span>
+        <h3>Detail Edging &amp; Trim Work</h3>
+        <p>Clean-up service focused on precision edging along driveways, walkways, and garden beds. The kind of detail work that makes a maintained lawn look professionally done.</p>
+        <div class="proj-details">
+          <div class="proj-detail"><span class="d-lbl">Service</span><span class="d-val">Detail Edging</span></div>
+          <div class="proj-detail"><span class="d-lbl">Location</span><span class="d-val">Eden Prairie, MN</span></div>
+          <div class="proj-detail"><span class="d-lbl">Duration</span><span class="d-val">Half Day</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery">
+  <div class="wrap">
+    <div class="s-lbl">More Work</div>
+    <h2 class="s-h">From Our Portfolio</h2>
+    <div class="g-grid">
+      <div class="g-cell g-wide"><img src="../design-1/images/about/about-work-1.jpg" alt="Work 1"></div>
+      <div class="g-cell"><img src="../design-1/images/about/about-work-3.jpg" alt="Work 3"></div>
+      <div class="g-cell"><img src="../design-1/images/about/about-work-4.jpg" alt="Work 4"></div>
+      <div class="g-cell"><img src="../design-1/images/about/about-work-tree-service.jpg" alt="Tree service"></div>
+      <div class="g-cell g-wide"><img src="../design-1/images/portfolio/portfolio-seasonal-care.jpg" alt="Seasonal"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="wrap">
+    <span class="s-lbl">Get Started</span>
+    <h2 class="s-h">Ready for Results<br>Like These?</h2>
+    <p class="s-p">We quote fast and schedule within the week. No commitment required to get a number.</p>
+    <div class="cta-btns">
+      <a href="tel:6129998067" class="btn-wh">Call (612) 999-8067</a>
+      <a href="mailto:contact@freshwaterlandscaping.com" class="btn-wh-out">Send an Email</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-inner">
+      <div class="foot-brand">
+        <div class="fn">Reece's Outdoor Solutions</div>
+        <p>Professional lawn care and property maintenance serving the Twin Cities.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#services">Lawn Care</a></li>
+          <li><a href="index.html#services">Property Cleanups</a></li>
+          <li><a href="index.html#services">Landscaping</a></li>
+          <li><a href="index.html#services">Tree Services</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="index.html#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6129998067">(612) 999-8067</a></li>
+          <li><a href="mailto:contact@freshwaterlandscaping.com">contact@...</a></li>
+          <li><a href="#">Twin Cities, MN</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <p>&copy; 2026 Reece's Outdoor Solutions. All rights reserved.</p>
+      <p style="color:rgba(255,255,255,.12);">Design 3</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// B/A sliders
+(function(){
+  document.querySelectorAll('.ba-slider').forEach(function(sl){
+    function setPos(x){
+      var r=sl.getBoundingClientRect();
+      var pct=Math.min(Math.max((x-r.left)/r.width*100,5),95);
+      sl.style.setProperty('--split',pct+'%');
+    }
+    var drag=false;
+    sl.addEventListener('mousedown',function(e){drag=true;setPos(e.clientX);e.preventDefault();});
+    sl.addEventListener('touchstart',function(e){drag=true;setPos(e.touches[0].clientX);},{passive:true});
+    window.addEventListener('mousemove',function(e){if(drag)setPos(e.clientX);});
+    window.addEventListener('touchmove',function(e){if(drag)setPos(e.touches[0].clientX);},{passive:true});
+    window.addEventListener('mouseup',function(){drag=false;});
+    window.addEventListener('touchend',function(){drag=false;});
+  });
+})();
+
+// Filter tabs
+(function(){
+  var tabs=document.querySelectorAll('.ftab');
+  var rows=document.querySelectorAll('.project-row');
+  tabs.forEach(function(tab){
+    tab.addEventListener('click',function(){
+      tabs.forEach(function(t){t.classList.remove('active');});
+      tab.classList.add('active');
+      var cat=tab.getAttribute('data-cat');
+      rows.forEach(function(row){
+        row.style.display=(cat==='all'||row.getAttribute('data-cat')===cat)?'':'none';
+      });
+    });
+  });
+})();
+
+// Dark mode toggle
+(function(){
+  var h=document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var sys=window.matchMedia('(prefers-color-scheme:dark)').matches;
+    var cur=h.getAttribute('data-theme');
+    var isDark=(cur==='dark')||(cur===null&&sys);
+    var next=isDark?'light':'dark';
+    h.setAttribute('data-theme',next);
+    localStorage.setItem('d3-theme',next);
+  });
+})();
+</script>
+</body>
+</html>
