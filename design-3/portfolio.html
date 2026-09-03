@@ -20,7 +20,7 @@ a{text-decoration:none;color:inherit;}
   display:flex;align-items:center;justify-content:space-between;
   padding:0 44px;height:36px;
   border-bottom:1px solid rgba(255,255,255,.08);
-  background:rgba(5,5,5,.92);
+  background:transparent;
 }
 .tb-social{display:flex;align-items:center;gap:18px;}
 .tb-social a{color:rgba(255,255,255,.35);display:flex;transition:color .2s;}
@@ -34,13 +34,12 @@ a{text-decoration:none;color:inherit;}
 
 /* ── NAV ── */
 nav{
-  position:sticky;top:0;z-index:100;
+  position:relative;z-index:10;
   display:grid;grid-template-columns:1fr auto 1fr;
   align-items:center;
-  padding:22px 44px;
-  background:rgba(10,10,10,.96);
-  backdrop-filter:blur(12px);
-  border-bottom:1px solid rgba(255,255,255,.07);
+  padding:26px 44px;
+  background:transparent;
+  border-bottom:none;
 }
 .n-left{display:flex;align-items:center;justify-content:flex-start;gap:36px;}
 .n-right{display:flex;align-items:center;justify-content:flex-end;gap:36px;}
@@ -71,9 +70,10 @@ nav{
 
 /* ── HERO ── */
 .port-hero{
-  position:relative;min-height:52vh;display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;min-height:60vh;display:flex;flex-direction:column;
   overflow:hidden;
 }
+.port-hero-spacer{flex:1;}
 .port-hero-bg{position:absolute;inset:0;background-image:url('../../images/IMG-20260825-WA0133.jpg');background-size:cover;background-position:center;}
 .port-hero-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.3) 100%);}
 .port-hero-content{position:relative;z-index:2;padding:56px 44px 52px;}
@@ -87,7 +87,7 @@ nav{
 
 /* ── FILTER BAR ── */
 .filter-bar{
-  position:sticky;top:73px;z-index:90;
+  position:sticky;top:0;z-index:90;
   background:rgba(8,8,8,.72);backdrop-filter:blur(16px);
   border-bottom:1px solid rgba(255,255,255,.06);
 }
@@ -219,48 +219,50 @@ nav{
 </head>
 <body>
 
-<!-- ── TOPBAR ── -->
-<div class="topbar">
-  <div class="tb-social">
-    <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-    <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
-    <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
-  </div>
-  <div class="tb-contact">
-    <a href="mailto:contact@reecesoutdoor.com" class="highlight">contact@reecesoutdoor.com</a>
-    <div class="tb-sep"></div>
-    <a href="tel:6129998067">(612) 999-8067</a>
-  </div>
-</div>
-
-<!-- ── NAV ── -->
-<nav>
-  <div class="n-left">
-    <a href="#">Lawn Care</a>
-    <a href="#">Landscaping</a>
-    <a href="portfolio.html" class="active">Portfolio</a>
-  </div>
-  <div class="n-center">
-    <a href="index.html" class="logo">Reece's Outdoor</a>
-    <div class="logo-subs">
-      <a href="#">Free Quote</a>
-      <a href="tel:6129998067">(612) 999-8067</a>
-    </div>
-  </div>
-  <div class="n-right">
-    <a href="about.html">About</a>
-    <a href="#">Reviews</a>
-    <a href="#">Contact</a>
-  </div>
-  <button class="n-hamburger" id="mob-open" aria-label="Open menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
 <!-- ── HERO ── -->
 <section class="port-hero">
   <div class="port-hero-bg"></div>
   <div class="port-hero-ov"></div>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="tb-social">
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="LinkedIn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+    <div class="tb-contact">
+      <a href="mailto:contact@reecesoutdoor.com" class="highlight">contact@reecesoutdoor.com</a>
+      <div class="tb-sep"></div>
+      <a href="tel:6129998067">(612) 999-8067</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="n-left">
+      <a href="#">Lawn Care</a>
+      <a href="#">Landscaping</a>
+      <a href="portfolio.html" class="active">Portfolio</a>
+    </div>
+    <div class="n-center">
+      <a href="index.html" class="logo">Reece's Outdoor</a>
+      <div class="logo-subs">
+        <a href="#">Free Quote</a>
+        <a href="tel:6129998067">(612) 999-8067</a>
+      </div>
+    </div>
+    <div class="n-right">
+      <a href="about.html">About</a>
+      <a href="#">Reviews</a>
+      <a href="#">Contact</a>
+    </div>
+    <button class="n-hamburger" id="mob-open" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="port-hero-spacer"></div>
   <div class="port-hero-content">
     <div class="port-hero-label"><span></span>Our Work</div>
     <h1>Real properties.<br>Real results.</h1>
