@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Reece's Outdoor Solutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:#0a0a0a;color:#fff;-webkit-font-smoothing:antialiased;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 44px;}
+
+/* ── TOPBAR ── */
+.topbar{position:relative;z-index:11;display:flex;align-items:center;justify-content:space-between;padding:0 44px;height:36px;border-bottom:1px solid rgba(255,255,255,.08);background:transparent;}
+.tb-social{display:flex;align-items:center;gap:18px;}
+.tb-social a{color:rgba(255,255,255,.35);display:flex;transition:color .2s;}
+.tb-social a:hover{color:rgba(255,255,255,.8);}
+.tb-contact{display:flex;align-items:center;gap:24px;}
+.tb-contact a{font-size:11px;letter-spacing:.4px;color:rgba(255,255,255,.45);text-decoration:none;transition:color .2s;}
+.tb-contact a:hover{color:rgba(255,255,255,.85);}
+.tb-contact a.hl{color:rgba(255,255,255,.75);}
+.tb-sep{width:1px;height:11px;background:rgba(255,255,255,.12);}
+
+/* ── NAV ── */
+nav{position:relative;z-index:10;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:26px 44px;background:transparent;border-bottom:none;}
+.n-left{display:flex;align-items:center;justify-content:flex-start;gap:36px;}
+.n-right{display:flex;align-items:center;justify-content:flex-end;gap:36px;}
+.n-left a,.n-right a{font-size:11px;font-weight:600;letter-spacing:1.8px;text-transform:uppercase;color:rgba(255,255,255,.6);text-decoration:none;white-space:nowrap;transition:color .2s;}
+.n-left a:hover,.n-right a:hover,.n-left a.active,.n-right a.active{color:#fff;}
+.n-center{display:flex;flex-direction:column;align-items:center;gap:6px;border-left:1px solid rgba(255,255,255,.18);border-right:1px solid rgba(255,255,255,.18);padding:4px 40px;text-align:center;}
+.n-center .logo{font-size:13px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:#fff;line-height:1;}
+.n-center .logo-subs{display:flex;gap:18px;}
+.n-center .logo-subs a{font-size:9.5px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.38);text-decoration:none;transition:color .2s;}
+.n-center .logo-subs a:hover{color:rgba(255,255,255,.7);}
+
+/* ── HAMBURGER + MOBILE NAV ── */
+.n-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:8px;position:absolute;right:20px;top:50%;transform:translateY(-50%);z-index:15;}
+.n-hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:1px;}
+.mobile-nav{position:fixed;inset:0;z-index:500;background:#0a0a0a;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;clip-path:circle(0% at calc(100% - 44px) 44px);transition:clip-path .4s cubic-bezier(.4,0,.2,1);pointer-events:none;}
+.mobile-nav.is-open{clip-path:circle(160% at calc(100% - 44px) 44px);pointer-events:all;}
+.mob-bar{position:absolute;top:0;left:0;right:0;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid rgba(255,255,255,.08);}
+.mob-logo{font-size:13px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.mob-close{background:none;border:none;color:rgba(255,255,255,.6);cursor:pointer;font-size:26px;line-height:1;padding:4px;}
+.mobile-nav > a{font-size:clamp(22px,5vw,30px);font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.5px;padding:16px 40px;text-align:center;width:100%;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s;}
+.mobile-nav > a:hover{color:#069106;}
+.mob-cta-link{margin-top:32px;display:inline-flex;align-items:center;gap:8px;background:#069106!important;color:#fff!important;font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;padding:14px 36px;border-radius:4px;text-decoration:none;transition:background .2s;}
+.mob-cta-link:hover{background:#057305!important;border-bottom:none!important;}
+
+/* ── HERO ── */
+.contact-hero{position:relative;min-height:46vh;display:flex;flex-direction:column;overflow:hidden;}
+.contact-hero-spacer{flex:1;}
+.contact-hero-bg{position:absolute;inset:0;background-image:url('../../images/IMG-20260825-WA0133.jpg');background-size:cover;background-position:center 40%;}
+.contact-hero-ov{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.92) 0%,rgba(0,0,0,.65) 50%,rgba(0,0,0,.3) 100%);}
+.contact-hero-ov2{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,transparent 50%);}
+.contact-hero-content{position:relative;z-index:2;padding:52px 44px 48px;max-width:600px;}
+.contact-label{font-size:10px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#069106;margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.contact-label span{display:inline-block;width:24px;height:1.5px;background:#069106;}
+.contact-hero-content h1{font-size:clamp(26px,4vw,48px);font-weight:800;line-height:1.08;letter-spacing:-1.2px;color:#fff;margin-bottom:14px;}
+.contact-hero-sub{font-size:14.5px;color:rgba(255,255,255,.5);line-height:1.7;max-width:420px;}
+
+/* ── CONTACT SECTION ── */
+.contact-section{padding:80px 0 100px;}
+.contact-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:start;}
+
+/* info sidebar */
+.contact-info{display:flex;flex-direction:column;gap:28px;}
+.info-card{background:#111;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:24px;}
+.info-card-icon{width:38px;height:38px;background:rgba(6,145,6,.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
+.info-card h4{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:8px;}
+.info-card p,.info-card a{font-size:14px;font-weight:600;color:rgba(255,255,255,.85);line-height:1.5;}
+.info-card a:hover{color:#069106;}
+.info-note{font-size:12px;color:rgba(255,255,255,.35);margin-top:4px;font-weight:400;}
+
+/* form */
+.form-card{background:#111;border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:40px;}
+.form-section-title{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#069106;margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.form-section-title span{display:inline-block;flex:1;height:1px;background:rgba(6,145,6,.25);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:16px;}
+.form-group label{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:rgba(255,255,255,.4);}
+.form-group input,.form-group textarea,.form-group select{
+  background:#0a0a0a;border:1px solid rgba(255,255,255,.1);border-radius:6px;
+  padding:12px 16px;font-size:14px;font-family:'Manrope',sans-serif;
+  color:#fff;outline:none;transition:border-color .2s;width:100%;
+}
+.form-group input:focus,.form-group textarea:focus{border-color:#069106;}
+.form-group input::placeholder,.form-group textarea::placeholder{color:rgba(255,255,255,.2);}
+.form-group textarea{resize:vertical;min-height:100px;}
+
+/* radio group */
+.radio-group{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+.radio-label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;color:rgba(255,255,255,.6);padding:9px 16px;border:1px solid rgba(255,255,255,.1);border-radius:6px;transition:all .15s;}
+.radio-label:has(input:checked){border-color:#069106;color:#fff;background:rgba(6,145,6,.08);}
+.radio-label input{accent-color:#069106;width:14px;height:14px;}
+
+/* checkboxes */
+.check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px;}
+.check-label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:12.5px;font-weight:600;color:rgba(255,255,255,.55);padding:9px 14px;border:1px solid rgba(255,255,255,.08);border-radius:6px;transition:all .15s;}
+.check-label:has(input:checked){border-color:#069106;color:#fff;background:rgba(6,145,6,.08);}
+.check-label input{accent-color:#069106;width:14px;height:14px;flex-shrink:0;}
+.other-row{display:flex;align-items:center;gap:8px;grid-column:1/-1;}
+.other-text{flex:1;background:#0a0a0a;border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:9px 14px;font-size:13px;font-family:'Manrope',sans-serif;color:#fff;outline:none;transition:border-color .2s;}
+.other-text:focus{border-color:#069106;}
+.other-text::placeholder{color:rgba(255,255,255,.2);}
+
+/* timeline */
+.timeline-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:4px;}
+.tl-label{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px;font-weight:600;color:rgba(255,255,255,.55);padding:11px 16px;border:1px solid rgba(255,255,255,.08);border-radius:6px;transition:all .15s;}
+.tl-label:has(input:checked){border-color:#069106;color:#fff;background:rgba(6,145,6,.08);}
+.tl-label input{accent-color:#069106;width:14px;height:14px;flex-shrink:0;}
+
+.form-divider{height:1px;background:rgba(255,255,255,.06);margin:28px 0;}
+
+.btn-submit{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:#069106;color:#fff;font-size:13px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:16px 40px;border-radius:6px;border:none;cursor:pointer;width:100%;transition:background .2s;font-family:'Manrope',sans-serif;}
+.btn-submit:hover{background:#057305;}
+.btn-submit svg{transition:transform .2s;}
+.btn-submit:hover svg{transform:translateX(3px);}
+
+/* success/error banner */
+.form-msg{display:none;padding:14px 18px;border-radius:6px;font-size:13px;font-weight:600;margin-bottom:20px;}
+.form-msg.success{background:rgba(6,145,6,.12);border:1px solid rgba(6,145,6,.3);color:#5ecf5e;display:block;}
+.form-msg.error{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.3);color:#f87171;display:block;}
+
+/* ── FOOTER ── */
+.site-footer{background:#030c18;padding:64px 0 0;}
+.footer-inner{display:grid;grid-template-columns:1fr 2fr;gap:64px;padding-bottom:48px;}
+.footer-logo{font-family:'Bricolage Grotesque',sans-serif;font-size:20px;font-weight:700;line-height:1.15;color:#fff;margin-bottom:12px;}
+.footer-logo em{color:#069106;font-style:normal;}
+.footer-tagline{font-size:13px;color:rgba(255,255,255,.35);line-height:1.65;max-width:240px;margin-bottom:20px;}
+.footer-social{display:flex;gap:14px;}
+.footer-social a{color:rgba(255,255,255,.28);transition:color .2s;}
+.footer-social a:hover{color:#fff;}
+.footer-nav{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.fn-col h4{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:16px;}
+.fn-col a{display:block;font-size:13px;color:rgba(255,255,255,.45);margin-bottom:9px;transition:color .2s;}
+.fn-col a:hover{color:#fff;}
+.footer-cta-link{color:#069106!important;font-weight:700;}
+.footer-bar{border-top:1px solid rgba(255,255,255,.06);padding:18px 0;}
+.footer-bar-inner{display:flex;justify-content:space-between;align-items:center;}
+.footer-bar small{font-size:11px;color:rgba(255,255,255,.2);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .contact-grid{grid-template-columns:1fr;}
+  .contact-info{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .check-grid{grid-template-columns:repeat(2,1fr);}
+  .form-row{grid-template-columns:1fr;}
+  .footer-inner{grid-template-columns:1fr;gap:40px;}
+  .footer-nav{grid-template-columns:repeat(3,1fr);}
+  nav .n-left,.nav .n-right{display:none;}
+  .n-hamburger{display:flex;}
+}
+@media(max-width:600px){
+  .wrap{padding:0 20px;}
+  .topbar{padding:0 20px;}
+  nav{padding:18px 20px;}
+  .contact-hero-content{padding:40px 20px 36px;}
+  .contact-section{padding:48px 0 72px;}
+  .form-card{padding:24px 20px;}
+  .check-grid{grid-template-columns:1fr 1fr;}
+  .timeline-grid{grid-template-columns:1fr;}
+  .contact-info{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .footer-nav{grid-template-columns:1fr 1fr;}
+  .footer-bar-inner{flex-direction:column;gap:6px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ── HERO (nav sits inside) ── -->
+<section class="contact-hero">
+  <div class="contact-hero-bg"></div>
+  <div class="contact-hero-ov"></div>
+  <div class="contact-hero-ov2"></div>
+
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="tb-social">
+      <a href="#" aria-label="Instagram"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+      <a href="#" aria-label="Facebook"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+    </div>
+    <div class="tb-contact">
+      <a href="tel:6129998067">(612) 999-8067</a>
+      <div class="tb-sep"></div>
+      <a href="mailto:contact@reecesoutdoor.com" class="hl">contact@reecesoutdoor.com</a>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="n-left">
+      <a href="/portfolio">Portfolio</a>
+      <a href="/about">About</a>
+    </div>
+    <div class="n-center">
+      <a href="/" class="logo">Reece's Outdoor</a>
+      <div class="logo-subs">
+        <a href="#">Lawn Care</a>
+        <a href="#">Landscaping</a>
+      </div>
+    </div>
+    <div class="n-right">
+      <a href="/contact" class="active">Contact</a>
+      <a href="tel:6129998067" style="background:#069106;color:#fff;padding:8px 18px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:1.5px;">(612) 999-8067</a>
+    </div>
+    <button class="n-hamburger" id="hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="contact-hero-spacer"></div>
+
+  <div class="contact-hero-content">
+    <div class="contact-label"><span></span>Get In Touch</div>
+    <h1>Request a Free<br>Quote Today</h1>
+    <p class="contact-hero-sub">Fill out the form below and Reece will get back to you within 24 hours — usually same day.</p>
+  </div>
+</section>
+
+<!-- ── CONTACT SECTION ── -->
+<section class="contact-section">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- Sidebar info -->
+      <div class="contact-info">
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.16h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.29 6.29l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.02z"/></svg>
+          </div>
+          <h4>Phone / Text</h4>
+          <a href="tel:6129998067">(612) 999-8067</a>
+          <p class="info-note">Call or text anytime</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h4>Email</h4>
+          <a href="mailto:contact@reecesoutdoor.com">contact@reecesoutdoor.com</a>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h4>Response Time</h4>
+          <p>Within 24 hours</p>
+          <p class="info-note">Usually same day</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#069106" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h4>Service Area</h4>
+          <p>Twin Cities Metro</p>
+          <p class="info-note">Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="form-card">
+        <div class="form-msg success" id="msg-success">Your request has been sent! Reece will be in touch within 24 hours.</div>
+        <div class="form-msg error" id="msg-error">Something went wrong — please call (612) 999-8067 directly.</div>
+
+        <form action="/contact-handler.php" method="POST">
+
+          <!-- Customer Info -->
+          <div class="form-section-title">Customer Information <span></span></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Full Name *</label>
+              <input type="text" id="name" name="name" placeholder="John Smith" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" placeholder="(612) 000-0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com">
+          </div>
+          <div class="form-group">
+            <label>Preferred Contact Method</label>
+            <div class="radio-group">
+              <label class="radio-label"><input type="radio" name="contact_method" value="Phone Call"> Phone Call</label>
+              <label class="radio-label"><input type="radio" name="contact_method" value="Text"> Text</label>
+              <label class="radio-label"><input type="radio" name="contact_method" value="Email"> Email</label>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- Services -->
+          <div class="form-section-title">Services Interested In <span></span></div>
+          <div class="form-group">
+            <div class="check-grid">
+              <label class="check-label"><input type="checkbox" name="services[]" value="Lawn Mowing"> Lawn Mowing</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Lawn Cleanup"> Lawn Cleanup</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Landscaping"> Landscaping</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Mulching"> Mulching</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Tree/Shrub Trimming"> Tree/Shrub Trimming</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Tree Removal"> Tree Removal</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Sod Installation"> Sod Installation</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Topsoil / Dirt Work"> Topsoil / Dirt Work</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Concrete / Sidewalk Work"> Concrete / Sidewalk</label>
+              <label class="check-label"><input type="checkbox" name="services[]" value="Snow Removal"> Snow Removal</label>
+              <label class="check-label other-row" style="grid-column:span 2;">
+                <input type="checkbox" name="services[]" value="Other"> Other:
+                <input type="text" class="other-text" name="service_other" placeholder="Describe...">
+              </label>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <!-- Project Details -->
+          <div class="form-section-title">Project Details <span></span></div>
+          <div class="form-group">
+            <label for="description">What work are you looking to have done? *</label>
+            <textarea id="description" name="description" placeholder="Describe your project — size of yard, current condition, specific concerns, etc." required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="address">Property Address / Location *</label>
+            <input type="text" id="address" name="address" placeholder="123 Main St, Eden Prairie, MN" required>
+          </div>
+          <div class="form-group">
+            <label>When would you like the work completed?</label>
+            <div class="timeline-grid">
+              <label class="tl-label"><input type="radio" name="timeline" value="As Soon As Possible"> As Soon As Possible</label>
+              <label class="tl-label"><input type="radio" name="timeline" value="Within 1-2 Weeks"> Within 1–2 Weeks</label>
+              <label class="tl-label"><input type="radio" name="timeline" value="Within 30 Days"> Within 30 Days</label>
+              <label class="tl-label"><input type="radio" name="timeline" value="Just Getting a Quote"> Just Getting a Quote</label>
+            </div>
+          </div>
+
+          <div class="form-divider"></div>
+
+          <button type="submit" class="btn-submit">
+            Send My Request
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </button>
+          <p style="font-size:11px;color:rgba(255,255,255,.2);text-align:center;margin-top:12px;">No spam. Your info is only used to contact you about your project.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div class="footer-brand">
+      <div class="footer-logo">Reece's<br><em>Outdoor</em> Solutions</div>
+      <p class="footer-tagline">Owner-operated lawn care &amp; landscaping — serving the Twin Cities metro.</p>
+      <div class="footer-social">
+        <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor" stroke="none"/></svg></a>
+        <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+    </div>
+    <div class="footer-nav">
+      <div class="fn-col">
+        <h4>Pages</h4>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/contact">Contact</a>
+      </div>
+      <div class="fn-col">
+        <h4>Services</h4>
+        <a href="#">Lawn Mowing</a>
+        <a href="#">Landscaping</a>
+        <a href="#">Seasonal Cleanup</a>
+        <a href="#">Mulching</a>
+        <a href="#">Tree Removal</a>
+      </div>
+      <div class="fn-col">
+        <h4>Contact</h4>
+        <a href="tel:6129998067">(612) 999-8067</a>
+        <a href="mailto:contact@reecesoutdoor.com">contact@reecesoutdoor.com</a>
+        <a href="/contact" class="footer-cta-link">Get a Free Quote →</a>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <div class="wrap footer-bar-inner">
+      <small>© 2026 Reece's Outdoor Solutions. All rights reserved.</small>
+      <small>Serving Eden Prairie, Minnetonka, Burnsville &amp; surrounding areas.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- ── MOBILE NAV ── -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mob-bar">
+    <span class="mob-logo">Reece's Outdoor</span>
+    <button class="mob-close" id="mob-close" aria-label="Close menu">✕</button>
+  </div>
+  <a href="/">Home</a>
+  <a href="/portfolio">Portfolio</a>
+  <a href="/about">About</a>
+  <a href="/contact">Contact</a>
+  <a class="mob-cta-link" href="/contact">Get a Free Quote →</a>
+</div>
+
+<script>
+const p=new URLSearchParams(location.search);
+if(p.get('sent')==='1')document.getElementById('msg-success').style.display='block';
+if(p.get('sent')==='0')document.getElementById('msg-error').style.display='block';
+const ham=document.getElementById('hamburger'),nav=document.getElementById('mobile-nav'),cls=document.getElementById('mob-close');
+function openNav(){nav.classList.add('is-open');nav.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeNav(){nav.classList.remove('is-open');nav.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+if(ham)ham.addEventListener('click',openNav);
+if(cls)cls.addEventListener('click',closeNav);
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeNav));
+</script>
+</body>
+</html>
