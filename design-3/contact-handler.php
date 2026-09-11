@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // ── UPDATE THIS to Reece's real email ──
 define('TO_EMAIL', 'reace2025@gmail.com');
 define('SITE_NAME', "Reece's Outdoor Solutions");
